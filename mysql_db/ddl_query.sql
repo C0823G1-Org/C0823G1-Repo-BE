@@ -16,7 +16,7 @@ USE `online_game_store` ;
 -- Table `online_game_store`.`developer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`developer` (
-  `developer_id` INT NOT NULL,
+  `developer_id` INT NOT NULL auto_increment,
   `developer_name` VARCHAR(45) NULL,
   `about_description` TEXT NULL,
   `developer_url` VARCHAR(45) NULL,
