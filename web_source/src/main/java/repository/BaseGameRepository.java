@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class BaseGameRepository {
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/demo_c08";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/online_game_store";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "12345678";
+    private static final String PASSWORD = "123456";
 
     private BaseGameRepository() {
     }
