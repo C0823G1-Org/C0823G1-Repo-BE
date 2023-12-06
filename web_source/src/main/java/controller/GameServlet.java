@@ -25,8 +25,9 @@ public class GameServlet extends HttpServlet {
         switch (action) {
             case "search":
                 break;
+            default:
+                resp.sendRedirect("/home/home.jsp");
         }
-
     }
 
     @Override
