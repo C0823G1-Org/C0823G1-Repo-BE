@@ -73,9 +73,9 @@
                     <li class="container__list-menu"><a href="">Labs</a></li>
                 </ul>
                 <div class="container__search">
-                    <form class="search__form" action="/game-servlet" method="post">
+                    <form class="search__form" action="/game-servlet?index=1" method="post">
                         <input placeholder="  search" class="search-input" type="text" name="txtSearch">
-                        <button type="submit" class="btn__btn-sumit">
+                        <button type="submit" class="btn__btn-sumit" name="action" value="search">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </form>

@@ -5,13 +5,22 @@ import java.util.Date;
 public class Game {
     private int id;
     private String title;
-    private String price;
+    private double price;
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     private String description;
     private boolean ageRequirement;
-    private int idImage;
     private int idLibaryStore;
     private boolean isDelete;
-    private int idDeveloper ;
+    private int idDeveloper;
     private Date releaseDate;
     private int idDlc;
     private int idRatingReview;
@@ -20,16 +29,20 @@ public class Game {
 
     public Game() {
     }
+    public Game(String title, double price, Dto dto) {
+        this.title = title;
+        this.price = price;
+        this.url = dto.getUrl();
+    }
 
-    public Game(String title, String price, String description, boolean ageRequirement,
-                int idImage, int idLibaryStore, boolean isDelete, int idDeveloper,
+    public Game(String title, double price, String description, boolean ageRequirement,
+                int idLibaryStore, boolean isDelete, int idDeveloper,
                 Date releaseDate, int idDlc, int idRatingReview, String requirementMiniumSystem,
                 String requirementMiniumRecommend) {
         this.title = title;
         this.price = price;
         this.description = description;
         this.ageRequirement = ageRequirement;
-        this.idImage = idImage;
         this.idLibaryStore = idLibaryStore;
         this.isDelete = isDelete;
         this.idDeveloper = idDeveloper;
@@ -56,11 +69,11 @@ public class Game {
         this.title = title;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -78,14 +91,6 @@ public class Game {
 
     public void setAgeRequirement(boolean ageRequirement) {
         this.ageRequirement = ageRequirement;
-    }
-
-    public int getIdImage() {
-        return idImage;
-    }
-
-    public void setIdImage(int idImage) {
-        this.idImage = idImage;
     }
 
     public int getIdLibaryStore() {

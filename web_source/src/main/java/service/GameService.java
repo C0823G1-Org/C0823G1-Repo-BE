@@ -15,6 +15,12 @@ public class GameService implements IGameService {
     }
 
     @Override
+    public List<Game> search(String txtSearch, int index, int size) {
+        return gameRepository.search(txtSearch,index,size);
+    }
+
+
+    @Override
     public void addToCart(int userId, int gameId) {
         gameRepository.addToCart(userId,gameId);
     }

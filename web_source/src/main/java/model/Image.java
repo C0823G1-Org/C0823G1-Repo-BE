@@ -60,8 +60,13 @@ public class Image {
     public int getIdTypeImg() {
         return idTypeImg;
     }
-
     public void setIdTypeImg(int idTypeImg) {
         this.idTypeImg = idTypeImg;
     }
+
+    @Override
+    public String toString() {
+        return url;
+    }
 }
+
