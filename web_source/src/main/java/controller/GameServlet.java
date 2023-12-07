@@ -1,6 +1,5 @@
 package controller;
 
-import model.Game;
 import model.GameDTO;
 import service.GameService;
 import service.IGameService;
@@ -39,7 +38,7 @@ public class GameServlet extends HttpServlet {
         int userId= (int) session.getAttribute("user_id");
         int gameId= Integer.parseInt(req.getParameter("game_id"));
         gameService.addToCart(userId,gameId);
-        List<Game> cartList = gameService.getCartGames(userId);
+        List<GameDTO> cartList = gameService.getCartGames(userId);
     }
 
     @Override

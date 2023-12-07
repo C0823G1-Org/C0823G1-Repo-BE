@@ -1,6 +1,5 @@
 package service;
 
-import model.Game;
 import model.GameDTO;
 import repository.GameRepository;
 import repository.IGameRepository;
@@ -26,7 +25,7 @@ public class GameService implements IGameService {
     }
 
     @Override
-    public List<Game> getCartGames(int userId) {
+    public List<GameDTO> getCartGames(int userId) {
         return gameRepository.getCartGames(userId);
     }
 }

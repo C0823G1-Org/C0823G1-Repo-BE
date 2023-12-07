@@ -1,6 +1,5 @@
 package repository;
 
-import model.Game;
 import model.GameDTO;
 
 import java.util.List;
@@ -11,5 +10,5 @@ public interface IGameRepository {
 
     void addToCart(int userId, int gameId);
 
-    List<Game> getCartGames(int userId);
+    List<GameDTO> getCartGames(int userId);
 }
