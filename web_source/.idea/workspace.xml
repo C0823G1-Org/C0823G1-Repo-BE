@@ -5,33 +5,62 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f5b535b-5f76-4cd6-a113-6d6696a9acae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Dto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mysql_db/ddl_query.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql_db/ddl_query.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mysql_db/dml_querry.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/controller/GameServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controller/GameServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/model/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/repository/BaseGameRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/repository/BaseGameRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/repository/GameRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/repository/GameRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/repository/IGameRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/repository/IGameRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/service/GameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/service/GameService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/service/IGameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/service/IGameService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/case_study-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/case_study-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/GameServlet.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Image.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/GameRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/GameRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/IGameRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/IGameRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/GameService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/IGameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/IGameService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Bundle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/BundleHasGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Developer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Dto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/GameInCart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/GameTag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Image.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ImageType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/RatingType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ReviewRating.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Tag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/UserAccount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/UserHasGame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Video.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/BaseGameRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/GameRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/IGameRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/GameService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/IGameService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart/cart.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart/cart.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/detail_game/detail_game.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/detail_game/web.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/home.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/js.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/steam.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/libary/libary.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/libary/libary.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login/login.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/register/register.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/register/register.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/search/search.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +118,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "android.gradle.sync.needed": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "D:/module_2--Le-Van-Nhat-Bao---C0823/module_3/case_study_module3/C0823G1-Repo-BE/web_source",
     "node.js.detected.package.eslint": "true",
@@ -217,10 +247,22 @@
       <workItem from="1701868364629" duration="20000" />
       <workItem from="1701869700268" duration="2328000" />
       <workItem from="1701873442804" duration="11621000" />
+      <workItem from="1701916485092" duration="1866000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/repository/GameRepository.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

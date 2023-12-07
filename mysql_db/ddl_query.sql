@@ -17,9 +17,9 @@ USE `online_game_store` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`developer` (
   `developer_id` INT NOT NULL auto_increment,
-  `developer_name` VARCHAR(45) NULL,
+  `developer_name` VARCHAR(145) NULL,
   `about_description` TEXT NULL,
-  `developer_url` VARCHAR(45) NULL,
+  `developer_url` VARCHAR(145) NULL,
   PRIMARY KEY (`developer_id`))
 ENGINE = InnoDB;
 
@@ -28,7 +28,7 @@ ENGINE = InnoDB;
 -- Table `online_game_store`.`rating_type`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`rating_type` (
-  `rating_type_id` INT NOT NULL,
+  `rating_type_id` INT NOT NULL auto_increment,
   `rating_type_name` VARCHAR(45) NULL,
   PRIMARY KEY (`rating_type_id`))
 ENGINE = InnoDB;
@@ -38,8 +38,7 @@ ENGINE = InnoDB;
 -- Table `online_game_store`.`review_rating`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`review_rating` (
-  `review_rating_id` INT NOT NULL,
-  `review_rating_type` VARCHAR(45) NULL,
+  `review_rating_id` INT NOT NULL auto_increment ,
   `rating_type_rating_type_id` INT NOT NULL,
   PRIMARY KEY (`review_rating_id`),
   INDEX `fk_review_rating_rating_type1_idx` (`rating_type_rating_type_id` ASC) VISIBLE,
@@ -55,17 +54,15 @@ ENGINE = InnoDB;
 -- Table `online_game_store`.`game`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`game` (
-  `game_id` INT NOT NULL,
+  `game_id` INT NOT NULL auto_increment,
   `game_title` VARCHAR(45) NULL,
-  `price` VARCHAR(45) NULL,
+  `price` double NULL,
   `description` TEXT NULL,
   `age_requirement` BIT(1) NULL,
-  `image_list_id` INT NOT NULL,
-  `store_library_store_library_id` INT NOT NULL,
   `is_deleted` BIT(1) NULL DEFAULT 0,
   `developer_id` INT NOT NULL,
   `release_date` DATE NULL,
-  `dlc_id` INT NOT NULL,
+  `dlc_id` INT,
   `review_rating_id` INT NOT NULL,
   `minium_system_requirement` TEXT NULL,
   `recommend_system_requirement` TEXT NULL,
@@ -95,7 +92,7 @@ ENGINE = InnoDB;
 -- Table `online_game_store`.`role`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`role` (
-  `role_id` INT NOT NULL,
+  `role_id` INT NOT NULL auto_increment,
   `role_name` VARCHAR(45) NULL,
   PRIMARY KEY (`role_id`))
 ENGINE = InnoDB;
@@ -122,7 +119,7 @@ ENGINE = InnoDB;
 -- Table `online_game_store`.`user`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`user` (
-  `user_id` INT NOT NULL,
+  `user_id` INT NOT NULL auto_increment,
   `user_name` VARCHAR(45) NULL,
   `birthday` VARCHAR(45) NULL,
   `email` VARCHAR(45) NOT NULL,
@@ -138,27 +135,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `online_game_store`.`cart`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `online_game_store`.`cart` (
-  `cart_id` INT NOT NULL,
-  `user_user_id` INT NOT NULL,
-  PRIMARY KEY (`cart_id`),
-  INDEX `fk_cart_user1_idx` (`user_user_id` ASC) VISIBLE,
-  CONSTRAINT `fk_cart_user1`
-    FOREIGN KEY (`user_user_id`)
-    REFERENCES `online_game_store`.`user` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `online_game_store`.`bundle`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`bundle` (
-  `bundle_id` INT NOT NULL,
-  `price` VARCHAR(45) NULL,
+  `bundle_id` INT NOT NULL auto_increment,
+  `percent_discount` VARCHAR(45) NULL,
   PRIMARY KEY (`bundle_id`))
 ENGINE = InnoDB;
 
@@ -167,7 +148,7 @@ ENGINE = InnoDB;
 -- Table `online_game_store`.`image_type`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`image_type` (
-  `image_type_id` INT NOT NULL,
+  `image_type_id` INT NOT NULL auto_increment,
   `image_type_name` VARCHAR(45) NULL,
   PRIMARY KEY (`image_type_id`))
 ENGINE = InnoDB;
@@ -177,8 +158,8 @@ ENGINE = InnoDB;
 -- Table `online_game_store`.`image`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`image` (
-  `image_id` INT NOT NULL,
-  `url` VARCHAR(45) NULL,
+  `image_id` INT NOT NULL auto_increment,
+  `url` VARCHAR(200) NULL,
   `is_deleted` BIT(1) NULL DEFAULT 0,
   `game_game_id` INT NOT NULL,
   `image_type_image_type_id` INT NOT NULL,
@@ -202,8 +183,8 @@ ENGINE = InnoDB;
 -- Table `online_game_store`.`video`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`video` (
-  `video_id` INT NOT NULL,
-  `url` VARCHAR(45) NULL,
+  `video_id` INT NOT NULL auto_increment,
+  `url` VARCHAR(200) NULL,
   `is_deleted` BIT(1) NULL DEFAULT 0,
   `game_game_id` INT NOT NULL,
   PRIMARY KEY (`video_id`),
@@ -220,9 +201,8 @@ ENGINE = InnoDB;
 -- Table `online_game_store`.`tag`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`tag` (
-  `tag_id` INT NOT NULL,
+  `tag_id` INT NOT NULL auto_increment,
   `tag_name` VARCHAR(45) NULL,
-  `short_description` VARCHAR(45) NULL,
   `is_deleted` BIT(1) NULL DEFAULT 0,
   PRIMARY KEY (`tag_id`))
 ENGINE = InnoDB;
@@ -232,8 +212,8 @@ ENGINE = InnoDB;
 -- Table `online_game_store`.`game_tag`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`game_tag` (
-  `game_id` INT NOT NULL,
-  `tag_id` INT NOT NULL,
+  `game_id` INT NOT NULL ,
+  `tag_id` INT NOT NULL ,
   PRIMARY KEY (`game_id`, `tag_id`),
   INDEX `fk_game_has_tags_tags1_idx` (`tag_id` ASC) VISIBLE,
   INDEX `fk_game_has_tags_game1_idx` (`game_id` ASC) VISIBLE,
@@ -254,16 +234,15 @@ ENGINE = InnoDB;
 -- Table `online_game_store`.`game_in_cart`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`game_in_cart` (
-  `cart_id` INT NOT NULL,
-  `game_id` INT NOT NULL,
-  `amount` INT NULL,
+  `user_id` INT NOT NULL ,
+  `game_id` INT NOT NULL ,
   `is_deleted` BIT(1) NULL DEFAULT 0,
-  PRIMARY KEY (`cart_id`, `game_id`),
+  PRIMARY KEY (`user_id`, `game_id`),
   INDEX `fk_cart_has_game_game1_idx` (`game_id` ASC) VISIBLE,
-  INDEX `fk_cart_has_game_cart1_idx` (`cart_id` ASC) VISIBLE,
+  INDEX `fk_cart_has_game_cart1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_cart_has_game_cart1`
-    FOREIGN KEY (`cart_id`)
-    REFERENCES `online_game_store`.`cart` (`cart_id`)
+    FOREIGN KEY (`user_id`)
+    REFERENCES `online_game_store`.`user` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_cart_has_game_game1`
@@ -278,8 +257,8 @@ ENGINE = InnoDB;
 -- Table `online_game_store`.`bundle_has_game`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`bundle_has_game` (
-  `game_id` INT NOT NULL,
-  `bundle_id` INT NOT NULL,
+  `game_id` INT NOT NULL ,
+  `bundle_id` INT NOT NULL ,
   PRIMARY KEY (`game_id`, `bundle_id`),
   INDEX `fk_game_has_bundle_bundle1_idx` (`bundle_id` ASC) VISIBLE,
   INDEX `fk_game_has_bundle_game1_idx` (`game_id` ASC) VISIBLE,
@@ -300,8 +279,8 @@ ENGINE = InnoDB;
 -- Table `online_game_store`.`user_has_game`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `online_game_store`.`user_has_game` (
-  `user_user_id` INT NOT NULL,
-  `game_game_id` INT NOT NULL,
+  `user_user_id` INT NOT NULL ,
+  `game_game_id` INT NOT NULL ,
   `is_deleted` BIT(1) NULL DEFAULT 0,
   `is_bought` BIT(1) NULL DEFAULT 0,
   PRIMARY KEY (`user_user_id`, `game_game_id`),
