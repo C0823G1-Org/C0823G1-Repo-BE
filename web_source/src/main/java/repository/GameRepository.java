@@ -1,26 +1,22 @@
 package repository;
 
-import model.Game;
 import model.GameDTO;
 import model.UserAccount;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameRepository implements IGameRepository {
     private static final String SEARCH = "with x as (select row_number() over (order by game_id desc) as r,game.game_title,game.price,image.url \n" +
-            "from game \n" +
-            "join image on game.game_id = image.game_game_id\n" +
-            "where game_title like ? )\n" +
-            "select * from x where r between ?*3-2 and ?*3;";
+                                         "from game \n" +
+                                         "join image on game.game_id = image.game_game_id\n" +
+                                         "where game_title like ? )\n" +
+                                         "select * from x where r between ?*3-2 and ?*3;";
     private static final String COUNT = "select count(*) from game where game_title like ?;";
-    private static final String ADD_TO_CART = "insert into game_in_cart values (?,?)";
-    private static final String GET_CART = "select game_id from game_in_cart where user_id = ?";
     private static final String SIGN_UP = "insert into user_account(email, password, role_role_id) values(?,?,?);";
+    private static final String ADD_TO_CART = "insert into game_in_cart(user_id, game_id) values (?,?)";
+    private static final String GET_CART = "call get_user_cart(?);";
 
     @Override
     public int count(String txtSearch) {
@@ -53,7 +49,7 @@ public class GameRepository implements IGameRepository {
                 String name = resultSet.getString("game_title");
                 double price = resultSet.getDouble("price");
                 String url = resultSet.getString("url");
-                list.add(new GameDTO(name,price,url));
+                list.add(new GameDTO(name, price, url));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -62,6 +58,7 @@ public class GameRepository implements IGameRepository {
     }
 
     @Override
+
     public void createAccount(UserAccount userAccount) {
         Connection connection = BaseGameRepository.getConnection();
         try {
@@ -70,33 +67,36 @@ public class GameRepository implements IGameRepository {
             preparedStatement.setString(2, userAccount.getPassword());
             preparedStatement.setInt(3,2);
             System.out.println(preparedStatement.toString());
-            preparedStatement.executeUpdate();
+        }
+
+    public void addToCart(int userId, int gameId) {
+        try (Connection connection = BaseGameRepository.getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(ADD_TO_CART);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, gameId);
+           preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+      
+    @Override
+    public List<GameDTO> getCartGames(int userId) {
+        List<GameDTO> gamesInCart = new ArrayList<>();
+        try (Connection connection = BaseGameRepository.getConnection()) {
+            CallableStatement callableStatement = connection.prepareCall(GET_CART);
+            callableStatement.setInt(1, userId);
+            ResultSet resultSet = callableStatement.executeQuery();
 
-//    @Override
-//    public void addToCart(int userId, int gameId) {
-//        try (Connection connection = BaseGameRepository.getConnection()) {
-//            PreparedStatement preparedStatement = connection.prepareStatement(ADD_TO_CART);
-////            preparedStatement.setString(1, userId);
-////            preparedStatement.setString(2, gameId);
-//            preparedStatement.executeQuery();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    @Override
-//    public List<Game> getCartGames(int userId) {
-//        try (Connection connection = BaseGameRepository.getConnection()) {
-//            PreparedStatement preparedStatement = connection.prepareStatement(GET_CART);
-////            preparedStatement.setString(1, userId);
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
+            while (resultSet.next()) {
+                String title = resultSet.getString("game_title");
+                double price = resultSet.getDouble("price");
+                String gameCoverURl = resultSet.getString("url");
+                gamesInCart.add(new GameDTO(title,price,gameCoverURl));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return gamesInCart;
+    }
 }

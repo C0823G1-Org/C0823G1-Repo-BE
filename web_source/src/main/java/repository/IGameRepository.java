@@ -1,6 +1,5 @@
 package repository;
 
-import model.Game;
 import model.GameDTO;
 import model.UserAccount;
 
@@ -10,8 +9,11 @@ public interface IGameRepository {
     public int count (String txtSearch);
     List<GameDTO> search(String txtSearch, int index, int size);
 
-//    void addToCart(int userId, int gameId);
-//
-//    List<Game> getCartGames(int userId);
+
     void createAccount(UserAccount userAccount);
+
+    void addToCart(int userId, int gameId);
+
+    List<GameDTO> getCartGames(int userId);
+
 }

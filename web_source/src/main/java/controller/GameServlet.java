@@ -1,6 +1,5 @@
 package controller;
 
-import model.Game;
 import model.GameDTO;
 import model.UserAccount;
 import service.GameService;
@@ -29,21 +28,27 @@ public class GameServlet extends HttpServlet {
         }
         switch (action) {
             case "add_to_cart":
-//                addToCart(req,resp);
+                addToCart(req, resp);
                 break;
             default:
                 resp.sendRedirect("/home/home.jsp");
         }
     }
 
-
-//    private void addToCart(HttpServletRequest req, HttpServletResponse resp) {
-//        HttpSession session = req.getSession();
-//        int userId= (int) session.getAttribute("user_id");
-//        int gameId= Integer.parseInt(req.getParameter("game_id"));
-//        gameService.addToCart(userId,gameId);
-//        List<Game> cartList = gameService.getCartGames(userId);
-//    }
+    private void addToCart(HttpServletRequest req, HttpServletResponse resp) {
+        HttpSession session = req.getSession();
+        int userId = Integer.parseInt(req.getParameter("user_id"));
+        int gameId = Integer.parseInt(req.getParameter("game_id"));
+        gameService.addToCart(userId, gameId);
+        List<GameDTO> cartList = gameService.getCartGames(userId);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/cart/cart.jsp");
+        req.setAttribute("cart_list", cartList);
+        try {
+            requestDispatcher.forward(req, resp);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -72,13 +77,12 @@ public class GameServlet extends HttpServlet {
                 req.setAttribute("endPage", endPage);
                 req.setAttribute("list", listSearch);
                 requestDispatcher.forward(req, resp);
-                break;
+               break;
             case "sign_in":
 //                signIn(req,resp);
                 break;
             case "sign_up":
                 signUp(req, resp);
-                break;
         }
     }
 
