@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -19,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
           integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
             integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
@@ -99,72 +100,35 @@
     </div>
     <div class="menu__cart">
         <!-- 1 -->
+        <c:if test="${cart_list != null}">
+        <c:forEach items="cart_list" var="game" varStatus="loop">
         <div class="menu__cart-list">
             <div class="container__cart">
                 <div class="container__cart-img">
-                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/2296990/header.jpg" alt="">
+                    <img src="${game.imageCoverUrl}" alt="">
                 </div>
                 <div class="container__cart-name">
                         <span class="name-detail">
-                            We Were Here Expeditions: The FriendShip
+                            ${game.title}
                         </span>
                     <span class="icon__window"></span>
                 </div>
                 <div class="cart-price">
                     <div class="cart__price-final">
-                        550.000đ
+                        ${game.price}
                     </div>
-                    <a href="">Remove </a>
+                    <a href="">Remove</a>
                 </div>
             </div>
         </div>
-        <!-- 2 -->
-        <div class="menu__cart-list">
-            <div class="container__cart">
-                <div class="container__cart-img">
-                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/1859020/header.jpg" alt="">
-                </div>
-                <div class="container__cart-name">
-                        <span class="name-detail">
-                            Porcelain Tales
-                        </span>
-                    <span class="icon__window"></span>
-                </div>
-                <div class="cart-price">
-                    <div class="cart__price-final">
-                        550.000đ
-                    </div>
-                    <a href="">Remove </a>
-                </div>
+        </c:forEach>
+        </c:if>
+        <!-- Pay -->
+        <div class="menu__cart">
+            <div class="btn__pay">
+                <button>Purchase</button>
             </div>
         </div>
-        <!-- 3 -->
-        <div class="menu__cart-list">
-            <div class="container__cart">
-                <div class="container__cart-img">
-                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/2563970/header.jpg" alt="">
-                </div>
-                <div class="container__cart-name">
-                        <span class="name-detail">
-                            Sky: Children of the Light Demo
-                        </span>
-                    <span class="icon__window"></span>
-                </div>
-                <div class="cart-price">
-                    <div class="cart__price-final">
-                        550.000đ
-                    </div>
-                    <a href="">Remove </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Pay -->
-    <div class="menu__cart">
-        <div class="btn__pay">
-            <button>Puschase</button>
-        </div>
-    </div>
 </section>
 <div class="end__container">
     <div class="container__content">

@@ -13,7 +13,7 @@ public class GameRepository implements IGameRepository {
                                          "where game_title like ? )\n" +
                                          "select * from x where r between ?*3-2 and ?*3;";
     private static final String COUNT = "select count(*) from game where game_title like ?;";
-    private static final String ADD_TO_CART = "insert into game_in_cart values (?,?)";
+    private static final String ADD_TO_CART = "insert into game_in_cart(user_id, game_id) values (?,?)";
     private static final String GET_CART = "call get_user_cart(?);";
 
     @Override
@@ -61,7 +61,7 @@ public class GameRepository implements IGameRepository {
             PreparedStatement preparedStatement = connection.prepareStatement(ADD_TO_CART);
             preparedStatement.setInt(1, userId);
             preparedStatement.setInt(2, gameId);
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

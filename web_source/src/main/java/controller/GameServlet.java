@@ -26,7 +26,7 @@ public class GameServlet extends HttpServlet {
         }
         switch (action) {
             case "add_to_cart":
-                addToCart(req,resp);
+                addToCart(req, resp);
                 break;
             default:
                 resp.sendRedirect("/home/home.jsp");
@@ -35,10 +35,17 @@ public class GameServlet extends HttpServlet {
 
     private void addToCart(HttpServletRequest req, HttpServletResponse resp) {
         HttpSession session = req.getSession();
-        int userId= (int) session.getAttribute("user_id");
-        int gameId= Integer.parseInt(req.getParameter("game_id"));
-        gameService.addToCart(userId,gameId);
+        int userId = Integer.parseInt(req.getParameter("user_id"));
+        int gameId = Integer.parseInt(req.getParameter("game_id"));
+        gameService.addToCart(userId, gameId);
         List<GameDTO> cartList = gameService.getCartGames(userId);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/cart/cart.jsp");
+        req.setAttribute("cart_list", cartList);
+        try {
+            requestDispatcher.forward(req, resp);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -50,24 +57,24 @@ public class GameServlet extends HttpServlet {
         switch (action) {
             case "search":
                 String txtSearch = req.getParameter("txtSearch");
-                String indexString  =  req.getParameter("index");
+                String indexString = req.getParameter("index");
                 int index = Integer.parseInt(indexString);
                 RequestDispatcher requestDispatcher = req.getRequestDispatcher("search/search.jsp");
                 int count = gameService.count(txtSearch);
                 int pageSize = 3;
                 int endPage = 0;
                 endPage = count / pageSize;
-                if (count % endPage != 0){
-                    endPage ++;
+                if (count % endPage != 0) {
+                    endPage++;
                 }
-                List<GameDTO> listSearch = gameService.search(txtSearch,index,pageSize);
-                List<GameDTO> games = gameService.search("s",1,3);
-                for (GameDTO a : games){
+                List<GameDTO> listSearch = gameService.search(txtSearch, index, pageSize);
+                List<GameDTO> games = gameService.search("s", 1, 3);
+                for (GameDTO a : games) {
                     System.out.println(a);
                 }
-                req.setAttribute("endPage",endPage);
-                req.setAttribute("list",listSearch);
-                requestDispatcher.forward(req,resp);
+                req.setAttribute("endPage", endPage);
+                req.setAttribute("list", listSearch);
+                requestDispatcher.forward(req, resp);
                 break;
         }
     }
