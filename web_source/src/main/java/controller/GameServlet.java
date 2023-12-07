@@ -1,6 +1,7 @@
 package controller;
 
 import model.Game;
+import model.GameDTO;
 import service.GameService;
 import service.IGameService;
 
@@ -25,8 +26,6 @@ public class GameServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "search":
-                break;
             case "add_to_cart":
                 addToCart(req,resp);
                 break;
@@ -52,8 +51,24 @@ public class GameServlet extends HttpServlet {
         switch (action) {
             case "search":
                 String txtSearch = req.getParameter("txtSearch");
-                Game game = new Game();
-                RequestDispatcher requestDispatcher = req.getRequestDispatcher("home/home.jsp");
+                String indexString  =  req.getParameter("index");
+                int index = Integer.parseInt(indexString);
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("search/search.jsp");
+                int count = gameService.count(txtSearch);
+                int pageSize = 3;
+                int endPage = 0;
+                endPage = count / pageSize;
+                if (count % endPage != 0){
+                    endPage ++;
+                }
+                List<GameDTO> listSearch = gameService.search(txtSearch,index,pageSize);
+                List<GameDTO> games = gameService.search("s",1,3);
+                for (GameDTO a : games){
+                    System.out.println(a);
+                }
+                req.setAttribute("endPage",endPage);
+                req.setAttribute("list",listSearch);
+                requestDispatcher.forward(req,resp);
                 break;
         }
     }

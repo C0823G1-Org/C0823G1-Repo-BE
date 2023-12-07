@@ -1,6 +1,7 @@
 package service;
 
 import model.Game;
+import model.GameDTO;
 import repository.GameRepository;
 import repository.IGameRepository;
 
@@ -12,6 +13,11 @@ public class GameService implements IGameService {
     @Override
     public int count(String txtSearch) {
         return gameRepository.count(txtSearch);
+    }
+
+    @Override
+    public List<GameDTO> search(String txtSearch, int index, int size) {
+        return gameRepository.search(txtSearch,index,size);
     }
 
     @Override
