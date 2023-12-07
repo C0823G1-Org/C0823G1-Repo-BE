@@ -34,4 +34,13 @@ public class GameDTO {
     public void setImageCoverUrl(String imageCoverUrl) {
         this.imageCoverUrl = imageCoverUrl;
     }
+
+    @Override
+    public String toString() {
+        return "GameDTO{" +
+                "title='" + title + '\'' +
+                ", price=" + price +
+                ", imageCoverUrl='" + imageCoverUrl + '\'' +
+                '}';
+    }
 }

@@ -39,6 +39,7 @@ public class GameServlet extends HttpServlet {
         int gameId = Integer.parseInt(req.getParameter("game_id"));
         gameService.addToCart(userId, gameId);
         List<GameDTO> cartList = gameService.getCartGames(userId);
+
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/cart/cart.jsp");
         req.setAttribute("cart_list", cartList);
         try {

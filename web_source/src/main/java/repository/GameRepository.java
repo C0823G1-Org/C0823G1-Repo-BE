@@ -8,10 +8,10 @@ import java.util.List;
 
 public class GameRepository implements IGameRepository {
     private static final String SEARCH = "with x as (select row_number() over (order by game_id desc) as r,game.game_title,game.price,image.url \n" +
-                                         "from game \n" +
-                                         "join image on game.game_id = image.game_game_id\n" +
-                                         "where game_title like ? )\n" +
-                                         "select * from x where r between ?*3-2 and ?*3;";
+            "from game \n" +
+            "join image on game.game_id = image.game_game_id\n" +
+            "where game_title like ? )\n" +
+            "select * from x where r between ?*3-2 and ?*3;";
     private static final String COUNT = "select count(*) from game where game_title like ?;";
     private static final String ADD_TO_CART = "insert into game_in_cart(user_id, game_id) values (?,?)";
     private static final String GET_CART = "call get_user_cart(?);";
@@ -62,6 +62,8 @@ public class GameRepository implements IGameRepository {
             preparedStatement.setInt(1, userId);
             preparedStatement.setInt(2, gameId);
             preparedStatement.executeUpdate();
+        } catch (SQLIntegrityConstraintViolationException ignored) {
+            System.out.println("Game already in cart!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -79,7 +81,7 @@ public class GameRepository implements IGameRepository {
                 String title = resultSet.getString("game_title");
                 double price = resultSet.getDouble("price");
                 String gameCoverURl = resultSet.getString("url");
-                gamesInCart.add(new GameDTO(title,price,gameCoverURl));
+                gamesInCart.add(new GameDTO(title, price, gameCoverURl));
             }
         } catch (SQLException e) {
             e.printStackTrace();

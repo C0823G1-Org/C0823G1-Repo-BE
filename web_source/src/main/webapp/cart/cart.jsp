@@ -100,12 +100,11 @@
     </div>
     <div class="menu__cart">
         <!-- 1 -->
-        <c:if test="${cart_list != null}">
-        <c:forEach items="cart_list" var="game" varStatus="loop">
+        <c:forEach items="${cart_list}" var="game" varStatus="loop">
         <div class="menu__cart-list">
             <div class="container__cart">
                 <div class="container__cart-img">
-                    <img src="${game.imageCoverUrl}" alt="">
+                    <img src="${game.imageCoverUrl}" alt="cover image error">
                 </div>
                 <div class="container__cart-name">
                         <span class="name-detail">
@@ -122,7 +121,7 @@
             </div>
         </div>
         </c:forEach>
-        </c:if>
+
         <!-- Pay -->
         <div class="menu__cart">
             <div class="btn__pay">
