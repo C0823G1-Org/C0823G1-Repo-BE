@@ -116,7 +116,12 @@
                     <div class="cart__price-final">
                         ${game.price}
                     </div>
-                    <a href="">Remove</a>
+                    <form action="/game-servlet" method="post">
+                        <input type="hidden" name="user_id" value="1">
+                        <input type="hidden" name="game_id" value="${game.gameId}">
+                        <button type="submit" name="action" value="remove_cart_item">Remove</button>
+                    </form>
+
                 </div>
             </div>
         </div>

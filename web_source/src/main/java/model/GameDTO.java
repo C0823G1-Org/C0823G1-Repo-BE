@@ -4,11 +4,27 @@ public class GameDTO {
     private String title;
     private double price;
     private String imageCoverUrl;
+    private int gameId;
 
     public GameDTO(String title, double price, String url) {
         this.title = title;
         this.price = price;
         this.imageCoverUrl = url;
+    }
+
+    public GameDTO(String title, double price, String imageCoverUrl, int gameId) {
+        this.title = title;
+        this.price = price;
+        this.imageCoverUrl = imageCoverUrl;
+        this.gameId = gameId;
+    }
+
+    public int getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
     }
 
     public String getTitle() {

@@ -38,6 +38,11 @@ public class GameServlet extends HttpServlet {
         int userId = Integer.parseInt(req.getParameter("user_id"));
         int gameId = Integer.parseInt(req.getParameter("game_id"));
         gameService.addToCart(userId, gameId);
+        updateCart(req, resp);
+    }
+
+    private void updateCart(HttpServletRequest req, HttpServletResponse resp) {
+        int userId = Integer.parseInt(req.getParameter("user_id"));
         List<GameDTO> cartList = gameService.getCartGames(userId);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/cart/cart.jsp");
@@ -77,6 +82,17 @@ public class GameServlet extends HttpServlet {
                 req.setAttribute("list", listSearch);
                 requestDispatcher.forward(req, resp);
                 break;
+            case "remove_cart_item":
+                removeCartItem(req,resp);
+                break;
         }
+    }
+
+    private void removeCartItem(HttpServletRequest req, HttpServletResponse resp) {
+        int userId= Integer.parseInt(req.getParameter("user_id"));
+        int gameId= Integer.parseInt(req.getParameter("game_id"));
+        gameService.removeCartItem(userId,gameId);
+        System.out.println("Ayo this worked!");
+        updateCart(req,resp);
     }
 }

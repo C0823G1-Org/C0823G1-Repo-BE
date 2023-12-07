@@ -10,4 +10,6 @@ public interface IGameService {
     void addToCart(int userId, int gameId);
 
     List<GameDTO> getCartGames(int userId);
+
+    void removeCartItem(int userId, int gameId);
 }

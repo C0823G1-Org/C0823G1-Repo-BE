@@ -13,8 +13,9 @@ public class GameRepository implements IGameRepository {
             "where game_title like ? )\n" +
             "select * from x where r between ?*3-2 and ?*3;";
     private static final String COUNT = "select count(*) from game where game_title like ?;";
-    private static final String ADD_TO_CART = "insert into game_in_cart(user_id, game_id) values (?,?)";
+    private static final String ADD_TO_CART = "insert into game_in_cart(user_id, game_id) values (?,?);";
     private static final String GET_CART = "call get_user_cart(?);";
+    private static final String REMOVE_CART_ITEM = "call remove_cart_item(?,?);";
 
     @Override
     public int count(String txtSearch) {
@@ -81,11 +82,24 @@ public class GameRepository implements IGameRepository {
                 String title = resultSet.getString("game_title");
                 double price = resultSet.getDouble("price");
                 String gameCoverURl = resultSet.getString("url");
-                gamesInCart.add(new GameDTO(title, price, gameCoverURl));
+                int gameId = resultSet.getInt("game_id");
+                gamesInCart.add(new GameDTO(title, price, gameCoverURl, gameId));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return gamesInCart;
+    }
+
+    @Override
+    public void removeCartItem(int userId, int gameId) {
+        try (Connection connection = BaseGameRepository.getConnection()) {
+            CallableStatement callableStatement = connection.prepareCall(REMOVE_CART_ITEM);
+            callableStatement.setInt(1, userId);
+            callableStatement.setInt(2, gameId);
+            callableStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
