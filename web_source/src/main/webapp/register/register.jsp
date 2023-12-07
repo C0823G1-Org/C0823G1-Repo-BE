@@ -63,33 +63,35 @@
     <div class="background__login">
         <div class="container__login">
             <div class="tag__login">
-                <h1>CREATE ACOUNT</h1>
+                <h1>CREATE ACCOUNT</h1>
             </div>
             <br>
             <div class="login__inner">
                 <div class="login__inner-container">
                     <!-- Left -->
+                    <form method="post" action="/game-servlet">
                     <div class="left__login">
                         <div class="left__login-sign-header">
                             Email Address
                         </div>
-                        <input type="text" class="login__input-account">
+                        <input type="text" class="login__input-account" name="email">
                         <div class="left__login-sign">
                             Password
                         </div>
-                        <input type="text" class="login__input-account">
+                        <input type="text" class="login__input-account" name="password">
                         <div class="left__login-sign">
                             Confirm your Password
                         </div>
-                        <input type="text" class="login__input-account">
+                        <input type="text" class="login__input-account" name="confirm_password">
                         <div class="btn__sign">
-                            <button>Sign in</button>
+                            <button type="submit" name="action" value="sign_up">Sign in</button>
                         </div>
                         <div class="link__help">
                             I have an acount!
                             <a href=""> Login</a>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

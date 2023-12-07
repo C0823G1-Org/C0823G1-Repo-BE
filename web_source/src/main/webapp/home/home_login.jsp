@@ -48,8 +48,9 @@
                     <span>Install Steam</span>
                 </button>
             </div>
-            <a class="container__header-login-a" href="http://localhost:8080/login/login.jsp">login</a>
 
+            <a class="container__header-login-a">${account.getEmail()   }</a>
+            <a href="home.jsp">Log out</a>
             <span class="container__header-login-p">language
                     <i class="fa-solid fa-chevron-down"></i>
                 </span>

@@ -2,6 +2,7 @@ package repository;
 
 import model.Game;
 import model.GameDTO;
+import model.UserAccount;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,6 +20,7 @@ public class GameRepository implements IGameRepository {
     private static final String COUNT = "select count(*) from game where game_title like ?;";
     private static final String ADD_TO_CART = "insert into game_in_cart values (?,?)";
     private static final String GET_CART = "select game_id from game_in_cart where user_id = ?";
+    private static final String SIGN_UP = "insert into user_account(email, password, role_role_id) values(?,?,?);";
 
     @Override
     public int count(String txtSearch) {
@@ -60,26 +62,41 @@ public class GameRepository implements IGameRepository {
     }
 
     @Override
-    public void addToCart(int userId, int gameId) {
-        try (Connection connection = BaseGameRepository.getConnection()) {
-            PreparedStatement preparedStatement = connection.prepareStatement(ADD_TO_CART);
-//            preparedStatement.setString(1, userId);
-//            preparedStatement.setString(2, gameId);
-            preparedStatement.executeQuery();
+    public void createAccount(UserAccount userAccount) {
+        Connection connection = BaseGameRepository.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SIGN_UP);
+            preparedStatement.setString(1, userAccount.getEmail());
+            preparedStatement.setString(2, userAccount.getPassword());
+            preparedStatement.setInt(3,2);
+            System.out.println(preparedStatement.toString());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    @Override
-    public List<Game> getCartGames(int userId) {
-        try (Connection connection = BaseGameRepository.getConnection()) {
-            PreparedStatement preparedStatement = connection.prepareStatement(GET_CART);
-//            preparedStatement.setString(1, userId);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    @Override
+//    public void addToCart(int userId, int gameId) {
+//        try (Connection connection = BaseGameRepository.getConnection()) {
+//            PreparedStatement preparedStatement = connection.prepareStatement(ADD_TO_CART);
+////            preparedStatement.setString(1, userId);
+////            preparedStatement.setString(2, gameId);
+//            preparedStatement.executeQuery();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    @Override
+//    public List<Game> getCartGames(int userId) {
+//        try (Connection connection = BaseGameRepository.getConnection()) {
+//            PreparedStatement preparedStatement = connection.prepareStatement(GET_CART);
+////            preparedStatement.setString(1, userId);
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 }

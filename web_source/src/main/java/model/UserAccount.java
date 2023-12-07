@@ -8,6 +8,11 @@ public class UserAccount {
     public UserAccount() {
     }
 
+    public UserAccount(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public UserAccount(String email, String password, int idRole) {
         this.email = email;
         this.password = password;
