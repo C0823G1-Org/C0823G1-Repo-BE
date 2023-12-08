@@ -14,12 +14,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./steam.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/steam.css">
     <link rel="stylesheet" href="./fonts/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
           integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
             integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
@@ -41,6 +41,11 @@
             <a href="" class="container__header-select-link">ABOUT</a>
             <a href="" class="container__header-select-link">SUPPORT</a>
         </div>
+        <c:if test="${sessionScope.userDto != null}">
+            <c:if test="${sessionScope.userDto.username == null}">
+                <a href="#" class="container__header-login-a">Vui long cap nhat thong tin</a>
+            </c:if>
+        </c:if>
         <div class="container__header-login">
             <div class="container__header-login-install">
                 <button class="btn_installe">
@@ -48,8 +53,18 @@
                     <span>Install Steam</span>
                 </button>
             </div>
-            <a class="container__header-login-a" href="http://localhost:8080/login/login.jsp">login</a>
-
+            <c:if test="${sessionScope.userDto != null}">
+                <c:if test="${sessionScope.userDto.username != null}">
+                    <a class="container__header-login-a">${sessionScope.userDto.username}</a>
+                </c:if>
+                <c:if test="${sessionScope.userDto.username == null}">
+                    <a class="container__header-login-a">${sessionScope.userDto.email}</a>
+                </c:if>
+                <a href="/game-servlet?action=logout">Log out</a>
+            </c:if>
+            <c:if test="${sessionScope.userDto == null}">
+                <a class="container__header-login-a" href="http://localhost:8080/login/login.jsp">login</a>
+            </c:if>
             <span class="container__header-login-p">language
                     <i class="fa-solid fa-chevron-down"></i>
                 </span>
@@ -94,7 +109,7 @@
                      alt="">
                 <div class="data__product-hover">
                     <div class="data__product-video">
-                        <video loop="loop" muted autoplay >
+                        <video loop="loop" muted autoplay>
                             <source
                                     src="https://cdn.cloudflare.steamstatic.com/steam/apps/256938327/microtrailer.webm?t=1680071426"
                                     type="video/webm">
@@ -111,7 +126,8 @@
                                 <li><a href="">Third-Person Shooter</a></li>
                                 <li><a href="">Zombies</a></li>
                             </ul>
-                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span></button>
+                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -130,7 +146,7 @@
                      alt="">
                 <div class="data__product-hover">
                     <div class="data__product-video">
-                        <video loop="loop" muted autoplay >
+                        <video loop="loop" muted autoplay>
                             <source
                                     src="https://cdn.cloudflare.steamstatic.com/steam/apps/256806899/microtrailer.webm?t=1603837979"
                                     type="video/webm">
@@ -147,7 +163,8 @@
                                 <li><a href="">Single player</a></li>
                                 <li><a href="">Ninja</a></li>
                             </ul>
-                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span></button>
+                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -166,7 +183,7 @@
                      alt="">
                 <div class="data__product-hover">
                     <div class="data__product-video">
-                        <video loop="loop" muted autoplay >
+                        <video loop="loop" muted autoplay>
                             <source
                                     src="https://cdn.akamai.steamstatic.com/steam/apps/256932123/microtrailer.webm?t=1677175226"
                                     type="video/webm">
@@ -183,7 +200,8 @@
                                 <li><a href="">Survival Horror</a></li>
                                 <li><a href="">Co-op</a></li>
                             </ul>
-                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span></button>
+                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -203,7 +221,7 @@
 
                 <div class="data__product-hover">
                     <div class="data__product-video">
-                        <video loop="loop" muted autoplay >
+                        <video loop="loop" muted autoplay>
                             <source
                                     src="https://cdn.cloudflare.steamstatic.com/steam/apps/256864004/microtrailer.webm?t=1639001817"
                                     type="video/webm">
@@ -220,7 +238,8 @@
                                 <li><a href="">Advendture</a></li>
                                 <li><a href="">Mythology</a></li>
                             </ul>
-                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span></button>
+                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -240,7 +259,7 @@
 
                 <div class="data__product-hover">
                     <div class="data__product-video">
-                        <video loop="loop" muted autoplay >
+                        <video loop="loop" muted autoplay>
                             <source
                                     src="https://cdn.cloudflare.steamstatic.com/steam/apps/256982368/microtrailer.webm?t=1699907911"
                                     type="video/webm">
@@ -257,7 +276,8 @@
                                 <li><a href="">Base Building</a></li>
                                 <li><a href="">Co-op</a></li>
                             </ul>
-                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span></button>
+                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -277,7 +297,7 @@
 
                 <div class="data__product-hover">
                     <div class="data__product-video">
-                        <video loop="loop" muted autoplay >
+                        <video loop="loop" muted autoplay>
                             <source
                                     src="https://cdn.cloudflare.steamstatic.com/steam/apps/256975850/microtrailer.webm?t=1697236277"
                                     type="video/webm">
@@ -294,7 +314,8 @@
                                 <li><a href="">Co-op</a></li>
                                 <li><a href="">Action</a></li>
                             </ul>
-                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span></button>
+                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -318,10 +339,10 @@
                     <img src="./img/outlast.jfif" alt="">
                     <div class="list__products-hover-min">
                         <div class="data__product-hover-min">
-                            <video loop="loop" preload="none" muted autoplay >
+                            <video loop="loop" preload="none" muted autoplay>
                                 <source
                                         src="./video/outlast.webm"
-                                        type="video/webm" >
+                                        type="video/webm">
                             </video>
                         </div>
                     </div>
@@ -341,10 +362,10 @@
                     <img src="./img/payday 3.webp" alt="">
                     <div class="list__products-hover-min">
                         <div class="data__product-hover-min">
-                            <video loop="loop" preload="none" muted autoplay >
+                            <video loop="loop" preload="none" muted autoplay>
                                 <source
                                         src="./video/payday3.webm"
-                                        type="video/webm" >
+                                        type="video/webm">
                             </video>
                         </div>
                     </div>
@@ -360,13 +381,14 @@
             <!-- product 3 -->
             <a href="http://localhost:8080/detail_game/detail_game.jsp">
                 <div class="list__products-sales">
-                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/251570/capsule_616x353.jpg?t=1697073509" alt="">
+                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/251570/capsule_616x353.jpg?t=1697073509"
+                         alt="">
                     <div class="list__products-hover-min">
                         <div class="data__product-hover-min">
-                            <video loop="loop" preload="none" muted autoplay >
+                            <video loop="loop" preload="none" muted autoplay>
                                 <source
                                         src="./video/7daystodie.webm"
-                                        type="video/webm" >
+                                        type="video/webm">
                             </video>
                         </div>
                     </div>
@@ -382,13 +404,14 @@
             <!-- product 4 -->
             <a href="http://localhost:8080/detail_game/detail_game.jsp">
                 <div class="list__products-sales">
-                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/394360/capsule_616x353.jpg?t=1700599414" alt="">
+                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/394360/capsule_616x353.jpg?t=1700599414"
+                         alt="">
                     <div class="list__products-hover-min">
                         <div class="data__product-hover-min">
-                            <video loop="loop" preload="none" muted autoplay >
+                            <video loop="loop" preload="none" muted autoplay>
                                 <source
                                         src="./video/hearsofiron.webm"
-                                        type="video/webm" >
+                                        type="video/webm">
                             </video>
                         </div>
                     </div>
@@ -405,13 +428,14 @@
             <!-- product 1 -->
             <a href="http://localhost:8080/detail_game/detail_game.jsp">
                 <div class="list__products-sales-large">
-                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/1222700/capsule_616x353.jpg?t=1626878628" alt="">
+                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/1222700/capsule_616x353.jpg?t=1626878628"
+                         alt="">
                     <div class="list__products-hover-large">
                         <div class="data__product-hover-min">
-                            <video loop="loop" preload="none" muted autoplay >
+                            <video loop="loop" preload="none" muted autoplay>
                                 <source
                                         src="https://cdn.akamai.steamstatic.com/steam/apps/256790157/microtrailer.webm?t=1592600313"
-                                        type="video/webm" >
+                                        type="video/webm">
                             </video>
                         </div>
                     </div>
@@ -428,13 +452,14 @@
             <!-- product 2 -->
             <a href="http://localhost:8080/detail_game/detail_game.jsp">
                 <div class="list__products-sales-large">
-                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/1888930/capsule_616x353.jpg?t=1697567304" alt="">
+                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/1888930/capsule_616x353.jpg?t=1697567304"
+                         alt="">
                     <div class="list__products-hover-large">
                         <div class="data__product-hover-min">
-                            <video loop="loop" preload="none" muted autoplay >
+                            <video loop="loop" preload="none" muted autoplay>
                                 <source
                                         src="https://cdn.cloudflare.steamstatic.com/steam/apps/256936971/microtrailer.webm?t=1680015399"
-                                        type="video/webm" >
+                                        type="video/webm">
                             </video>
                         </div>
                     </div>
@@ -450,13 +475,14 @@
             <!-- product 3 -->
             <a href="http://localhost:8080/detail_game/detail_game.jsp">
                 <div class="list__products-sales-large">
-                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/1426210/capsule_616x353.jpg?t=169100646" alt="">
+                    <img src="https://cdn.akamai.steamstatic.com/steam/apps/1426210/capsule_616x353.jpg?t=169100646"
+                         alt="">
                     <div class="list__products-hover-large">
                         <div class="data__product-hover-min">
-                            <video loop="loop" preload="none" muted autoplay >
+                            <video loop="loop" preload="none" muted autoplay>
                                 <source
                                         src="https://cdn.cloudflare.steamstatic.com/steam/apps/256827093/microtrailer.webm?t=1616514535"
-                                        type="video/webm" >
+                                        type="video/webm">
                             </video>
                         </div>
                     </div>
@@ -508,7 +534,7 @@
         </div>
     </div>
 </section>
-<script src="./js.js">
+<script src="${pageContext.request.contextPath}/js/js.js">
 </script>
 
 </body>

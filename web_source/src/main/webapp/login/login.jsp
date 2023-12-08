@@ -13,9 +13,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Document</title>
-    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
     <link rel="stylesheet" href="./fonts/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
@@ -73,11 +72,11 @@
                         <div class="left__login-sign-header">
                             SIGN IN WITH ACCOUNT NAME
                         </div>
-                        <input type="text" class="login__input-account" name="email">
+                        <input type="text" class="login__input-account" name="email" value="${userAccount.email}">
                         <div class="left__login-sign">
                             Password
                         </div>
-                        <input type="password" class="login__input-account" name="password">
+                        <input type="password" class="login__input-account" name="password" value="${userAccount.password}">
                         <div class="btn__sign">
                             <button style="padding: 8px 0 ; color: #ffffff"  type="submit" name="action" value="sign_in">
                                  <span style="font-size: 16px;font-weight: 400;">Sign In</span>
@@ -86,6 +85,9 @@
                         <div class="btn__sign-create">
                             <button><a style="color: #fff" href="http://localhost:8080/register/register.jsp">Create an account</a></button>
                         </div>
+                        <c:if test="${message != null}">
+                            <div>${message}</div>
+                        </c:if>
                         <div class="link__help">
                             <a href="">Help, I can't sign in</a>
                         </div>
