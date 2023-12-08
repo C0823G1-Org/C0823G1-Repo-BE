@@ -124,7 +124,6 @@ public class GameRepository implements IGameRepository {
         }
     }
 
-
     @Override
     public UserDto getUserInfo(UserAccount userAccount) {
         UserDto userDto = null;
