@@ -30,10 +30,10 @@ public class GameServlet extends HttpServlet {
         }
         switch (action) {
             case "logout":
-                if (session.getAttribute("userDto") != null ) {
+                if (session.getAttribute("userDto") != null) {
                     session.invalidate();
                 }
-                req.getRequestDispatcher("/home/home.jsp").forward(req,resp);
+                req.getRequestDispatcher("/home/home.jsp").forward(req, resp);
                 break;
             case "add_to_cart":
                 addToCart(req, resp);
@@ -42,10 +42,11 @@ public class GameServlet extends HttpServlet {
                 showList(req, resp);
         }
     }
+
     private void showList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("home/home.jsp");
         List<GameDTO> list = gameService.getAll();
-        req.setAttribute("list",list);
+        req.setAttribute("list", list);
         requestDispatcher.forward(req, resp);
     }
 
@@ -105,7 +106,7 @@ public class GameServlet extends HttpServlet {
                 signUp(req, resp);
                 break;
             case "remove_cart_item":
-                removeCartItem(req,resp);
+                removeCartItem(req, resp);
                 break;
         }
     }
@@ -115,14 +116,14 @@ public class GameServlet extends HttpServlet {
         String password = req.getParameter("password");
         UserAccount userAccount = new UserAccount(email, password);
         UserDto userDto = this.gameService.getUserInfo(userAccount);
-        if(Objects.isNull(userDto)) {
+        if (Objects.isNull(userDto)) {
             req.setAttribute("message", "account or password is incorrect");
             req.setAttribute("userAccount", userAccount);
-            req.getRequestDispatcher("login/login.jsp").forward(req,resp);
+            req.getRequestDispatcher("login/login.jsp").forward(req, resp);
         } else {
             HttpSession httpSession = req.getSession();
             httpSession.setAttribute("userDto", userDto);
-            req.getRequestDispatcher("home/home.jsp").forward(req,resp);
+            req.getRequestDispatcher("home/home.jsp").forward(req, resp);
         }
     }
 
@@ -130,15 +131,20 @@ public class GameServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         UserAccount account = new UserAccount(email, password);
-        gameService.createAccount(account);
-        req.setAttribute("account", account);
-        req.getRequestDispatcher("home/home.jsp").forward(req,resp);}
+        boolean isSuccess = gameService.createAccount(account);
+        if (isSuccess) {
+            UserDto userDto = this.gameService.getUserInfo(account);
+            HttpSession httpSession = req.getSession();
+            httpSession.setAttribute("userDto", userDto);
+            req.getRequestDispatcher("home/home.jsp").forward(req, resp);
+        }
+    }
 
     private void removeCartItem(HttpServletRequest req, HttpServletResponse resp) {
-        int userId= Integer.parseInt(req.getParameter("user_id"));
-        int gameId= Integer.parseInt(req.getParameter("game_id"));
-        gameService.removeCartItem(userId,gameId);
+        int userId = Integer.parseInt(req.getParameter("user_id"));
+        int gameId = Integer.parseInt(req.getParameter("game_id"));
+        gameService.removeCartItem(userId, gameId);
         System.out.println("Ayo this worked!");
-        updateCart(req,resp);
+        updateCart(req, resp);
     }
 }

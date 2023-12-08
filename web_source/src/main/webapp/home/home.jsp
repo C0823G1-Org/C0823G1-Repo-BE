@@ -29,6 +29,19 @@
 <body>
 <!-- Header -->
 <section class="navbar">
+    <c:if test="${sessionScope.userDto != null}">
+    <div style=" background-color: yellow;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    line-height: 15px;
+    font-size: 19px;
+    margin-bottom: 3px;">
+            <c:if test="${sessionScope.userDto.username == null}">
+                <a href="#" class="container__header-login-a">Vui long cap nhat thong tin</a>
+            </c:if>
+    </div>
+    </c:if>
     <div class="container__header inner">
         <div class="container__header-home">
             <a href=""> <img class="img__steam"
@@ -41,11 +54,13 @@
             <a href="" class="container__header-select-link">ABOUT</a>
             <a href="" class="container__header-select-link">SUPPORT</a>
         </div>
-        <c:if test="${sessionScope.userDto != null}">
-            <c:if test="${sessionScope.userDto.username == null}">
-                <a href="#" class="container__header-login-a">Vui long cap nhat thong tin</a>
-            </c:if>
-        </c:if>
+<%--        <div class="update__account">--%>
+<%--            <c:if test="${sessionScope.userDto != null}">--%>
+<%--                <c:if test="${sessionScope.userDto.username == null}">--%>
+<%--                    <a href="#" class="container__header-login-a">Vui long cap nhat thong tin</a>--%>
+<%--                </c:if>--%>
+<%--            </c:if>--%>
+<%--        </div>--%>
         <div class="container__header-login">
             <div class="container__header-login-install">
                 <button class="btn_installe">

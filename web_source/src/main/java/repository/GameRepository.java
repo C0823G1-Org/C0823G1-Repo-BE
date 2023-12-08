@@ -98,17 +98,26 @@ public class GameRepository implements IGameRepository {
 
 
     @Override
-    public void createAccount(UserAccount userAccount) {
+    public boolean createAccount(UserAccount userAccount) {
+        boolean isSuccess = false;
         Connection connection = BaseGameRepository.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SIGN_UP);
             preparedStatement.setString(1, userAccount.getEmail());
             preparedStatement.setString(2, userAccount.getPassword());
             preparedStatement.setInt(3, 2);
-            preparedStatement.executeUpdate();
+            isSuccess = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+
+        return isSuccess;
     }
 
     public void addToCart(int userId, int gameId) {
