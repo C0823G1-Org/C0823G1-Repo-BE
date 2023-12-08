@@ -196,7 +196,8 @@ p {
     transform: translateY(-50%);
     width: 30px;
     height: 100%;
-    background-color: transparent;
+   background-color: transparent;
+    color: black;
     border-radius: 2px;
     border: 1px solid rgba(62, 103, 150, 0.919);
 }
@@ -210,7 +211,7 @@ p {
 }
 
 .fa-magnifying-glass {
-    color: #fff;
+    color: #fff ;
 }
 
 /* CArt */
@@ -239,7 +240,6 @@ p {
 .menu__cart-list {
     width: 850px;
     margin-bottom: 10px;
-
 }
 
 .header-cart {
@@ -286,7 +286,7 @@ p {
     color: #c7d5e0;
     line-height: 16px;
     font-size: 18px;
-    font-weight: no;
+    font-weight: bold;
 }
 
 .container__cart-name {

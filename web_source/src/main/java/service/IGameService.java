@@ -7,6 +7,7 @@ import model.UserAccount;
 import java.util.List;
 
 public interface IGameService {
+    List<GameDTO> getAll();
     public int count (String txtSearch);
     List<GameDTO> search(String txtSearch, int index, int size);
     void createAccount(UserAccount userAccount);

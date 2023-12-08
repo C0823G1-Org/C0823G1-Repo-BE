@@ -12,6 +12,11 @@ public class GameService implements IGameService {
     private final IGameRepository gameRepository = new GameRepository();
 
     @Override
+    public List<GameDTO> getAll() {
+        return gameRepository.getAll();
+    }
+
+    @Override
     public int count(String txtSearch) {
         return gameRepository.count(txtSearch);
     }
