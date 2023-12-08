@@ -11,6 +11,16 @@ public class UserDto {
 
     private String username;
 
+    private Integer userId;
+
+    public UserDto(String email, String roleName, Integer roleId, String birthday, String username, Integer userId) {
+        this.email = email;
+        this.roleName = roleName;
+        this.roleId = roleId;
+        this.birthday = birthday;
+        this.username = username;
+        this.userId = userId;
+    }
 
     public UserDto(String email, String roleName, Integer roleId, String birthday, String username) {
         this.email = email;
@@ -29,6 +39,14 @@ public class UserDto {
     }
 
     public UserDto() {
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {

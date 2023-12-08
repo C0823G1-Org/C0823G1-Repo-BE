@@ -10,7 +10,7 @@ public interface IGameService {
     List<GameDTO> getAll();
     public int count (String txtSearch);
     List<GameDTO> search(String txtSearch, int index, int size);
-    void createAccount(UserAccount userAccount);
+    boolean createAccount(UserAccount userAccount);
     UserDto getUserInfo(UserAccount userAccount);
     void addToCart(int userId, int gameId);
 
