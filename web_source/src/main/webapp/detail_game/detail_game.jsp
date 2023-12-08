@@ -115,7 +115,7 @@
                                         <div class="discount__price-final">872.500đ</div>
                                     </div>
                                     <form action="/game-servlet">
-                                        <input type="hidden" name="user_id" value="1">
+                                        <input type="hidden" name="user_id" value="${userDto.userId}">
                                         <input type="hidden" name="game_id" value="1">
                                         <button type="submit" name="action" value="add_to_cart"><span>Add to Cart</span></button>
                                     </form>
