@@ -9,13 +9,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/steam.css">
-    <link rel="stylesheet" href="./fonts/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
           integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
@@ -24,8 +21,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
             integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
 </head>
-
 <body>
 <!-- Header -->
 <section class="navbar">
@@ -119,7 +116,7 @@
                         <div class="data__product-description">
                             <div class="description-products">
                                 <h3>${game.name}</h3>
-                                <p>Overwhelmingly + ${game.rating}+(69,542)</p>
+                                <p>Overwhelmingly ${game.rating}</p>
                                 <ul class="data__product-review">
                                     <li><a href="">Action</a></li>
                                     <li><a href="">Horror</a></li>
@@ -135,8 +132,18 @@
                     <div class="price__products">
                         <div class="discount">${game.percentDiscount}</div>
                         <div class="price__products-container">
-                            <div class="discount__price">1.900.000đ</div>
-                            <div class="discount__price-final">${game.price}</div>
+                            <div class="discount__price">${game.price}</div>
+                            <c:choose>
+                                <c:when test="${game.percentDiscount == '50%'}">
+                                    <div class="discount__price-final">${game.price*0.5}</div>
+                                </c:when>
+                                <c:when test="${game.percentDiscount == '30%'}">
+                                    <div class="discount__price-final">${game.price*0.3}</div>
+                                </c:when>
+                                <c:when test="${game.percentDiscount == '40%'}">
+                                    <div class="discount__price-final">${game.price*0.4}</div>
+                                </c:when>
+                            </c:choose>
                         </div>
                     </div>
                 </div>
