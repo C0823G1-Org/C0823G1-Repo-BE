@@ -1,6 +1,8 @@
 package service;
 
+import model.UserDto;
 import model.GameDTO;
+import model.UserAccount;
 import repository.GameRepository;
 import repository.IGameRepository;
 
@@ -20,11 +22,20 @@ public class GameService implements IGameService {
     }
 
     @Override
+    public void createAccount(UserAccount userAccount) {
+        gameRepository.createAccount(userAccount);
+    }
+
+    @Override
+    public UserDto getUserInfo(UserAccount userAccount) {
+        return this.gameRepository.getUserInfo(userAccount);
+        }
+
+    @Override
     public void addToCart(int userId, int gameId) {
         gameRepository.addToCart(userId,gameId);
     }
 
-    @Override
     public List<GameDTO> getCartGames(int userId) {
         return gameRepository.getCartGames(userId);
     }

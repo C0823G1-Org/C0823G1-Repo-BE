@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
           integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
             integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
@@ -63,33 +63,35 @@
     <div class="background__login">
         <div class="container__login">
             <div class="tag__login">
-                <h1>CREATE ACOUNT</h1>
+                <h1>CREATE ACCOUNT</h1>
             </div>
             <br>
             <div class="login__inner">
                 <div class="login__inner-container">
                     <!-- Left -->
-                    <div class="left__login">
-                        <div class="left__login-sign-header">
-                            Email Address
+                    <form method="post" action="/game-servlet">
+                        <div class="left__login">
+                            <div class="left__login-sign-header">
+                                Email Address
+                            </div>
+                            <input type="text" class="login__input-account" name="email">
+                            <div class="left__login-sign">
+                                Password
+                            </div>
+                            <input type="password" class="login__input-account" name="password">
+                            <div class="left__login-sign">
+                                Confirm your Password
+                            </div>
+                            <input type="password" class="login__input-account" name="confirm_password">
+                            <div class="btn__sign">
+                                <button type="submit" name="action" value="sign_up">Sign in</button>
+                            </div>
+                            <div class="link__help">
+                                I have an acount!
+                                <a href="login/login.jsp"> Login</a>
+                            </div>
                         </div>
-                        <input type="text" class="login__input-account">
-                        <div class="left__login-sign">
-                            Password
-                        </div>
-                        <input type="text" class="login__input-account">
-                        <div class="left__login-sign">
-                            Confirm your Password
-                        </div>
-                        <input type="text" class="login__input-account">
-                        <div class="btn__sign">
-                            <button>Sign in</button>
-                        </div>
-                        <div class="link__help">
-                            I have an acount!
-                            <a href=""> Login</a>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

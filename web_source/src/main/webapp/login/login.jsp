@@ -13,9 +13,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Document</title>
-    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
     <link rel="stylesheet" href="./fonts/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
@@ -68,25 +67,32 @@
             <div class="login__inner">
                 <div class="login__inner-container">
                     <!-- Left -->
+                    <form method="post" action="/game-servlet">
                     <div class="left__login">
                         <div class="left__login-sign-header">
                             SIGN IN WITH ACCOUNT NAME
                         </div>
-                        <input type="text" class="login__input-account">
+                        <input type="text" class="login__input-account" name="email" value="${userAccount.email}">
                         <div class="left__login-sign">
                             Password
                         </div>
-                        <input type="text" class="login__input-account">
+                        <input type="password" class="login__input-account" name="password" value="${userAccount.password}">
                         <div class="btn__sign">
-                            <button><a style="color: #fff" href="">Sign in</a></button>
+                            <button style="padding: 8px 0 ; color: #ffffff"  type="submit" name="action" value="sign_in">
+                                 <span style="font-size: 16px;font-weight: 400;">Sign In</span>
+                            </button>
                         </div>
                         <div class="btn__sign-create">
                             <button><a style="color: #fff" href="http://localhost:8080/register/register.jsp">Create an account</a></button>
                         </div>
+                        <c:if test="${message != null}">
+                            <div>${message}</div>
+                        </c:if>
                         <div class="link__help">
                             <a href="">Help, I can't sign in</a>
                         </div>
                     </div>
+                    </form>
                     <!-- Right -->
                     <div class="right__login">
                         <div class="contain__right">
@@ -94,7 +100,7 @@
                                 OR SIGN IN WITH QR
                             </div>
                             <div class="right__login-qr">
-                                <img src="./img/Example-QR-code.webp" alt="">
+                                <img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t1.15752-9/403607003_1089876045337260_5115818614783867516_n.png?_nc_cat=111&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=OIbm_XoPpzsAX-ll2H6&_nc_ht=scontent.fdad1-3.fna&oh=03_AdSiQvFv7_e_iGfJVeP8LKI4OoBixShWxuz7em3GMnDhGQ&oe=659905D6" alt="">
                             </div>
                             <div class="help__link">
                                 Use the
