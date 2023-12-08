@@ -28,35 +28,8 @@
 
 <body>
 <!-- Header -->
-<section class="navbar">
-    <div class="container__header inner">
-        <div class="container__header-home">
-            <a href=""> <img class="img__steam"
-                             src="https://store.cloudflare.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016"
-                             alt=""></a>
-        </div>
-        <div class="container__header-select">
-            <a href="" class="container__header-select-link">STORE</a>
-            <a href="" class="container__header-select-link">COMMUNITY</a>
-            <a href="" class="container__header-select-link">ABOUT</a>
-            <a href="" class="container__header-select-link">SUPPORT</a>
-        </div>
-        <div class="container__header-login">
-            <div class="container__header-login-install">
-                <button class="btn_installe">
-                    <i class="fa-solid fa-download"></i>
-                    <span>Install Steam</span>
-                </button>
-            </div>
-            <a class="container__header-login-a" href="">login</a>
-            <span class="container__header-login-p">language
-                    <i class="fa-solid fa-chevron-down"></i>
-                </span>
-        </div>
-    </div>
-</section>
-<section class="fixHeight">
-</section>
+<jsp:include page="../include/header.jsp"></jsp:include>
+<%--Body--%>
 <section class="container__body-main" style="height: 1000px;">
     <div class="background__login">
         <div class="header__name-user">
