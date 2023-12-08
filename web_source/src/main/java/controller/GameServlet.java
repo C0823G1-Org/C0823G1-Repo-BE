@@ -34,6 +34,7 @@ public class GameServlet extends HttpServlet {
                     session.invalidate();
                 }
                 req.getRequestDispatcher("/home/home.jsp").forward(req,resp);
+                break;
             case "add_to_cart":
                 addToCart(req, resp);
                 break;
@@ -96,6 +97,7 @@ public class GameServlet extends HttpServlet {
                 break;
             case "sign_up":
                 signUp(req, resp);
+                break;
             case "remove_cart_item":
                 removeCartItem(req,resp);
                 break;
