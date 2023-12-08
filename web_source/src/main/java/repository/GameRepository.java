@@ -19,7 +19,7 @@ public class GameRepository implements IGameRepository {
     private static final String GET_CART = "call get_user_cart(?)";
     private static final String SELECT = "call getAll()";
     private static final String SIGN_UP = "insert into user_account(email, password, role_role_id) values(?,?,?);";
-    private final String GET_USER_INFO = " select ua.email, r.role_id, r.role_name, u.user_name, u.birthday from user_account ua " +
+    private final String GET_USER_INFO = " select ua.email, r.role_id, r.role_name, u.user_name, u.birthday, u.user_id from user_account ua " +
             "   left join user u on ua.email = u.email " +
             "        left join role r on r.role_id = ua.role_role_id " +
             "         where ua.email = ? and ua.password = ?; ";
@@ -149,6 +149,7 @@ public class GameRepository implements IGameRepository {
                 userDto.setRoleId(resultSet.getInt("role_id"));
                 userDto.setBirthday(resultSet.getString("birthday"));
                 userDto.setUsername(resultSet.getString("user_Name"));
+                userDto.setUserId(resultSet.getInt("user_id"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

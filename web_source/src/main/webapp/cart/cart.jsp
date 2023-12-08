@@ -100,6 +100,10 @@
     </div>
     <div class="menu__cart">
         <!-- 1 -->
+        <h1>
+            User ID:
+            ${userDto.userId}
+        </h1>
         <c:forEach items="${cart_list}" var="game" varStatus="loop">
         <div class="menu__cart-list">
             <div class="container__cart">
