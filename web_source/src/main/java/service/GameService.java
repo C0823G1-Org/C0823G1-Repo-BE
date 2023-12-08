@@ -29,5 +29,14 @@ public class GameService implements IGameService {
     @Override
     public UserDto getUserInfo(UserAccount userAccount) {
         return this.gameRepository.getUserInfo(userAccount);
+        }
+        
+    public List<GameDTO> getCartGames(int userId) {
+        return gameRepository.getCartGames(userId);
+    }
+
+    @Override
+    public void removeCartItem(int userId, int gameId) {
+        gameRepository.removeCartItem(userId,gameId);
     }
 }

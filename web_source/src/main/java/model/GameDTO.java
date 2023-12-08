@@ -1,22 +1,38 @@
 package model;
 
 public class GameDTO {
-    private String name;
+    private String title;
     private double price;
-    private String url;
+    private String imageCoverUrl;
+    private int gameId;
 
-    public GameDTO(String name, double price, String url) {
-        this.name = name;
+    public GameDTO(String title, double price, String url) {
+        this.title = title;
         this.price = price;
-        this.url = url;
+        this.imageCoverUrl = url;
     }
 
-    public String getName() {
-        return name;
+    public GameDTO(String title, double price, String imageCoverUrl, int gameId) {
+        this.title = title;
+        this.price = price;
+        this.imageCoverUrl = imageCoverUrl;
+        this.gameId = gameId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public double getPrice() {
@@ -27,11 +43,20 @@ public class GameDTO {
         this.price = price;
     }
 
-    public String getUrl() {
-        return url;
+    public String getImageCoverUrl() {
+        return imageCoverUrl;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setImageCoverUrl(String imageCoverUrl) {
+        this.imageCoverUrl = imageCoverUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "GameDTO{" +
+                "title='" + title + '\'' +
+                ", price=" + price +
+                ", imageCoverUrl='" + imageCoverUrl + '\'' +
+                '}';
     }
 }

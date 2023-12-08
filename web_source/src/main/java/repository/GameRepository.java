@@ -4,10 +4,7 @@ import model.UserDto;
 import model.GameDTO;
 import model.UserAccount;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +20,9 @@ public class GameRepository implements IGameRepository {
             "   left join user u on ua.email = u.email " +
             "        left join role r on r.role_id = ua.role_role_id " +
             "         where ua.email = ? and ua.password = ?; ";
+    private static final String ADD_TO_CART = "insert into game_in_cart(user_id, game_id) values (?,?);";
+    private static final String GET_CART = "call get_user_cart(?);";
+    private static final String REMOVE_CART_ITEM = "call remove_cart_item(?,?);";
 
     @Override
     public int count(String txtSearch) {
@@ -55,7 +55,7 @@ public class GameRepository implements IGameRepository {
                 String name = resultSet.getString("game_title");
                 double price = resultSet.getDouble("price");
                 String url = resultSet.getString("url");
-                list.add(new GameDTO(name,price,url));
+                list.add(new GameDTO(name, price, url));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -64,6 +64,7 @@ public class GameRepository implements IGameRepository {
     }
 
     @Override
+@Override
     public void createAccount(UserAccount userAccount) {
         Connection connection = BaseGameRepository.getConnection();
         try {
@@ -77,8 +78,22 @@ public class GameRepository implements IGameRepository {
         }
     }
 
+    public void addToCart(int userId, int gameId) {
+        try (Connection connection = BaseGameRepository.getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(ADD_TO_CART);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, gameId);
+            preparedStatement.executeUpdate();
+        } catch (SQLIntegrityConstraintViolationException ignored) {
+            System.out.println("Game already in cart!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
+@Override
     public UserDto getUserInfo(UserAccount userAccount) {
         UserDto userDto = null;
         Connection connection = BaseGameRepository.getConnection();
@@ -105,5 +120,43 @@ public class GameRepository implements IGameRepository {
             }
         }
         return userDto;
+    }
+
+    public List<GameDTO> getCartGames(int userId) {
+        List<GameDTO> gamesInCart = new ArrayList<>();
+        try (Connection connection = BaseGameRepository.getConnection()) {
+            CallableStatement callableStatement = connection.prepareCall(GET_CART);
+            callableStatement.setInt(1, userId);
+            ResultSet resultSet = callableStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String title = resultSet.getString("game_title");
+                double price = resultSet.getDouble("price");
+                String gameCoverURl = resultSet.getString("url");
+                int gameId = resultSet.getInt("game_id");
+                gamesInCart.add(new GameDTO(title, price, gameCoverURl, gameId));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return gamesInCart;
+    }
+
+    @Override
+    public void removeCartItem(int userId, int gameId) {
+        try (Connection connection = BaseGameRepository.getConnection()) {
+            CallableStatement callableStatement = connection.prepareCall(REMOVE_CART_ITEM);
+            callableStatement.setInt(1, userId);
+            callableStatement.setInt(2, gameId);
+            callableStatement.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }

@@ -34,12 +34,34 @@ public class GameServlet extends HttpServlet {
                     session.invalidate();
                 }
                 req.getRequestDispatcher("/home/home.jsp").forward(req,resp);
+            case "add_to_cart":
+                addToCart(req, resp);
                 break;
             default:
                 req.getRequestDispatcher("/home/home.jsp").forward(req,resp);
         }
     }
 
+    private void addToCart(HttpServletRequest req, HttpServletResponse resp) {
+        HttpSession session = req.getSession();
+        int userId = Integer.parseInt(req.getParameter("user_id"));
+        int gameId = Integer.parseInt(req.getParameter("game_id"));
+        gameService.addToCart(userId, gameId);
+        updateCart(req, resp);
+    }
+
+    private void updateCart(HttpServletRequest req, HttpServletResponse resp) {
+        int userId = Integer.parseInt(req.getParameter("user_id"));
+        List<GameDTO> cartList = gameService.getCartGames(userId);
+
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/cart/cart.jsp");
+        req.setAttribute("cart_list", cartList);
+        try {
+            requestDispatcher.forward(req, resp);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -74,6 +96,8 @@ public class GameServlet extends HttpServlet {
                 break;
             case "sign_up":
                 signUp(req, resp);
+            case "remove_cart_item":
+                removeCartItem(req,resp);
                 break;
         }
     }
@@ -100,6 +124,13 @@ public class GameServlet extends HttpServlet {
         UserAccount account = new UserAccount(email, password);
         gameService.createAccount(account);
         req.setAttribute("account", account);
-        req.getRequestDispatcher("home/home.jsp").forward(req,resp);
+        req.getRequestDispatcher("home/home.jsp").forward(req,resp);}
+        
+    private void removeCartItem(HttpServletRequest req, HttpServletResponse resp) {
+        int userId= Integer.parseInt(req.getParameter("user_id"));
+        int gameId= Integer.parseInt(req.getParameter("game_id"));
+        gameService.removeCartItem(userId,gameId);
+        System.out.println("Ayo this worked!");
+        updateCart(req,resp);
     }
 }
