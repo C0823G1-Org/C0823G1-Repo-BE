@@ -6,37 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="5c7074be-e8a0-4fdb-8492-7f723bfbd8c5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/controller/GameServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controller/GameServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/repository/GameRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/repository/GameRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/repository/IGameRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/repository/IGameRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/service/GameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/service/GameService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/service/IGameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/service/IGameService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/HelloServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/controller/GameServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/Bundle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/BundleHasGame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/Developer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/Game.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/GameDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/GameInCart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/GameTag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/Image.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/ImageType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/RatingType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/ReviewRating.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/Tag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/UserAccount.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/UserDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/UserHasGame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/model/Video.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/repository/BaseGameRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/repository/GameRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/repository/IGameRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/service/GameService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project/service/IGameService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/GameRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/GameRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +52,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Gia Kiet/Desktop/baitapnhom/C0823G1-Repo-BE/web_source&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Gia Kiet/Desktop/C0823G1-Repo-BE/web_source&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -194,6 +172,8 @@
       <workItem from="1702008646798" duration="19000" />
       <workItem from="1702009024988" duration="21000" />
       <workItem from="1702010084531" duration="500000" />
+      <workItem from="1702010691816" duration="513000" />
+      <workItem from="1702017152637" duration="1497000" />
     </task>
     <servers />
   </component>

@@ -24,6 +24,7 @@ public class GameRepository implements IGameRepository {
             "        left join role r on r.role_id = ua.role_role_id " +
             "         where ua.email = ? and ua.password = ?; ";
     private static final String REMOVE_CART_ITEM = "call remove_cart_item(?,?);";
+
     @Override
     public List<GameDTO> getAll() {
         List<GameDTO> list = new ArrayList<>();
@@ -39,13 +40,13 @@ public class GameRepository implements IGameRepository {
                 String url = resultSet.getString("video");
                 String percentDiscount = resultSet.getString("percent_discount");
                 String rating = resultSet.getString("rating_type_name");
-                list.add(new GameDTO(name, price, url,urlVideo, percentDiscount, rating));
+                list.add(new GameDTO(name, price, url, urlVideo, percentDiscount, rating));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
             try {
-                if (callableStatement != null){
+                if (callableStatement != null) {
                     callableStatement.close();
                 }
                 connection.close();
