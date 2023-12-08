@@ -104,230 +104,43 @@
     <div class="menu__products">
         <div class="list_products">
             <!-- Product 1 -->
-            <div class="item_products">
-                <img src="https://cdn.akamai.steamstatic.com/steam/apps/2050650/hero_capsule_alt_assets_0.jpg?t=1696242724"
-                     alt="">
-                <div class="data__product-hover">
-                    <div class="data__product-video">
-                        <video loop="loop" muted autoplay>
-                            <source
-                                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/256938327/microtrailer.webm?t=1680071426"
-                                    type="video/webm">
-                        </video>
+            <c:forEach items="${list}" var="game">
+                <div class="item_products">
+                    <img src="${game.url}"
+                         alt="">
+                    <div class="data__product-hover">
+                        <div class="data__product-video">
+                            <video loop="loop" muted autoplay >
+                                <source
+                                        src="${game.videoUrl}"
+                                        type="video/webm">
+                            </video>
+                        </div>
+                        <div class="data__product-description">
+                            <div class="description-products">
+                                <h3>${game.name}</h3>
+                                <p>Overwhelmingly + ${game.rating}+(69,542)</p>
+                                <ul class="data__product-review">
+                                    <li><a href="">Action</a></li>
+                                    <li><a href="">Horror</a></li>
+                                    <li><a href="">Survival Horror</a></li>
+                                    <li><a href="">Third-Person Shooter</a></li>
+                                    <li><a href="">Zombies</a></li>
+                                </ul>
+                                <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span></button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="data__product-description">
-                        <div class="description-products">
-                            <h3>Resident Evil 4</h3>
-                            <p>Overwhelmingly Positive (69,542)</p>
-                            <ul class="data__product-review">
-                                <li><a href="">Action</a></li>
-                                <li><a href="">Horror</a></li>
-                                <li><a href="">Survival Horror</a></li>
-                                <li><a href="">Third-Person Shooter</a></li>
-                                <li><a href="">Zombies</a></li>
-                            </ul>
-                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span>
-                            </button>
+
+                    <div class="price__products">
+                        <div class="discount">${game.percentDiscount}</div>
+                        <div class="price__products-container">
+                            <div class="discount__price">1.900.000đ</div>
+                            <div class="discount__price-final">${game.price}</div>
                         </div>
                     </div>
                 </div>
-
-                <div class="price__products">
-                    <div class="discount">-50%</div>
-                    <div class="price__products-container">
-                        <div class="discount__price">1.900.000đ</div>
-                        <div class="discount__price-final"> 900.000đ</div>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 2 -->
-            <div class="item_products">
-                <img src="https://cdn.akamai.steamstatic.com/steam/apps/814380/hero_capsule.jpg?t=1678991267"
-                     alt="">
-                <div class="data__product-hover">
-                    <div class="data__product-video">
-                        <video loop="loop" muted autoplay>
-                            <source
-                                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/256806899/microtrailer.webm?t=1603837979"
-                                    type="video/webm">
-                        </video>
-                    </div>
-                    <div class="data__product-description">
-                        <div class="description-products">
-                            <h3>Sekiro: Shadows Die Twice - GOTY Edition</h3>
-                            <p>Overwhelmingly Positive (185,538)</p>
-                            <ul class="data__product-review">
-                                <li><a href="">Souls-like</a></li>
-                                <li><a href="">Difficult</a></li>
-                                <li><a href="">Action</a></li>
-                                <li><a href="">Single player</a></li>
-                                <li><a href="">Ninja</a></li>
-                            </ul>
-                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="price__products">
-                    <div class="discount">-50%</div>
-                    <div class="price__products-container">
-                        <div class="discount__price">1.290.000đ</div>
-                        <div class="discount__price-final">645.000đ</div>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 3 -->
-            <div class="item_products">
-                <img src="https://cdn.akamai.steamstatic.com/steam/apps/1326470/hero_capsule.jpg?t=1697048131"
-                     alt="">
-                <div class="data__product-hover">
-                    <div class="data__product-video">
-                        <video loop="loop" muted autoplay>
-                            <source
-                                    src="https://cdn.akamai.steamstatic.com/steam/apps/256932123/microtrailer.webm?t=1677175226"
-                                    type="video/webm">
-                        </video>
-                    </div>
-                    <div class="data__product-description">
-                        <div class="description-products">
-                            <h3>Sons Of The Forest</h3>
-                            <p>Overwhelmingly Positive (69,542)</p>
-                            <ul class="data__product-review">
-                                <li><a href="">Survival</a></li>
-                                <li><a href="">Open World</a></li>
-                                <li><a href="">Multiplayer</a></li>
-                                <li><a href="">Survival Horror</a></li>
-                                <li><a href="">Co-op</a></li>
-                            </ul>
-                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="price__products">
-                    <div class="discount">-20%</div>
-                    <div class="price__products-container">
-                        <div class="discount__price">385.000đ</div>
-                        <div class="discount__price-final">308.000đ</div>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 4 -->
-            <div class="item_products">
-                <img src="https://cdn.akamai.steamstatic.com/steam/apps/1593500/hero_capsule.jpg?t=1695758729"
-                     alt="">
-
-                <div class="data__product-hover">
-                    <div class="data__product-video">
-                        <video loop="loop" muted autoplay>
-                            <source
-                                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/256864004/microtrailer.webm?t=1639001817"
-                                    type="video/webm">
-                        </video>
-                    </div>
-                    <div class="data__product-description">
-                        <div class="description-products">
-                            <h3>God of War</h3>
-                            <p>Overwhelmingly Positive (79,638)</p>
-                            <ul class="data__product-review">
-                                <li><a href="">Action</a></li>
-                                <li><a href="">Singleplayer</a></li>
-                                <li><a href="">Story Rich</a></li>
-                                <li><a href="">Advendture</a></li>
-                                <li><a href="">Mythology</a></li>
-                            </ul>
-                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="price__products">
-                    <div class="discount">-40%</div>
-                    <div class="price__products-container">
-                        <div class="discount__price">1.159.000đ</div>
-                        <div class="discount__price-final">695.500đ</div>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 5 -->
-            <div class="item_products">
-                <img src="https://cdn.akamai.steamstatic.com/steam/apps/962130/hero_capsule.jpg?t=1699908769"
-                     alt="">
-
-                <div class="data__product-hover">
-                    <div class="data__product-video">
-                        <video loop="loop" muted autoplay>
-                            <source
-                                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/256982368/microtrailer.webm?t=1699907911"
-                                    type="video/webm">
-                        </video>
-                    </div>
-                    <div class="data__product-description">
-                        <div class="description-products">
-                            <h3>Grounded</h3>
-                            <p>Very Positive (50,176)</p>
-                            <ul class="data__product-review">
-                                <li><a href="">Survival</a></li>
-                                <li><a href="">Multiplayer</a></li>
-                                <li><a href="">Open World Survival Craft</a></li>
-                                <li><a href="">Base Building</a></li>
-                                <li><a href="">Co-op</a></li>
-                            </ul>
-                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="price__products">
-                    <div class="discount">-40%</div>
-                    <div class="price__products-container">
-                        <div class="discount__price">649.000đ</div>
-                        <div class="discount__price-final">389.500đ</div>
-                    </div>
-                </div>
-            </div>
-            <!-- Product 6 -->
-            <div class="item_products">
-                <img src="https://cdn.akamai.steamstatic.com/steam/apps/1501750/hero_capsule.jpg?t=1700572672"
-                     alt="">
-
-                <div class="data__product-hover">
-                    <div class="data__product-video">
-                        <video loop="loop" muted autoplay>
-                            <source
-                                    src="https://cdn.cloudflare.steamstatic.com/steam/apps/256975850/microtrailer.webm?t=1697236277"
-                                    type="video/webm">
-                        </video>
-                    </div>
-                    <div class="data__product-description">
-                        <div class="description-products">
-                            <h3>Lords of the Fallen</h3>
-                            <p>Mixed (16,743)</p>
-                            <ul class="data__product-review">
-                                <li><a href="">Souls-like</a></li>
-                                <li><a href="">RPG</a></li>
-                                <li><a href="">Dark Fantasy</a></li>
-                                <li><a href="">Co-op</a></li>
-                                <li><a href="">Action</a></li>
-                            </ul>
-                            <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="price__products">
-                    <div class="discount">-34%</div>
-                    <div class="price__products-container">
-                        <div class="discount__price">990.000đ</div>
-                        <div class="discount__price-final">653.500đ</div>
-                    </div>
-                </div>
-            </div>
+            </c:forEach>
         </div>
         <div class="container__header-part">
             <h2>TOP SALES</h2>

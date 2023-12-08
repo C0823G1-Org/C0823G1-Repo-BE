@@ -1,8 +1,34 @@
 package model;
 
 public class GameDTO {
+    private String name;
     private String title;
     private double price;
+    private String url;
+    private String videoUrl;
+    private String tagGame;
+    private String percentDiscount;
+    private String rating;
+
+    public GameDTO(String name, double price, String url,String videoUrl , String percentDiscount, String rating) {
+        this.name = name;
+        this.videoUrl = videoUrl;
+        this.price = price;
+        this.url = url;
+        this.percentDiscount = percentDiscount;
+        this.rating = rating;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
     private String imageCoverUrl;
     private int gameId;
 
@@ -27,6 +53,41 @@ public class GameDTO {
         this.gameId = gameId;
     }
 
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
+
+    public String getTagGame() {
+        return tagGame;
+    }
+
+    public void setTagGame(String tagGame) {
+        this.tagGame = tagGame;
+    }
+
+    public String getPercentDiscount() {
+        return percentDiscount;
+    }
+
+    public void setPercentDiscount(String percentDiscount) {
+        this.percentDiscount = percentDiscount;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     public String getTitle() {
         return title;
     }
