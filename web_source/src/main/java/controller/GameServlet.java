@@ -39,8 +39,14 @@ public class GameServlet extends HttpServlet {
                 addToCart(req, resp);
                 break;
             default:
-                req.getRequestDispatcher("/home/home.jsp").forward(req,resp);
+                showList(req, resp);
         }
+    }
+    private void showList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("home/home.jsp");
+        List<GameDTO> list = gameService.getAll();
+        req.setAttribute("list",list);
+        requestDispatcher.forward(req, resp);
     }
 
     private void addToCart(HttpServletRequest req, HttpServletResponse resp) {
@@ -127,7 +133,7 @@ public class GameServlet extends HttpServlet {
         gameService.createAccount(account);
         req.setAttribute("account", account);
         req.getRequestDispatcher("home/home.jsp").forward(req,resp);}
-        
+
     private void removeCartItem(HttpServletRequest req, HttpServletResponse resp) {
         int userId= Integer.parseInt(req.getParameter("user_id"));
         int gameId= Integer.parseInt(req.getParameter("game_id"));

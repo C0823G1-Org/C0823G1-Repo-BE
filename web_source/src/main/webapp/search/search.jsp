@@ -19,12 +19,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
           integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
             integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css"/>
 
 </head>
 
@@ -77,10 +77,10 @@
                     <li class="container__list-menu"><a href="">Labs</a></li>
                 </ul>
                 <div class="container__search">
-                    <form class="search__form" action="">
-                        <input placeholder="  search" class="search-input" type="text">
-                        <button class="btn__btn-sumit">
-                            <i class="fa-solid fa-magnifying-glass"></i>
+                    <form class="search__form" action="/game-servlet?index=1" method="post">
+                        <input placeholder="  search" class="search-input" type="text" name="txtSearch">
+                        <button type="submit" class="btn__btn-sumit" name="action" value="search">
+                            <i style="color: black !important;" class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </form>
                 </div>
@@ -88,7 +88,7 @@
         </div>
     </div>
 </section>
-<section style="height: 1000px;">
+<section style="height: 800px;">
     <div class="menu__products-cart">
         <div class="container__products-cart">
             <div class="header-cart">
@@ -102,30 +102,31 @@
     <div class="menu__cart">
         <!-- 1 -->
         <c:forEach items="${list}" var="game">
-            <div class="menu__cart-list">
+            <div style="margin-bottom: 40px !important;" class="menu__cart-list">
                 <div class="container__cart">
                     <div class="container__cart-img">
-                        <img src="${game.url}" alt="">
+                        <img style="width: 200px;height:150px !important; " src="${game.url}" alt="">
                     </div>
                     <div class="container__cart-name">
                         <span class="name-detail">
-                           ${game.name}
+                                ${game.name}
                         </span>
                         <span class="icon__window"></span>
                     </div>
                     <div class="cart-price">
-                        <div class="cart__price-final">
-                           ${game.price}
+                        <div style="color: #c7d5e0; font-size: 20px !important;" class="cart__price-final">
+                                ${game.price}
                         </div>
                         <a href="">Remove </a>
                     </div>
                 </div>
             </div>
         </c:forEach>
+    <div style="margin-top: 50px"><span style="color: #c7d5e0; font-size: 30px ; font-weight: bold">${Error}</span></div>
     </div>
     <!-- Pay -->
     <div class="menu__cart">
-        <div class="btn__pay">
+        <div style="display: block !important;" class="btn__pay">
             <c:forEach begin="1" end="${endPage}" var="i">
                 <a href="#">${i}</a>
             </c:forEach>
