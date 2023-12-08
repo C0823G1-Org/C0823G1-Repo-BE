@@ -21,23 +21,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
             integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css" type="text/css">
 </head>
 <body>
 <!-- Header -->
 <section class="navbar">
     <c:if test="${sessionScope.userDto != null}">
-    <div style=" background-color: yellow;
+        <c:if test="${sessionScope.userDto.username == null}">
+            <div style=" background-color: yellow;
     align-items: center;
     text-align: center;
     padding: 5px;
     line-height: 15px;
     font-size: 19px;
     margin-bottom: 3px;">
-            <c:if test="${sessionScope.userDto.username == null}">
                 <a href="#" class="container__header-login-a">Vui long cap nhat thong tin</a>
-            </c:if>
-    </div>
+            </div>
+        </c:if>
     </c:if>
     <div class="container__header inner">
         <div class="container__header-home">
@@ -51,13 +51,13 @@
             <a href="" class="container__header-select-link">ABOUT</a>
             <a href="" class="container__header-select-link">SUPPORT</a>
         </div>
-<%--        <div class="update__account">--%>
-<%--            <c:if test="${sessionScope.userDto != null}">--%>
-<%--                <c:if test="${sessionScope.userDto.username == null}">--%>
-<%--                    <a href="#" class="container__header-login-a">Vui long cap nhat thong tin</a>--%>
-<%--                </c:if>--%>
-<%--            </c:if>--%>
-<%--        </div>--%>
+        <%--        <div class="update__account">--%>
+        <%--            <c:if test="${sessionScope.userDto != null}">--%>
+        <%--                <c:if test="${sessionScope.userDto.username == null}">--%>
+        <%--                    <a href="#" class="container__header-login-a">Vui long cap nhat thong tin</a>--%>
+        <%--                </c:if>--%>
+        <%--            </c:if>--%>
+        <%--        </div>--%>
         <div class="container__header-login">
             <div class="container__header-login-install">
                 <button class="btn_installe">
@@ -75,7 +75,7 @@
                 <a href="/game-servlet?action=logout">Log out</a>
             </c:if>
             <c:if test="${sessionScope.userDto == null}">
-                <a class="container__header-login-a" href="http://localhost:8080/login/login.jsp">login</a>
+                <a class="container__header-login-a" href="login/login.jsp">login</a>
             </c:if>
             <span class="container__header-login-p">language
                     <i class="fa-solid fa-chevron-down"></i>
@@ -122,7 +122,7 @@
                          alt="">
                     <div class="data__product-hover">
                         <div class="data__product-video">
-                            <video loop="loop" muted autoplay >
+                            <video loop="loop" muted autoplay>
                                 <source
                                         src="${game.videoUrl}"
                                         type="video/webm">
@@ -139,7 +139,8 @@
                                     <li><a href="">Third-Person Shooter</a></li>
                                     <li><a href="">Zombies</a></li>
                                 </ul>
-                                <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span></button>
+                                <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span>
+                                </button>
                             </div>
                         </div>
                     </div>

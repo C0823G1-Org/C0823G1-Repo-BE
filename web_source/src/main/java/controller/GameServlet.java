@@ -38,9 +38,24 @@ public class GameServlet extends HttpServlet {
             case "add_to_cart":
                 addToCart(req, resp);
                 break;
+            case "register":
+                register(req, resp);
+                break;
             default:
                 showList(req, resp);
         }
+    }
+
+    private void register(HttpServletRequest req, HttpServletResponse resp) {
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("register/register.jsp");
+        try {
+            requestDispatcher.forward(req,resp);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     private void showList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -123,7 +138,7 @@ public class GameServlet extends HttpServlet {
         } else {
             HttpSession httpSession = req.getSession();
             httpSession.setAttribute("userDto", userDto);
-            req.getRequestDispatcher("home/home.jsp").forward(req, resp);
+            resp.sendRedirect("/game-servlet");
         }
     }
 
