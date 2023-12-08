@@ -9,7 +9,7 @@
     line-height: 15px;
     font-size: 19px;
     margin-bottom: 3px;">
-                <a href="#" class="container__header-login-a">Vui long cap nhat thong tin</a>
+                <a href="#" class="container__header-login-a">Please update information</a>
             </div>
         </c:if>
     </c:if>
@@ -25,13 +25,6 @@
             <a href="" class="container__header-select-link">ABOUT</a>
             <a href="" class="container__header-select-link">SUPPORT</a>
         </div>
-        <%--        <div class="update__account">--%>
-        <%--            <c:if test="${sessionScope.userDto != null}">--%>
-        <%--                <c:if test="${sessionScope.userDto.username == null}">--%>
-        <%--                    <a href="#" class="container__header-login-a">Vui long cap nhat thong tin</a>--%>
-        <%--                </c:if>--%>
-        <%--            </c:if>--%>
-        <%--        </div>--%>
         <div class="container__header-login">
             <div class="container__header-login-install">
                 <button class="btn_installe">
@@ -49,7 +42,7 @@
                 <a href="/game-servlet?action=logout">Log out</a>
             </c:if>
             <c:if test="${sessionScope.userDto == null}">
-                <a class="container__header-login-a" href="login/login.jsp">login</a>
+                <a class="container__header-login-a" href="/game-servlet?action=login">login</a>
             </c:if>
             <span class="container__header-login-p">language
                     <i class="fa-solid fa-chevron-down"></i>

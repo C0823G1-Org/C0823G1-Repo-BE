@@ -1,5 +1,6 @@
 package controller;
 
+import model.User;
 import model.UserDto;
 import model.GameDTO;
 import model.UserAccount;
@@ -41,15 +42,29 @@ public class GameServlet extends HttpServlet {
             case "register":
                 register(req, resp);
                 break;
+            case "login":
+                logIn(req, resp);
+                break;
             default:
                 showList(req, resp);
+        }
+    }
+
+    private void logIn(HttpServletRequest req, HttpServletResponse resp) {
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("login/login.jsp");
+        try {
+            requestDispatcher.forward(req, resp);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
     private void register(HttpServletRequest req, HttpServletResponse resp) {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("register/register.jsp");
         try {
-            requestDispatcher.forward(req,resp);
+            requestDispatcher.forward(req, resp);
         } catch (ServletException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -149,6 +164,7 @@ public class GameServlet extends HttpServlet {
         boolean isSuccess = gameService.createAccount(account);
         if (isSuccess) {
             UserDto userDto = this.gameService.getUserInfo(account);
+            gameService.createUser(email);
             HttpSession httpSession = req.getSession();
             httpSession.setAttribute("userDto", userDto);
             req.getRequestDispatcher("home/home.jsp").forward(req, resp);
