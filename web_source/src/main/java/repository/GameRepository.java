@@ -63,15 +63,15 @@ public class GameRepository implements IGameRepository {
         return list;
     }
 
+
     @Override
-@Override
     public void createAccount(UserAccount userAccount) {
         Connection connection = BaseGameRepository.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SIGN_UP);
             preparedStatement.setString(1, userAccount.getEmail());
             preparedStatement.setString(2, userAccount.getPassword());
-            preparedStatement.setInt(3,2);
+            preparedStatement.setInt(3, 2);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -93,7 +93,6 @@ public class GameRepository implements IGameRepository {
 
 
     @Override
-@Override
     public UserDto getUserInfo(UserAccount userAccount) {
         UserDto userDto = null;
         Connection connection = BaseGameRepository.getConnection();
@@ -151,12 +150,6 @@ public class GameRepository implements IGameRepository {
             callableStatement.executeQuery();
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 }

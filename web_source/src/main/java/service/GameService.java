@@ -30,7 +30,12 @@ public class GameService implements IGameService {
     public UserDto getUserInfo(UserAccount userAccount) {
         return this.gameRepository.getUserInfo(userAccount);
         }
-        
+
+    @Override
+    public void addToCart(int userId, int gameId) {
+        gameRepository.addToCart(userId,gameId);
+    }
+
     public List<GameDTO> getCartGames(int userId) {
         return gameRepository.getCartGames(userId);
     }
