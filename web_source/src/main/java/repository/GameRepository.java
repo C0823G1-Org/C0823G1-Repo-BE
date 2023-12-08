@@ -23,7 +23,10 @@ public class GameRepository implements IGameRepository {
             "   left join user u on ua.email = u.email " +
             "        left join role r on r.role_id = ua.role_role_id " +
             "         where ua.email = ? and ua.password = ?; ";
+
+    private static final String INSERT_USER = " insert into `user` set email = ?; ";
     private static final String REMOVE_CART_ITEM = "call remove_cart_item(?,?);";
+
     @Override
     public List<GameDTO> getAll() {
         List<GameDTO> list = new ArrayList<>();
@@ -39,13 +42,13 @@ public class GameRepository implements IGameRepository {
                 String url = resultSet.getString("img");
                 String percentDiscount = resultSet.getString("percent_discount");
                 String rating = resultSet.getString("rating_type_name");
-                list.add(new GameDTO(name, price, url,urlVideo, percentDiscount, rating));
+                list.add(new GameDTO(name, price, url, urlVideo, percentDiscount, rating));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
             try {
-                if (callableStatement != null){
+                if (callableStatement != null) {
                     callableStatement.close();
                 }
                 connection.close();
@@ -192,5 +195,19 @@ public class GameRepository implements IGameRepository {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public boolean createUser(String email) {
+        boolean isSuccess = false;
+        Connection connection = BaseGameRepository.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USER);
+            preparedStatement.setString(1, email);
+            isSuccess = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return isSuccess;
     }
 }

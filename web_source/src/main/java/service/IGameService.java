@@ -17,4 +17,5 @@ public interface IGameService {
     List<GameDTO> getCartGames(int userId);
 
     void removeCartItem(int userId, int gameId);
+    boolean createUser(String email);
 }
