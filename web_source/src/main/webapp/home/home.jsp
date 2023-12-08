@@ -50,7 +50,7 @@
             <div class="container__header-login-install">
                 <button class="btn_installe">
                     <i class="fa-solid fa-download"></i>
-                    <span>Install Steam</span>
+                    <span>Install Steamcc</span>
                 </button>
             </div>
             <c:if test="${sessionScope.userDto != null}">
