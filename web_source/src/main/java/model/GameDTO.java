@@ -35,7 +35,7 @@ public class GameDTO {
     public GameDTO(String title, double price, String url) {
         this.title = title;
         this.price = price;
-        this.imageCoverUrl = url;
+        this.url = url;
     }
 
     public GameDTO(String title, double price, String imageCoverUrl, int gameId) {

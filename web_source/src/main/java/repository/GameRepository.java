@@ -15,8 +15,8 @@ public class GameRepository implements IGameRepository {
             "where game_title like ? )\n" +
             "select * from x where r between ?*3-2 and ?*3;";
     private static final String COUNT = "select count(*) from game where game_title like ?;";
-    private static final String ADD_TO_CART = "insert into game_in_cart(user_id, game_id) values (?,?)";
-    private static final String GET_CART = "call get_user_cart(?)";
+    private static final String ADD_TO_CART = "insert into game_in_cart values (?,?)";
+    private static final String GET_CART = "select game_id from game_in_cart where user_id = ?";
     private static final String SELECT = "call getAll()";
     private static final String SIGN_UP = "insert into user_account(email, password, role_role_id) values(?,?,?);";
     private final String GET_USER_INFO = " select ua.email, r.role_id, r.role_name, u.user_name, u.birthday from user_account ua " +
@@ -35,8 +35,8 @@ public class GameRepository implements IGameRepository {
             while (resultSet.next()) {
                 String name = resultSet.getString("game_title");
                 double price = resultSet.getDouble("price");
-                String urlVideo = resultSet.getString("img");
-                String url = resultSet.getString("video");
+                String urlVideo = resultSet.getString("video");
+                String url = resultSet.getString("img");
                 String percentDiscount = resultSet.getString("percent_discount");
                 String rating = resultSet.getString("rating_type_name");
                 list.add(new GameDTO(name, price, url,urlVideo, percentDiscount, rating));
@@ -95,7 +95,6 @@ public class GameRepository implements IGameRepository {
         }
         return list;
     }
-
 
     @Override
     public boolean createAccount(UserAccount userAccount) {
