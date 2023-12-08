@@ -131,9 +131,13 @@ public class GameServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         UserAccount account = new UserAccount(email, password);
-        gameService.createAccount(account);
-        req.setAttribute("account", account);
-        req.getRequestDispatcher("home/home.jsp").forward(req, resp);
+        boolean isSuccess = gameService.createAccount(account);
+        if (isSuccess) {
+            UserDto userDto = this.gameService.getUserInfo(account);
+            HttpSession httpSession = req.getSession();
+            httpSession.setAttribute("userDto", userDto);
+            req.getRequestDispatcher("home/home.jsp").forward(req, resp);
+        }
     }
 
     private void removeCartItem(HttpServletRequest req, HttpServletResponse resp) {

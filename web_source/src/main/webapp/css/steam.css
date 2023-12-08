@@ -37,6 +37,7 @@ p {
 }
 
 .container__header {
+    position: relative;
     background-color: #171D25;
     display: flex;
     width: 940px;
@@ -542,3 +543,13 @@ p {
     opacity: 1;
 }
 
+/*Update Account */
+.update_account {
+    background-color: yellow;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    line-height: 15px;
+    font-size: 19px;
+    margin-bottom: 2px;
+}
