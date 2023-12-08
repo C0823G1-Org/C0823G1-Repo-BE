@@ -83,7 +83,7 @@
                             </button>
                         </div>
                         <div class="btn__sign-create">
-                            <button><a style="color: #fff" href="http://localhost:8080/register/register.jsp">Create an account</a></button>
+                            <button><a style="color: #fff" href="/game-servlet?action=register">Create an account</a></button>
                         </div>
                         <c:if test="${message != null}">
                             <div>${message}</div>
