@@ -15,7 +15,7 @@
     </c:if>
     <div class="container__header inner">
         <div class="container__header-home">
-            <a href=""> <img class="img__steam"
+            <a href="/game-servlet"> <img class="img__steam"
                              src="https://store.cloudflare.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016"
                              alt=""></a>
         </div>

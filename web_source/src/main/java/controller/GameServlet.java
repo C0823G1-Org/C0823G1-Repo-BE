@@ -1,10 +1,10 @@
 package controller;
 
-import model.User;
-import model.UserDto;
 import model.GameDTO;
 import model.UserAccount;
+import model.UserDto;
 import service.GameService;
+import service.GameServiceLam;
 import service.IGameService;
 
 import javax.servlet.RequestDispatcher;
@@ -15,12 +15,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @WebServlet(name = "GameServlet", value = "/game-servlet")
 public class GameServlet extends HttpServlet {
     private final IGameService gameService = new GameService();
+    private final IGameService gameServiceLam = new GameServiceLam();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -49,6 +51,9 @@ public class GameServlet extends HttpServlet {
             case "user":
                 handleDecentralization(resp, session);
                 break;
+            case "check_if_game_in_cart":
+                checkIfGameInCart(req, resp);
+                break;
             default:
                 showList(req, resp);
         }
@@ -62,6 +67,47 @@ public class GameServlet extends HttpServlet {
             } else {
                 resp.sendRedirect("home/home.jsp");
             }
+        }
+    }
+
+    private void checkIfGameInCart(HttpServletRequest req, HttpServletResponse resp) {
+        HttpSession session = req.getSession();
+        int userId;
+        try {
+            userId = Integer.parseInt(req.getParameter("user_id"));
+        } catch (NumberFormatException e) {
+            userId = 0;
+        }
+        int gameId = Integer.parseInt(req.getParameter("game_id"));
+        if (userId == 0) {
+            req.setAttribute("isInGuessCart", false);
+            List<GameDTO> guessCart = (List<GameDTO>) session.getAttribute("guess_cart");
+            if (guessCart != null) {
+                for (GameDTO e : guessCart) {
+                    if (e.getGameId() == gameId) {
+                        req.setAttribute("isInGuessCart", true);
+                        break;
+                    }
+                }
+            }
+        } else {
+            req.setAttribute("isInUserCart", false);
+            List<GameDTO> userCart = gameService.getCartGames(userId);
+            if (userCart != null) {
+                for (GameDTO e : userCart) {
+                    if (e.getGameId() == gameId) {
+                        req.setAttribute("isInUserCart", true);
+                        break;
+                    }
+                }
+            }
+        }
+
+        String pathToReturn = req.getParameter("path_to_return");
+        try {
+            req.getRequestDispatcher(pathToReturn).forward(req, resp);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -96,17 +142,39 @@ public class GameServlet extends HttpServlet {
     }
 
     private void addToCart(HttpServletRequest req, HttpServletResponse resp) {
-        HttpSession session = req.getSession();
-        int userId = Integer.parseInt(req.getParameter("user_id"));
+        String userIdCheck = req.getParameter("user_id");
+        if (userIdCheck == null) {
+            addToGuessCart(req, resp);
+            return;
+        }
+        System.out.println("Still continue");
+        int userId = Integer.parseInt(userIdCheck);
         int gameId = Integer.parseInt(req.getParameter("game_id"));
         gameService.addToCart(userId, gameId);
-        updateCart(req, resp);
+        getUserCart(req, resp);
     }
 
-    private void updateCart(HttpServletRequest req, HttpServletResponse resp) {
+    private void addToGuessCart(HttpServletRequest req, HttpServletResponse resp) {
+        HttpSession session = req.getSession();
+        int gameId = Integer.parseInt(req.getParameter("game_id"));
+        List<GameDTO> guessCart;
+        if (session.getAttribute("guess_cart") != null) {
+            guessCart = (List<GameDTO>) session.getAttribute("guess_cart");
+        } else {
+            guessCart = new ArrayList<>();
+        }
+        guessCart.add(gameServiceLam.getGameForCart(gameId));
+        session.setAttribute("guess_cart", guessCart);
+        try {
+            req.getRequestDispatcher("/cart/cart.jsp").forward(req, resp);
+        } catch (ServletException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void getUserCart(HttpServletRequest req, HttpServletResponse resp) {
         int userId = Integer.parseInt(req.getParameter("user_id"));
         List<GameDTO> cartList = gameService.getCartGames(userId);
-
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/cart/cart.jsp");
         req.setAttribute("cart_list", cartList);
         try {
@@ -188,10 +256,32 @@ public class GameServlet extends HttpServlet {
     }
 
     private void removeCartItem(HttpServletRequest req, HttpServletResponse resp) {
-        int userId = Integer.parseInt(req.getParameter("user_id"));
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/cart/cart.jsp");
         int gameId = Integer.parseInt(req.getParameter("game_id"));
+        int userId;
+        try {
+            userId = Integer.parseInt(req.getParameter("user_id"));
+        } catch (NumberFormatException e) {
+            userId = 0;
+        }
+        if (userId == 0) {
+            HttpSession session= req.getSession();
+            List<GameDTO> guessCart = (List<GameDTO>) session.getAttribute("guess_cart");
+            for (GameDTO e : guessCart) {
+                if (e.getGameId()==gameId){
+                    guessCart.remove(e);
+                    break;
+                }
+            }
+            session.setAttribute("guess_cart",guessCart);
+            try {
+                requestDispatcher.forward(req,resp);
+            } catch (ServletException | IOException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
         gameService.removeCartItem(userId, gameId);
-        System.out.println("Ayo this worked!");
-        updateCart(req, resp);
+        getUserCart(req, resp);
     }
 }

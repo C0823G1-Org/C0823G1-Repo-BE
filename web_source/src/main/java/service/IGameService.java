@@ -18,4 +18,6 @@ public interface IGameService {
 
     void removeCartItem(int userId, int gameId);
     boolean createUser(String email);
+
+    GameDTO getGameForCart(int gameId);
 }

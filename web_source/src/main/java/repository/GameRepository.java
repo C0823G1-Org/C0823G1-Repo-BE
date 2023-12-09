@@ -210,4 +210,9 @@ public class GameRepository implements IGameRepository {
         }
         return isSuccess;
     }
+
+    @Override
+    public GameDTO getGameForCart(int gameId) {
+        return null;
+    }
 }

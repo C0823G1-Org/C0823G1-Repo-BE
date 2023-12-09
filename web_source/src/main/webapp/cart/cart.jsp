@@ -29,38 +29,7 @@
 
 <body>
 <!-- Header -->
-<section class="navbar">
-    <div class="container__header inner">
-        <div class="container__header-home">
-            <a href=""> <img class="img__steam"
-                             src="https://store.cloudflare.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016"
-                             alt=""></a>
-        </div>
-        <div class="container__header-select">
-            <a href="" class="container__header-select-link">STORE</a>
-            <a href="" class="container__header-select-link">COMMUNITY</a>
-            <a href="" class="container__header-select-link">ABOUT</a>
-            <a href="" class="container__header-select-link">SUPPORT</a>
-        </div>
-        <div class="container__header-login">
-            <div class="container__header-login-install">
-                <button class="btn_installe">
-                    <i class="fa-solid fa-download"></i>
-                    <span>Install Steam</span>
-                </button>
-            </div>
-            <a class="container__header-login-a" href="">login</a>
-            <span class="container__header-login-p">language
-                    <i class="fa-solid fa-chevron-down"></i>
-                </span>
-        </div>
-        <div class="incon__cart">
-            <i class="fa-solid fa-cart-shopping"></i>
-        </div>
-    </div>
-</section>
-<section class="fixHeight">
-</section>
+<jsp:include page="../include/header.jsp"/>
 <section class="content">
     <div class="container_body">
         <div class="page_background_holder">
@@ -99,6 +68,33 @@
         </div>
     </div>
     <div class="menu__cart">
+        <c:if test="${user_id==null}">
+        <c:forEach items="${sessionScope.guess_cart}" var="game" varStatus="loop">
+        <div class="menu__cart-list">
+            <div class="container__cart">
+                <div class="container__cart-img">
+                    <img src="${game.imageCoverUrl}" alt="cover image error">
+                </div>
+                <div class="container__cart-name">
+                        <span class="name-detail">
+                                ${game.title}
+                        </span>
+                    <span class="icon__window"></span>
+                </div>
+                <div class="cart-price">
+                    <div class="cart__price-final">
+                            ${game.price}
+                    </div>
+                    <form action="/game-servlet" method="post">
+                        <input type="hidden" name="game_id" value="${game.gameId}">
+                        <button type="submit" name="action" value="remove_cart_item">Remove</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </c:forEach>
+        </c:if>
+        <c:if test="${user_id!=null}">
         <c:forEach items="${cart_list}" var="game" varStatus="loop">
         <div class="menu__cart-list">
             <div class="container__cart">
@@ -107,13 +103,13 @@
                 </div>
                 <div class="container__cart-name">
                         <span class="name-detail">
-                            ${game.title}
+                                ${game.title}
                         </span>
                     <span class="icon__window"></span>
                 </div>
                 <div class="cart-price">
                     <div class="cart__price-final">
-                        ${game.price}
+                            ${game.price}
                     </div>
                     <form action="/game-servlet" method="post">
                         <input type="hidden" name="user_id" value="1">
@@ -125,6 +121,8 @@
             </div>
         </div>
         </c:forEach>
+        </c:if>
+
 
         <!-- Pay -->
         <div class="menu__cart">

@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
           integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
             integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
@@ -28,7 +28,7 @@
 
 <body>
 <!-- Header -->
-<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../include/header.jsp"/>
 <!-- Body -->
 <section class="content">
     <div class="container_body">
@@ -108,57 +108,74 @@
                                     <h1>Buy Resident Evil 4</h1>
                                     <p>SPECIAL PROMOTION! Offer ends in </p>
                                 </div>
-                                <div class="price__products">
-                                    <span class="discount">-34%</span>
-                                    <div class="price__products-container">
-                                        <div class="discount__price">1.322.000đ</div>
-                                        <div class="discount__price-final">872.500đ</div>
-                                    </div>
-                                    <form action="/game-servlet">
-                                        <input type="hidden" name="user_id" value="${userDto.userId}">
-                                        <input type="hidden" name="game_id" value="1">
-                                        <button type="submit" name="action" value="add_to_cart"><span>Add to Cart</span></button>
-                                    </form>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Detail2 -->
-                        <div class="products__buy">
-                            <div class="products__buy-products">
-                                <div class="products__buy-games">
-                                    <img src="https://store.akamai.steamstatic.com/public/images/v6/icon_platform_win.png?v=3"
-                                         alt="">
-                                    <h1>Buy Resident Evil 4 Deluxe Edition</h1>
-                                    <p>SPECIAL PROMOTION! Offer ends in </p>
-                                </div>
-                                <div class="price__products" style="left: -45px;">
-                                    <span class="discount">-30%</span>
-                                    <div class="price__products-container">
-                                        <div class="discount__price">1.542.000đ</div>
-                                        <div class="discount__price-final">1.079.500đ</div>
-                                    </div>
-                                    <button><span>Add to Cart</span></button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Detail3 -->
-                        <div class="products__buy">
-                            <div class="products__buy-products">
-                                <div class="products__buy-games">
-                                    <img src="https://store.akamai.steamstatic.com/public/images/v6/icon_platform_win.png?v=3"
-                                         alt="">
-                                    <h1>Buy Resident Evil 4 Extra DLC Pack BUNDLE (?)</h1>
-                                    <p>Buy this bundle to save 22% off all 9 items!</p>
-                                </div>
-                                <div class="price__products">
-                                    <span class="discount">-42%</span>
-                                    <div class="price__products-container">
-                                        <div class="discount__price">563.000đ</div>
-                                        <div class="discount__price-final">327.500đ</div>
-                                    </div>
-                                    <button><span>Add to Cart</span></button>
-                                </div>
+                                <%-- When user is a guess --%>
+                                <c:if test="${sessionScope.userDto == null}">
+                                    <c:if test="${requestScope.isInGuessCart==null}">
+                                        <jsp:forward page="/game-servlet">
+                                            <jsp:param name="action" value="check_if_game_in_cart"/>
+                                            <jsp:param name="game_id" value="1"/>
+                                            <jsp:param name="path_to_return" value="/detail_game/detail_game.jsp"/>
+                                        </jsp:forward>
+                                    </c:if>
+                                    <c:if test="${requestScope.isInGuessCart}">
+                                        <div class="price__products">
+                                            <form action="/game-servlet">
+                                                <input type="hidden" name="game_id" value="1">
+                                                <button type="submit" name="action" value="show_guess_cart"><span>In Cart</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${!requestScope.isInGuessCart}">
+                                        <div class="price__products">
+                                            <span class="discount">-34%</span>
+                                            <div class="price__products-container">
+                                                <div class="discount__price">1.322.000đ</div>
+                                                <div class="discount__price-final">872.500đ</div>
+                                            </div>
+                                            <form action="/game-servlet">
+                                                <input type="hidden" name="game_id" value="1">
+                                                <button type="submit" name="action" value="add_to_cart"><span>Add to Cart</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${sessionScope.userDto != null}">
+                                    <c:if test="${requestScope.isInUserCart==null}">
+                                        <jsp:forward page="/game-servlet">
+                                            <jsp:param name="action" value="check_if_game_in_cart"/>
+                                            <jsp:param name="user_id" value="${sessionScope.userDto.userId}"/>
+                                            <jsp:param name="path_to_return" value="/detail_game/detail_game.jsp"/>
+                                            <jsp:param name="game_id" value="1"/>
+                                        </jsp:forward>
+                                    </c:if>
+                                    <c:if test="${requestScope.isInUserCart}">
+                                        <div class="price__products">
+                                            <form action="/game-servlet">
+                                                <input type="hidden" name="game_id" value="1">
+                                                <input type="hidden" name="user_id" value="${sessionScope.userDto.userId}">
+                                                <button type="submit" name="action" value="show_user_cart"><span>In Cart</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${!requestScope.isInUserCart}">
+                                        <div class="price__products">
+                                            <span class="discount">-34%</span>
+                                            <div class="price__products-container">
+                                                <div class="discount__price">1.322.000đ</div>
+                                                <div class="discount__price-final">872.500đ</div>
+                                            </div>
+                                            <form action="/game-servlet">
+                                                <input type="hidden" name="user_id" value="${sessionScope.userDto.userId}">
+                                                <input type="hidden" name="game_id" value="1">
+                                                <button type="submit" name="action" value="add_to_cart"><span>Add to Cart</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </c:if>
+                                </c:if>
                             </div>
                         </div>
                         <!-- Detail4 -->
@@ -314,20 +331,8 @@
                                     </tr>
                                     <tr>
                                         <td style="width: 94px; text-align: left" class="ellipsis">
-                                            English </td>
-                                        <td class="checkcol">
-                                            <span>&#10004;</span>
+                                            English
                                         </td>
-                                        <td class="checkcol">
-                                            <span>&#10004;</span>
-                                        </td>
-                                        <td class="checkcol">
-                                            <span>&#10004;</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 94px; text-align: left" class="ellipsis">
-                                            French </td>
                                         <td class="checkcol">
                                             <span>&#10004;</span>
                                         </td>
@@ -340,20 +345,8 @@
                                     </tr>
                                     <tr>
                                         <td style="width: 94px; text-align: left" class="ellipsis">
-                                            Italian </td>
-                                        <td class="checkcol">
-                                            <span>&#10004;</span>
+                                            French
                                         </td>
-                                        <td class="checkcol">
-                                            <span>&#10004;</span>
-                                        </td>
-                                        <td class="checkcol">
-                                            <span>&#10004;</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 94px; text-align: left" class="ellipsis">
-                                            German </td>
                                         <td class="checkcol">
                                             <span>&#10004;</span>
                                         </td>
@@ -366,7 +359,36 @@
                                     </tr>
                                     <tr>
                                         <td style="width: 94px; text-align: left" class="ellipsis">
-                                            Spanish - Spain </td>
+                                            Italian
+                                        </td>
+                                        <td class="checkcol">
+                                            <span>&#10004;</span>
+                                        </td>
+                                        <td class="checkcol">
+                                            <span>&#10004;</span>
+                                        </td>
+                                        <td class="checkcol">
+                                            <span>&#10004;</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 94px; text-align: left" class="ellipsis">
+                                            German
+                                        </td>
+                                        <td class="checkcol">
+                                            <span>&#10004;</span>
+                                        </td>
+                                        <td class="checkcol">
+                                            <span>&#10004;</span>
+                                        </td>
+                                        <td class="checkcol">
+                                            <span>&#10004;</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 94px; text-align: left" class="ellipsis">
+                                            Spanish - Spain
+                                        </td>
                                         <td class="checkcol">
                                             <span>&#10004;</span>
                                         </td>

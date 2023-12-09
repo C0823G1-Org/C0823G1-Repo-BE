@@ -54,4 +54,9 @@ public class GameService implements IGameService {
     public boolean createUser(String email) {
         return gameRepository.createUser(email);
     }
+
+    @Override
+    public GameDTO getGameForCart(int gameId) {
+        return null;
+    }
 }

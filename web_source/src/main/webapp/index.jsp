@@ -5,8 +5,6 @@
     <title>Main</title>
 </head>
 <body>
-<script>
-    location.href = "/game-servlet";
-</script>
+<jsp:forward page="/game-servlet"></jsp:forward>
 </body>
 </html>

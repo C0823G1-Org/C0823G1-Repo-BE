@@ -27,7 +27,7 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-<jsp:include page="../include/header.jsp"></jsp:include>
+<jsp:include page="../include/header.jsp"/>
 <!-- Body -->
 <section class="content">
     <div class="container_body">
@@ -83,7 +83,7 @@
                                     <li><a href="">Third-Person Shooter</a></li>
                                     <li><a href="">Zombies</a></li>
                                 </ul>
-                                <button><span><a class="new-a" href="http://localhost:8080/detail_game/detail_game.jsp">Add to Cart</a></span>
+                                <button><span><a class="new-a" href="/detail_game/detail_game.jsp">Add to Cart</a></span>
                                 </button>
                             </div>
                         </div>
