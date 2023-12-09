@@ -37,6 +37,7 @@ p {
 }
 
 .container__header {
+    position: relative;
     background-color: #171D25;
     display: flex;
     width: 940px;
@@ -133,7 +134,7 @@ p {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
-    background-image: url(./img/f6wxdatim6oa1.gif);
+    background-image: url(https://i.redd.it/f6wxdatim6oa1.gif);
 }
 
 .book__menu-main {
@@ -542,3 +543,13 @@ p {
     opacity: 1;
 }
 
+/*Update Account */
+.update_account {
+    background-color: yellow;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    line-height: 15px;
+    font-size: 19px;
+    margin-bottom: 2px;
+}

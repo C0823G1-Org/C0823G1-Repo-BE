@@ -89,7 +89,7 @@
                             <div>${message}</div>
                         </c:if>
                         <div class="link__help">
-                            <a href="">Help, I can't sign in</a>
+                            <a href="https://help.steampowered.com/en/wizard/HelpWithLogin">Help, I can't sign in</a>
                         </div>
                     </div>
                     </form>

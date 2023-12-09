@@ -4,17 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="5c7074be-e8a0-4fdb-8492-7f723bfbd8c5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+=======
+    <list default="true" id="9f5b535b-5f76-4cd6-a113-6d6696a9acae" name="Changes" comment="+ getAll">
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/GameRepositoryBao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/GameRepositoryKiet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/GameRepositoryLam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/GameRepositoryVi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/GameServiceBao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/GameServiceKiet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/GameServiceLam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/GameServiceVi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+>>>>>>> 436d0b0bf1c8e146ef8a8c1a40f09b7e79af98b5
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/controller/GameServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controller/GameServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/repository/GameRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/repository/GameRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/repository/IGameRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/repository/IGameRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/service/GameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/service/GameService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/service/IGameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/service/IGameService.class" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/GameRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/GameRepository.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/build/libs/case_study-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/case_study-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/GameRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/GameRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/IGameRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/IGameRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/GameService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/IGameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/IGameService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart/cart.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/cart/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cart/cart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/steam.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/steam.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/home/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login/login.jsp" afterDir="false" />
+>>>>>>> 436d0b0bf1c8e146ef8a8c1a40f09b7e79af98b5
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +60,31 @@
       <ProjectState />
     </projectState>
   </component>
+<<<<<<< HEAD
   <component name="Git.Merge.Settings">
     <option name="BRANCH" value="main" />
+=======
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+        <option value="Class" />
+        <option value="CSS File" />
+      </list>
+    </option>
+>>>>>>> 436d0b0bf1c8e146ef8a8c1a40f09b7e79af98b5
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -39,14 +96,25 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+<<<<<<< HEAD
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2ZF5wNYq9aNEdoWwnm1dVfZxooB" />
+=======
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2ZA0iywGMpmQMeNO8l90fNp2tRA" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+>>>>>>> 436d0b0bf1c8e146ef8a8c1a40f09b7e79af98b5
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -65,6 +133,31 @@
   <component name="RunManager">
     <configuration name="Tomcat 9.0.82" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.82" ALTERNATIVE_JRE_ENABLED="false">
       <option name="UPDATING_POLICY" value="hot-swap-classes" />
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Merging newbaole",
+    "last_opened_file_path": "D:/module_2--Le-Van-Nhat-Bao---C0823/module_3/module3/C0823G1-Repo-BE/web_source",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\module_2--Le-Van-Nhat-Bao---C0823\module_3\module3\C0823G1-Repo-BE\web_source\src\main\webapp\css" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.83" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.83" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+>>>>>>> 436d0b0bf1c8e146ef8a8c1a40f09b7e79af98b5
       <deployment>
         <artifact name="Gradle : com.example : Project-1.0-SNAPSHOT.war">
           <settings>
@@ -164,6 +257,7 @@
       <created>1702005231307</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1702005231307</updated>
       <workItem from="1702005232542" duration="264000" />
       <workItem from="1702005615745" duration="145000" />
@@ -175,12 +269,35 @@
       <workItem from="1702010691816" duration="513000" />
       <workItem from="1702017152637" duration="1497000" />
     </task>
+=======
+      <updated>1701849709504</updated>
+      <workItem from="1701849710461" duration="3206000" />
+      <workItem from="1701923839677" duration="11221000" />
+      <workItem from="1701953872796" duration="10711000" />
+      <workItem from="1701998446202" duration="2702000" />
+      <workItem from="1702001686663" duration="11794000" />
+    </task>
+    <task id="LOCAL-00001" summary="+ getAll">
+      <option name="closed" value="true" />
+      <created>1702003750941</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1702003750941</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+>>>>>>> 436d0b0bf1c8e146ef8a8c1a40f09b7e79af98b5
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="ede00198-729a-4fdf-880c-13361ba66ab2" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -188,7 +305,50 @@
             <State />
           </value>
         </entry>
+        <entry key="ede00198-729a-4fdf-880c-13361ba66ab2">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:D:/module_2--Le-Van-Nhat-Bao---C0823/module_3/module3/C0823G1-Repo-BE/web_source/src" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+            </State>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
+<<<<<<< HEAD
+=======
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="+ getAll" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ getAll" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/home/home.jsp</url>
+          <line>145</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+>>>>>>> 436d0b0bf1c8e146ef8a8c1a40f09b7e79af98b5
 </project>

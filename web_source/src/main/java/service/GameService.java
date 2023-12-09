@@ -27,8 +27,8 @@ public class GameService implements IGameService {
     }
 
     @Override
-    public void createAccount(UserAccount userAccount) {
-        gameRepository.createAccount(userAccount);
+    public boolean createAccount(UserAccount userAccount) {
+        return gameRepository.createAccount(userAccount);
     }
 
     @Override
