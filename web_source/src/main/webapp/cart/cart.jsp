@@ -99,7 +99,6 @@
         </div>
     </div>
     <div class="menu__cart">
-        <!-- 1 -->
         <c:forEach items="${cart_list}" var="game" varStatus="loop">
         <div class="menu__cart-list">
             <div class="container__cart">
@@ -172,5 +171,4 @@
     </div>
 </div>
 </body>
-
 </html>

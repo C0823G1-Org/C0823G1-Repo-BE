@@ -49,4 +49,9 @@ public class GameService implements IGameService {
     public void removeCartItem(int userId, int gameId) {
         gameRepository.removeCartItem(userId,gameId);
     }
+
+    @Override
+    public boolean createUser(String email) {
+        return gameRepository.createUser(email);
+    }
 }

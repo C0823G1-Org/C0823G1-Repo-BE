@@ -87,8 +87,8 @@
                                 <button type="submit" name="action" value="sign_up">Sign in</button>
                             </div>
                             <div class="link__help">
-                                I have an acount!
-                                <a href="login/login.jsp"> Login</a>
+                                I have an account!
+                                <a href="/game-servlet?action=login"> Login</a>
                             </div>
                         </div>
                     </form>

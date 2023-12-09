@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
           integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
             integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
@@ -48,7 +48,7 @@
                     <span>Install Steam</span>
                 </button>
             </div>
-                <a class="container__header-login-a" href="">login</a>
+            <a class="container__header-login-a" href="">login</a>
             <span class="container__header-login-p">language
                     <i class="fa-solid fa-chevron-down"></i>
                 </span>
@@ -68,30 +68,34 @@
                 <div class="login__inner-container">
                     <!-- Left -->
                     <form method="post" action="/game-servlet">
-                    <div class="left__login">
-                        <div class="left__login-sign-header">
-                            SIGN IN WITH ACCOUNT NAME
+                        <div class="left__login">
+                            <div class="left__login-sign-header">
+                                SIGN IN WITH ACCOUNT NAME
+                            </div>
+                            <input type="text" class="login__input-account" name="email" value="${userAccount.email}">
+                            <div class="left__login-sign">
+                                Password
+                            </div>
+                            <input type="password" class="login__input-account" name="password"
+                                   value="${userAccount.password}">
+                            <c:if test="${message != null}">
+                                <div style="color: #842029 ">${message}</div>
+                            </c:if>
+                            <div class="btn__sign">
+                                <button style="padding: 8px 0 ; color: #ffffff" type="submit" name="action"
+                                        value="sign_in">
+                                    <span style="font-size: 16px;font-weight: 400;">Sign In</span>
+                                </button>
+                            </div>
+                            <div class="btn__sign-create">
+                                <button><a style="color: #fff" href="/game-servlet?action=register">Create an
+                                    account</a></button>
+                            </div>
+                            <div class="link__help">
+                                <a href="https://help.steampowered.com/en/wizard/HelpWithLogin">Help, I can't sign
+                                    in</a>
+                            </div>
                         </div>
-                        <input type="text" class="login__input-account" name="email" value="${userAccount.email}">
-                        <div class="left__login-sign">
-                            Password
-                        </div>
-                        <input type="password" class="login__input-account" name="password" value="${userAccount.password}">
-                        <div class="btn__sign">
-                            <button style="padding: 8px 0 ; color: #ffffff"  type="submit" name="action" value="sign_in">
-                                 <span style="font-size: 16px;font-weight: 400;">Sign In</span>
-                            </button>
-                        </div>
-                        <div class="btn__sign-create">
-                            <button><a style="color: #fff" href="http://localhost:8080/register/register.jsp">Create an account</a></button>
-                        </div>
-                        <c:if test="${message != null}">
-                            <div>${message}</div>
-                        </c:if>
-                        <div class="link__help">
-                            <a href="https://help.steampowered.com/en/wizard/HelpWithLogin">Help, I can't sign in</a>
-                        </div>
-                    </div>
                     </form>
                     <!-- Right -->
                     <div class="right__login">
@@ -100,7 +104,8 @@
                                 OR SIGN IN WITH QR
                             </div>
                             <div class="right__login-qr">
-                                <img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t1.15752-9/403607003_1089876045337260_5115818614783867516_n.png?_nc_cat=111&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=OIbm_XoPpzsAX-ll2H6&_nc_ht=scontent.fdad1-3.fna&oh=03_AdSiQvFv7_e_iGfJVeP8LKI4OoBixShWxuz7em3GMnDhGQ&oe=659905D6" alt="">
+                                <img src="https://scontent.fdad1-3.fna.fbcdn.net/v/t1.15752-9/403607003_1089876045337260_5115818614783867516_n.png?_nc_cat=111&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=OIbm_XoPpzsAX-ll2H6&_nc_ht=scontent.fdad1-3.fna&oh=03_AdSiQvFv7_e_iGfJVeP8LKI4OoBixShWxuz7em3GMnDhGQ&oe=659905D6"
+                                     alt="">
                             </div>
                             <div class="help__link">
                                 Use the
