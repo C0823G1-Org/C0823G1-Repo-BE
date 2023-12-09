@@ -68,7 +68,7 @@
         </div>
     </div>
     <div class="menu__cart">
-        <c:if test="${user_id==null}">
+        <c:if test="${sessionScope.userDto.userId==null}">
         <c:forEach items="${sessionScope.guess_cart}" var="game" varStatus="loop">
         <div class="menu__cart-list">
             <div class="container__cart">
@@ -94,8 +94,8 @@
         </div>
         </c:forEach>
         </c:if>
-        <c:if test="${user_id!=null}">
-        <c:forEach items="${cart_list}" var="game" varStatus="loop">
+        <c:if test="${sessionScope.userDto.userId!=null}">
+        <c:forEach items="${requestScope.cart_list}" var="game" varStatus="loop">
         <div class="menu__cart-list">
             <div class="container__cart">
                 <div class="container__cart-img">
@@ -112,7 +112,6 @@
                             ${game.price}
                     </div>
                     <form action="/game-servlet" method="post">
-                        <input type="hidden" name="user_id" value="1">
                         <input type="hidden" name="game_id" value="${game.gameId}">
                         <button type="submit" name="action" value="remove_cart_item">Remove</button>
                     </form>
@@ -122,8 +121,6 @@
         </div>
         </c:forEach>
         </c:if>
-
-
         <!-- Pay -->
         <div class="menu__cart">
             <div class="btn__pay">

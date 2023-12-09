@@ -17,7 +17,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @WebServlet(name = "GameServlet", value = "/game-servlet")
 public class GameServlet extends HttpServlet {
@@ -54,9 +53,26 @@ public class GameServlet extends HttpServlet {
             case "check_if_game_in_cart":
                 checkIfGameInCart(req, resp);
                 break;
+            case "show_cart":
+                showCart(req, resp);
+                break;
             default:
                 showList(req, resp);
         }
+    }
+
+    private void showCart(HttpServletRequest req, HttpServletResponse resp) {
+        UserDto user = (UserDto) req.getSession().getAttribute("userDto");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/cart/cart.jsp");
+        if (user == null) {
+            try {
+                requestDispatcher.forward(req, resp);
+            } catch (ServletException | IOException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+        getUserCart(req, resp);
     }
 
     private static void handleDecentralization(HttpServletResponse resp, HttpSession session) throws IOException {
@@ -72,14 +88,9 @@ public class GameServlet extends HttpServlet {
 
     private void checkIfGameInCart(HttpServletRequest req, HttpServletResponse resp) {
         HttpSession session = req.getSession();
-        int userId;
-        try {
-            userId = Integer.parseInt(req.getParameter("user_id"));
-        } catch (NumberFormatException e) {
-            userId = 0;
-        }
+        UserDto user = (UserDto) session.getAttribute("userDto");
         int gameId = Integer.parseInt(req.getParameter("game_id"));
-        if (userId == 0) {
+        if (user == null) {
             req.setAttribute("isInGuessCart", false);
             List<GameDTO> guessCart = (List<GameDTO>) session.getAttribute("guess_cart");
             if (guessCart != null) {
@@ -92,7 +103,7 @@ public class GameServlet extends HttpServlet {
             }
         } else {
             req.setAttribute("isInUserCart", false);
-            List<GameDTO> userCart = gameService.getCartGames(userId);
+            List<GameDTO> userCart = gameService.getCartGames(user.getUserId());
             if (userCart != null) {
                 for (GameDTO e : userCart) {
                     if (e.getGameId() == gameId) {
@@ -142,13 +153,12 @@ public class GameServlet extends HttpServlet {
     }
 
     private void addToCart(HttpServletRequest req, HttpServletResponse resp) {
-        String userIdCheck = req.getParameter("user_id");
-        if (userIdCheck == null) {
+        UserDto user = (UserDto) req.getSession().getAttribute("userDto");
+        if (user == null) {
             addToGuessCart(req, resp);
             return;
         }
-        System.out.println("Still continue");
-        int userId = Integer.parseInt(userIdCheck);
+        int userId = user.getUserId();
         int gameId = Integer.parseInt(req.getParameter("game_id"));
         gameService.addToCart(userId, gameId);
         getUserCart(req, resp);
@@ -173,8 +183,8 @@ public class GameServlet extends HttpServlet {
     }
 
     private void getUserCart(HttpServletRequest req, HttpServletResponse resp) {
-        int userId = Integer.parseInt(req.getParameter("user_id"));
-        List<GameDTO> cartList = gameService.getCartGames(userId);
+        UserDto user = (UserDto) req.getSession().getAttribute("userDto");
+        List<GameDTO> cartList = gameService.getCartGames(user.getUserId());
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/cart/cart.jsp");
         req.setAttribute("cart_list", cartList);
         try {
@@ -258,30 +268,25 @@ public class GameServlet extends HttpServlet {
     private void removeCartItem(HttpServletRequest req, HttpServletResponse resp) {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/cart/cart.jsp");
         int gameId = Integer.parseInt(req.getParameter("game_id"));
-        int userId;
-        try {
-            userId = Integer.parseInt(req.getParameter("user_id"));
-        } catch (NumberFormatException e) {
-            userId = 0;
-        }
-        if (userId == 0) {
-            HttpSession session= req.getSession();
+        UserDto user = (UserDto) req.getSession().getAttribute("userDto");
+        if (user == null) {
+            HttpSession session = req.getSession();
             List<GameDTO> guessCart = (List<GameDTO>) session.getAttribute("guess_cart");
             for (GameDTO e : guessCart) {
-                if (e.getGameId()==gameId){
+                if (e.getGameId() == gameId) {
                     guessCart.remove(e);
                     break;
                 }
             }
-            session.setAttribute("guess_cart",guessCart);
+            session.setAttribute("guess_cart", guessCart);
             try {
-                requestDispatcher.forward(req,resp);
+                requestDispatcher.forward(req, resp);
             } catch (ServletException | IOException e) {
                 e.printStackTrace();
             }
             return;
         }
-        gameService.removeCartItem(userId, gameId);
+        gameService.removeCartItem(user.getUserId(), gameId);
         getUserCart(req, resp);
     }
 }

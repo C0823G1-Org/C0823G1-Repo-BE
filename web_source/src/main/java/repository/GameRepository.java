@@ -15,7 +15,7 @@ public class GameRepository implements IGameRepository {
             "where game_title like ? )\n" +
             "select * from x where r between ?*3-2 and ?*3;";
     private static final String COUNT = "select count(*) from game where game_title like ?;";
-    private static final String ADD_TO_CART = "insert into game_in_cart(user_id, game_id) values (?,?)";
+    private static final String ADD_TO_CART = "insert into game_in_cart(user_id, game_id) values (?,?) on duplicate key update is_deleted=0";
     private static final String GET_CART = "call get_user_cart(?)";
     private static final String SELECT = "call getAll()";
     private static final String SIGN_UP = "insert into user_account(email, password, role_role_id) values(?,?,?);";

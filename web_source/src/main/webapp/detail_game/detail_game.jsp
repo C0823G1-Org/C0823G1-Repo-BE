@@ -121,7 +121,8 @@
                                         <div class="price__products">
                                             <form action="/game-servlet">
                                                 <input type="hidden" name="game_id" value="1">
-                                                <button type="submit" name="action" value="show_guess_cart"><span>In Cart</span>
+                                                <button type="submit" name="action" value="show_cart">
+                                                    <span>In Cart</span>
                                                 </button>
                                             </form>
                                         </div>
@@ -145,7 +146,6 @@
                                     <c:if test="${requestScope.isInUserCart==null}">
                                         <jsp:forward page="/game-servlet">
                                             <jsp:param name="action" value="check_if_game_in_cart"/>
-                                            <jsp:param name="user_id" value="${sessionScope.userDto.userId}"/>
                                             <jsp:param name="path_to_return" value="/detail_game/detail_game.jsp"/>
                                             <jsp:param name="game_id" value="1"/>
                                         </jsp:forward>
@@ -154,8 +154,8 @@
                                         <div class="price__products">
                                             <form action="/game-servlet">
                                                 <input type="hidden" name="game_id" value="1">
-                                                <input type="hidden" name="user_id" value="${sessionScope.userDto.userId}">
-                                                <button type="submit" name="action" value="show_user_cart"><span>In Cart</span>
+                                                <button type="submit" name="action" value="show_cart">
+                                                    <span>In Cart</span>
                                                 </button>
                                             </form>
                                         </div>
@@ -168,7 +168,6 @@
                                                 <div class="discount__price-final">872.500đ</div>
                                             </div>
                                             <form action="/game-servlet">
-                                                <input type="hidden" name="user_id" value="${sessionScope.userDto.userId}">
                                                 <input type="hidden" name="game_id" value="1">
                                                 <button type="submit" name="action" value="add_to_cart"><span>Add to Cart</span>
                                                 </button>
