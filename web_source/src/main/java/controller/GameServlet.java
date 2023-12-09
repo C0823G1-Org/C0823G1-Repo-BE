@@ -146,7 +146,7 @@ public class GameServlet extends HttpServlet {
         String password = req.getParameter("password");
         UserAccount userAccount = new UserAccount(email, password);
         UserDto userDto = this.gameService.getUserInfo(userAccount);
-        if (Objects.isNull(userDto)) {
+        if (userDto == null) {
             req.setAttribute("message", "account or password is incorrect");
             req.setAttribute("userAccount", userAccount);
             req.getRequestDispatcher("login/login.jsp").forward(req, resp);
