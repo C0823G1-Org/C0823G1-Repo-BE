@@ -9,35 +9,35 @@ public class Game {
     private String description;
     private boolean ageRequirement;
     private int idImage;
-    private int idLibaryStore;
+    private int idLibraryStore;
     private boolean isDelete;
     private int idDeveloper ;
     private Date releaseDate;
     private int idDlc;
     private int idRatingReview;
-    private String requirementMiniumSystem;
-    private String requirementMiniumRecommend;
+    private String requirementMinimumSystem;
+    private String requirementMinimumRecommend;
 
     public Game() {
     }
 
     public Game(String title, String price, String description, boolean ageRequirement,
-                int idImage, int idLibaryStore, boolean isDelete, int idDeveloper,
-                Date releaseDate, int idDlc, int idRatingReview, String requirementMiniumSystem,
-                String requirementMiniumRecommend) {
+                int idImage, int idLibraryStore, boolean isDelete, int idDeveloper,
+                Date releaseDate, int idDlc, int idRatingReview, String requirementMinimumSystem,
+                String requirementMinimumRecommend) {
         this.title = title;
         this.price = price;
         this.description = description;
         this.ageRequirement = ageRequirement;
         this.idImage = idImage;
-        this.idLibaryStore = idLibaryStore;
+        this.idLibraryStore = idLibraryStore;
         this.isDelete = isDelete;
         this.idDeveloper = idDeveloper;
         this.releaseDate = releaseDate;
         this.idDlc = idDlc;
         this.idRatingReview = idRatingReview;
-        this.requirementMiniumSystem = requirementMiniumSystem;
-        this.requirementMiniumRecommend = requirementMiniumRecommend;
+        this.requirementMinimumSystem = requirementMinimumSystem;
+        this.requirementMinimumRecommend = requirementMinimumRecommend;
     }
 
     public int getId() {
@@ -88,12 +88,12 @@ public class Game {
         this.idImage = idImage;
     }
 
-    public int getIdLibaryStore() {
-        return idLibaryStore;
+    public int getIdLibraryStore() {
+        return idLibraryStore;
     }
 
-    public void setIdLibaryStore(int idLibaryStore) {
-        this.idLibaryStore = idLibaryStore;
+    public void setIdLibraryStore(int idLibraryStore) {
+        this.idLibraryStore = idLibraryStore;
     }
 
     public boolean isDelete() {
@@ -136,19 +136,19 @@ public class Game {
         this.idRatingReview = idRatingReview;
     }
 
-    public String getRequirementMiniumSystem() {
-        return requirementMiniumSystem;
+    public String getRequirementMinimumSystem() {
+        return requirementMinimumSystem;
     }
 
-    public void setRequirementMiniumSystem(String requirementMiniumSystem) {
-        this.requirementMiniumSystem = requirementMiniumSystem;
+    public void setRequirementMinimumSystem(String requirementMinimumSystem) {
+        this.requirementMinimumSystem = requirementMinimumSystem;
     }
 
-    public String getRequirementMiniumRecommend() {
-        return requirementMiniumRecommend;
+    public String getRequirementMinimumRecommend() {
+        return requirementMinimumRecommend;
     }
 
-    public void setRequirementMiniumRecommend(String requirementMiniumRecommend) {
-        this.requirementMiniumRecommend = requirementMiniumRecommend;
+    public void setRequirementMinimumRecommend(String requirementMinimumRecommend) {
+        this.requirementMinimumRecommend = requirementMinimumRecommend;
     }
 }
