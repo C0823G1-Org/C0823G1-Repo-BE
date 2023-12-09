@@ -45,8 +45,23 @@ public class GameServlet extends HttpServlet {
             case "login":
                 logIn(req, resp);
                 break;
+            case "game":
+            case "user":
+                handleDecentralization(resp, session);
+                break;
             default:
                 showList(req, resp);
+        }
+    }
+
+    private static void handleDecentralization(HttpServletResponse resp, HttpSession session) throws IOException {
+        if (session.getAttribute("userDto") != null) {
+            UserDto userDto = (UserDto) session.getAttribute("userDto");
+            if (userDto.getRoleId() == 1) {
+                resp.sendRedirect("register/register.jsp");
+            } else {
+                resp.sendRedirect("home/home.jsp");
+            }
         }
     }
 
@@ -146,12 +161,13 @@ public class GameServlet extends HttpServlet {
         String password = req.getParameter("password");
         UserAccount userAccount = new UserAccount(email, password);
         UserDto userDto = this.gameService.getUserInfo(userAccount);
-        if (Objects.isNull(userDto)) {
+        if (userDto == null) {
             req.setAttribute("message", "account or password is incorrect");
             req.setAttribute("userAccount", userAccount);
             req.getRequestDispatcher("login/login.jsp").forward(req, resp);
         } else {
             HttpSession httpSession = req.getSession();
+            req.setAttribute("message", "Logged in successfully");
             httpSession.setAttribute("userDto", userDto);
             resp.sendRedirect("/game-servlet");
         }
