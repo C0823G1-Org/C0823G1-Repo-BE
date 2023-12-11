@@ -6,6 +6,7 @@ import model.UserDto;
 import service.GameService;
 import service.GameServiceLam;
 import service.IGameService;
+import utils.RegistrationValidator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -50,7 +51,7 @@ public class GameServlet extends HttpServlet {
                 break;
             case "user":
                 handleDecentralization(resp, session);
-                showListGame(req,resp);
+                showListGame(req, resp);
                 break;
             case "check_if_game_in_cart":
                 checkIfGameInCart(req, resp);
@@ -68,9 +69,9 @@ public class GameServlet extends HttpServlet {
                 int endPage = (count / pageSize);
                 List<GameDTO> list = gameService.searchCatelogy(txtCatelogy, index);
 //                try {
-                    if (count % pageSize != 0) {
-                        endPage++;
-                    }
+                if (count % pageSize != 0) {
+                    endPage++;
+                }
 //                    else {
 //                        endPage = 0;
 //                        throw new ArithmeticException();
@@ -88,6 +89,7 @@ public class GameServlet extends HttpServlet {
                 showList(req, resp);
         }
     }
+
     private void showListGame(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("game_manager/game_manager.jsp");
         List<GameDTO> list = gameService.getAll();
@@ -291,7 +293,7 @@ public class GameServlet extends HttpServlet {
         } else {
             HttpSession httpSession = req.getSession();
             httpSession.setAttribute("userDto", userDto);
-            httpSession.setAttribute("message","Logged in successfully");
+            httpSession.setAttribute("message", "Logged in successfully");
             resp.sendRedirect("/game-servlet");
         }
     }
@@ -299,6 +301,12 @@ public class GameServlet extends HttpServlet {
     private void signUp(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        if (!RegistrationValidator.isValidEmail(email)) {
+            req.setAttribute("message", "Invalid email format");
+            req.setAttribute("userAccount", new UserAccount(email, password));
+            req.getRequestDispatcher("register/register.jsp").forward(req, resp);
+            return;
+        }
         UserAccount account = new UserAccount(email, password);
         boolean check = gameService.findDuplicate(email);
         if (check) {

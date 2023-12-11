@@ -2,7 +2,8 @@
 <section class="navbar">
     <c:if test="${sessionScope.userDto != null}">
         <c:if test="${sessionScope.userDto.username == null}">
-            <div style=" background-color: yellow;
+            <div style=" background-color: red;
+            color: black;
     align-items: center;
     text-align: center;
     padding: 5px;
@@ -13,8 +14,8 @@
             </div>
             <c:if test="${message != null}">
                 <div style="padding: 20px;
-    background-color: #f44336;
-    color: white;">
+    background-color: greenyellow;
+    color: black;">
                     <span style="   margin-left: 15px;
     color: white;
     font-weight: bold;
@@ -72,7 +73,7 @@
                            style="text-decoration: none">${sessionScope.userDto.email}</a>
                     </c:if>
                 </c:if>
-                <div >
+                <div>
                     <a class="logout" href="/game-servlet?action=logout">Logout</a>
                 </div>
             </c:if>
