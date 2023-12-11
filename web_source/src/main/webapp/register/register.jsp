@@ -83,6 +83,9 @@
                                 Confirm your Password
                             </div>
                             <input type="password" class="login__input-account" name="confirm_password">
+                            <c:if test="${message !=null}">
+                                <div style="color: #842029 ">${message}</div>
+                            </c:if>
                             <div class="btn__sign">
                                 <button type="submit" name="action" value="sign_up">Sign in</button>
                             </div>

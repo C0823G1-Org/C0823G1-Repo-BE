@@ -4,6 +4,7 @@ import model.UserDto;
 import model.GameDTO;
 import model.UserAccount;
 import repository.GameRepository;
+import repository.GameRepositoryVi;
 import repository.IGameRepository;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 public class GameService implements IGameService {
 
     private final IGameRepository gameRepository = new GameRepository();
+    private final IGameRepository gameRepositoryVi = new GameRepositoryVi();
 
     @Override
     public List<GameDTO> getAll() {
@@ -68,5 +70,10 @@ public class GameService implements IGameService {
     @Override
     public GameDTO getGameForCart(int gameId) {
         return null;
+    }
+
+    @Override
+    public boolean findDuplicate(String email) {
+        return gameRepositoryVi.findDuplicate(email);
     }
 }

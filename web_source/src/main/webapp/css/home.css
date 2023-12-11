@@ -1,4 +1,4 @@
-            :root {
+:root {
     --text-color: #fff;
     --main-color: #171D25;
     --new-text: #b8b6b4;
@@ -456,6 +456,7 @@ p {
 .container__header-part {
     margin-top: 50px;
 }
+
 .container__header-part h2 {
     margin: 0 15px;
     color: var(--text-color);
@@ -476,6 +477,7 @@ p {
     margin-left: 15px;
     cursor: pointer;
 }
+
 .list__products-sales-large {
     margin-top: 100px;
     position: relative;
@@ -494,6 +496,7 @@ p {
     transition: top 0.6s, opacity 0.5s;
     background: linear-gradient(315deg, #213c55 5%, #016968 95%);
 }
+
 .list__products-hover-large {
     position: absolute;
     top: 0;
@@ -538,6 +541,7 @@ p {
 .list__products-sales:hover .list__products-hover-min {
     opacity: 1;
 }
+
 .list__products-sales-large:hover .list__products-hover-large {
     opacity: 1;
 }
