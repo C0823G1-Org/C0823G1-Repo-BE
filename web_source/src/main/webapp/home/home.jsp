@@ -35,22 +35,23 @@
         </div>
         <div class="inner book__menu-main">
             <div class="container__menu">
-            <div class="container__menu">
-                <ul class="container__list">
-                    <li class="container__list-menu"><a href="">Your Store</a></li>
-                    <li class="container__list-menu"><a href="">New & Noteworthy</a></li>
-                    <li class="container__list-menu"><a href="">Categories</a></li>
-                    <li class="container__list-menu"><a href="">Points Shop</a></li>
-                    <li class="container__list-menu"><a href="">News</a></li>
-                    <li class="container__list-menu"><a href="">Labs</a></li>
-                </ul>
-                <div class="container__search">
-                    <form class="search__form" action="/game-servlet?index=1" method="post">
-                        <input placeholder="  search" class="search-input" type="text" name="txtSearch">
-                        <button type="submit" class="btn__btn-sumit" name="action" value="search">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </form>
+                <div class="container__menu">
+                    <ul class="container__list">
+                        <li class="container__list-menu"><a href="">Your Store</a></li>
+                        <li class="container__list-menu"><a href="">New & Noteworthy</a></li>
+                        <li class="container__list-menu"><a href="">Categories</a></li>
+                        <li class="container__list-menu"><a href="">Points Shop</a></li>
+                        <li class="container__list-menu"><a href="">News</a></li>
+                        <li class="container__list-menu"><a href="">Labs</a></li>
+                    </ul>
+                    <div class="container__search">
+                        <form class="search__form" action="/game-servlet?index=1" method="post">
+                            <input placeholder="  search" class="search-input" type="text" name="txtSearch">
+                            <button type="submit" class="btn__btn-sumit" name="action" value="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -317,7 +318,8 @@
 <script src="${pageContext.request.contextPath}/js/js.js">
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
 </body>
 

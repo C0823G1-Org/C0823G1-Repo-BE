@@ -1,4 +1,5 @@
 package service;
 
-public class GameServiceKiet extends GameService{
+public class GameServiceKiet extends GameService {
+
 }

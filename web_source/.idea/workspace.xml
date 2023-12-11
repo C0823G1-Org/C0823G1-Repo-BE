@@ -4,6 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="5c7074be-e8a0-4fdb-8492-7f723bfbd8c5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+=======
     <list default="true" id="9f5b535b-5f76-4cd6-a113-6d6696a9acae" name="Changes" comment="+ getAll">
       <change afterPath="$PROJECT_DIR$/src/main/java/repository/GameRepositoryBao.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/repository/GameRepositoryKiet.java" afterDir="false" />
@@ -19,12 +24,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+>>>>>>> 436d0b0bf1c8e146ef8a8c1a40f09b7e79af98b5
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/controller/GameServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controller/GameServlet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/repository/GameRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/repository/GameRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/repository/IGameRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/repository/IGameRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/service/GameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/service/GameService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/service/IGameService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/service/IGameService.class" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/GameRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/GameRepository.java" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/build/libs/case_study-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/case_study-1.0-SNAPSHOT.war" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameServlet.java" afterDir="false" />
@@ -38,6 +48,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/webapp/css/steam.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/steam.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/home/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home/home.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/login/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login/login.jsp" afterDir="false" />
+>>>>>>> 436d0b0bf1c8e146ef8a8c1a40f09b7e79af98b5
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +60,10 @@
       <ProjectState />
     </projectState>
   </component>
+<<<<<<< HEAD
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="main" />
+=======
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -69,6 +84,7 @@
         <option value="CSS File" />
       </list>
     </option>
+>>>>>>> 436d0b0bf1c8e146ef8a8c1a40f09b7e79af98b5
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -80,6 +96,12 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+<<<<<<< HEAD
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2ZF5wNYq9aNEdoWwnm1dVfZxooB" />
+=======
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -87,10 +109,31 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+>>>>>>> 436d0b0bf1c8e146ef8a8c1a40f09b7e79af98b5
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Gia Kiet/Desktop/C0823G1-Repo-BE/web_source&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.82" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.82" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="hot-swap-classes" />
+=======
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -114,15 +157,21 @@
   <component name="RunManager">
     <configuration name="Tomcat 9.0.83" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.83" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
+>>>>>>> 436d0b0bf1c8e146ef8a8c1a40f09b7e79af98b5
       <deployment>
-        <artifact name="Gradle : com.example : case_study-1.0-SNAPSHOT.war">
+        <artifact name="Gradle : com.example : Project-1.0-SNAPSHOT.war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Gradle___com_example___Project_1_0_SNAPSHOT_war" />
+          </settings>
+        </artifact>
+        <artifact name="Gradle : com.example : Project-1.0-SNAPSHOT.war (exploded)">
           <settings>
             <option name="CONTEXT_PATH" value="" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="db119a7e-69e4-4f82-bd5b-ff2ed22bc9d8" />
+        <option name="BASE_DIRECTORY_NAME" value="049f9ac8-d7cd-4db1-a67f-e07dbbb1a2a7" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -130,7 +179,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="63514" />
+        <option name="DEBUG_PORT" value="53768" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -195,7 +244,8 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="Gradle : com.example : case_study-1.0-SNAPSHOT.war" />
+          <artifact name="Gradle : com.example : Project-1.0-SNAPSHOT.war" />
+          <artifact name="Gradle : com.example : Project-1.0-SNAPSHOT.war (exploded)" />
         </option>
       </method>
     </configuration>
@@ -203,10 +253,23 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9f5b535b-5f76-4cd6-a113-6d6696a9acae" name="Changes" comment="" />
-      <created>1701849709504</created>
+      <changelist id="5c7074be-e8a0-4fdb-8492-7f723bfbd8c5" name="Changes" comment="" />
+      <created>1702005231307</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
+      <updated>1702005231307</updated>
+      <workItem from="1702005232542" duration="264000" />
+      <workItem from="1702005615745" duration="145000" />
+      <workItem from="1702005945744" duration="1328000" />
+      <workItem from="1702007549650" duration="884000" />
+      <workItem from="1702008646798" duration="19000" />
+      <workItem from="1702009024988" duration="21000" />
+      <workItem from="1702010084531" duration="500000" />
+      <workItem from="1702010691816" duration="513000" />
+      <workItem from="1702017152637" duration="1497000" />
+    </task>
+=======
       <updated>1701849709504</updated>
       <workItem from="1701849710461" duration="3206000" />
       <workItem from="1701923839677" duration="11221000" />
@@ -223,6 +286,7 @@
       <updated>1702003750941</updated>
     </task>
     <option name="localTasksCounter" value="2" />
+>>>>>>> 436d0b0bf1c8e146ef8a8c1a40f09b7e79af98b5
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,6 +333,8 @@
       </map>
     </option>
   </component>
+<<<<<<< HEAD
+=======
   <component name="VcsManagerConfiguration">
     <MESSAGE value="+ getAll" />
     <option name="LAST_COMMIT_MESSAGE" value="+ getAll" />
@@ -284,4 +350,5 @@
       </breakpoints>
     </breakpoint-manager>
   </component>
+>>>>>>> 436d0b0bf1c8e146ef8a8c1a40f09b7e79af98b5
 </project>
