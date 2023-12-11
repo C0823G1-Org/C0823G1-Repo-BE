@@ -9,7 +9,9 @@ import java.util.List;
 public interface IGameService {
     List<GameDTO> getAll();
     public int count (String txtSearch);
+    public int countCatelogy(String txtSearch);
     List<GameDTO> search(String txtSearch, int index, int size);
+     List<GameDTO> searchCatelogy (String txtSearch, int index);
     boolean createAccount(UserAccount userAccount);
     UserDto getUserInfo(UserAccount userAccount);
     void addToCart(int userId, int gameId);

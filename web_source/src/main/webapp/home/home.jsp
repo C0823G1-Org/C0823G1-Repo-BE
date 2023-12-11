@@ -7,13 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/home.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/home/home.css">
+<%--    <link rel="stylesheet" href="home/home.css">--%>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
           integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
@@ -35,23 +37,31 @@
         </div>
         <div class="inner book__menu-main">
             <div class="container__menu">
-                <div class="container__menu">
-                    <ul class="container__list">
-                        <li class="container__list-menu"><a href="">Your Store</a></li>
-                        <li class="container__list-menu"><a href="">New & Noteworthy</a></li>
-                        <li class="container__list-menu"><a href="">Categories</a></li>
-                        <li class="container__list-menu"><a href="">Points Shop</a></li>
-                        <li class="container__list-menu"><a href="">News</a></li>
-                        <li class="container__list-menu"><a href="">Labs</a></li>
-                    </ul>
-                    <div class="container__search">
-                        <form class="search__form" action="/game-servlet?index=1" method="post">
-                            <input placeholder="  search" class="search-input" type="text" name="txtSearch">
-                            <button type="submit" class="btn__btn-sumit" name="action" value="search">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </button>
-                        </form>
-                    </div>
+                <ul class="container__list">
+                    <li class="container__list-menu"><a href="">Your Store</a></li>
+                    <li class="container__list-menu header__navbar-user"><a href="">New & Noteworthy</a></li>
+                    <li class="container__list-menu">
+                        <a href="">Categories</a>
+                        <ul class="tag__game">
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=Action&index=1">Action</a></li>
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=Role-Playing&index=1">Role-Playing</a></li>
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=JRPG&index=1">JRPG</a></li>
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=Hack&index=1">Hack & Slash</a></li>
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=Arcade&index=1">Arcade & Rhythm</a></li>
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=Casual&index=1">Casual</a></li>
+                        </ul>
+                    </li>
+                    <li class="container__list-menu"><a href="">Points Shop</a></li>
+                    <li class="container__list-menu"><a href="">News</a></li>
+                    <li class="container__list-menu"><a href="">Labs</a></li>
+                </ul>
+                <div class="container__search">
+                    <form class="search__form" action="game-servlet?index=1" method="post">
+                        <input placeholder="  search" class="search-input" type="text" name="txtSearch">
+                        <button type="submit" class="btn__btn-sumit" name="action" value="search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -93,16 +103,16 @@
                     <div class="price__products">
                         <div class="discount">${game.percentDiscount}</div>
                         <div class="price__products-container">
-                            <div class="discount__price">${game.price}</div>
+                            <div class="discount__price">${game.price}$</div>
                             <c:choose>
                                 <c:when test="${game.percentDiscount == '50%'}">
-                                    <div class="discount__price-final">${game.price*0.5}</div>
+                                    <div class="discount__price-final"><fmt:formatNumber type="number" maxFractionDigits="2" value="${game.price * 0.5}" />$</div>
                                 </c:when>
                                 <c:when test="${game.percentDiscount == '30%'}">
-                                    <div class="discount__price-final">${game.price*0.3}</div>
+                                    <div class="discount__price-final"><fmt:formatNumber type="number" maxFractionDigits="2" value="${game.price * 0.3}" />$</div>
                                 </c:when>
                                 <c:when test="${game.percentDiscount == '40%'}">
-                                    <div class="discount__price-final">${game.price*0.4}</div>
+                                    <div class="discount__price-final"><fmt:formatNumber type="number" maxFractionDigits="2" value="${game.price * 0.4}" />$</div>
                                 </c:when>
                             </c:choose>
                         </div>
@@ -229,7 +239,6 @@
                     </div>
                 </div>
             </a>
-
             <!-- product 2 -->
             <a href="http://localhost:8080/detail_game/detail_game.jsp">
                 <div class="list__products-sales-large">

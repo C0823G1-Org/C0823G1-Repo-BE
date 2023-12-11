@@ -168,6 +168,7 @@ p {
     font-weight: bold;
     padding: 0 5px 0 5px;
     display: inline-block;
+    position: relative;
 }
 
 .container__list .container__list-menu a {
@@ -776,4 +777,35 @@ width: 100%;
     margin: 0 0 10px;
     letter-spacing: 0.03em;
     font-weight: normal;
+}
+/*Catelogy*/
+.tag__game {
+    position: absolute;
+    background-color: #555B65;
+    animation: fadeIn ease-in 1s;
+    z-index: 1;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    width: 160px;
+    border-radius: 2px;
+    display: none;
+    left: 0;
+    padding: 0;
+}
+
+.tag__game-list:hover {
+    background-color: #6995c2;
+}
+
+.tag__game .tag__game-list a {
+    font-size: 13px;
+    line-height: 34px;
+    color: #e5e5e5;
+    font-weight: 500;
+    display: block;
+    padding: 2px 10px 2px 15px;
+    font-family: "Motiva Sans", Sans-serif;
+}
+
+.container__list-menu:hover .tag__game {
+    display: block;
 }

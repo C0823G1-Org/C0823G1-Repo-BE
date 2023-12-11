@@ -1,4 +1,4 @@
-            :root {
+:root {
     --text-color: #fff;
     --main-color: #171D25;
     --new-text: #b8b6b4;
@@ -67,17 +67,17 @@ p {
     width: 250px;
 }
 
-.container__header-login::before {
-    height: 10px;
-    position: absolute;
-    display: block;
-    content: "";
-    width: 1px;
-    border: solid 1px #b8b6b4;
-    transform: translateX(150px);
-    top: 5px;
-    background-color: #fff;
-}
+/*.container__header-login::before {*/
+/*    height: 10px;*/
+/*    position: absolute;*/
+/*    display: block;*/
+/*    content: "";*/
+/*    width: 1px;*/
+/*    border: solid 1px #b8b6b4;*/
+/*    transform: translateX(150px);*/
+/*    top: 5px;*/
+/*    background-color: #fff;*/
+/*}*/
 
 .container__header-select-link {
     color: var(--text-color);
@@ -165,6 +165,7 @@ p {
     font-weight: bold;
     padding: 0 5px 0 5px;
     display: inline-block;
+    position: relative;
 }
 
 .container__list .container__list-menu a {
@@ -456,6 +457,7 @@ p {
 .container__header-part {
     margin-top: 50px;
 }
+
 .container__header-part h2 {
     margin: 0 15px;
     color: var(--text-color);
@@ -476,6 +478,7 @@ p {
     margin-left: 15px;
     cursor: pointer;
 }
+
 .list__products-sales-large {
     margin-top: 100px;
     position: relative;
@@ -494,6 +497,7 @@ p {
     transition: top 0.6s, opacity 0.5s;
     background: linear-gradient(315deg, #213c55 5%, #016968 95%);
 }
+
 .list__products-hover-large {
     position: absolute;
     top: 0;
@@ -538,7 +542,50 @@ p {
 .list__products-sales:hover .list__products-hover-min {
     opacity: 1;
 }
+
 .list__products-sales-large:hover .list__products-hover-large {
     opacity: 1;
 }
 
+/*Catelogy*/
+.tag__game {
+    position: absolute;
+    background-color: #555B65;
+    animation: fadeIn ease-in 1s;
+    z-index: 1;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    width: 160px;
+    border-radius: 2px;
+    display: none;
+    left: 0;
+    padding: 0;
+}
+
+.tag__game-list:hover {
+    background-color: #6995c2;
+}
+
+.tag__game .tag__game-list a {
+    font-size: 13px;
+    line-height: 34px;
+    color: #e5e5e5;
+    font-weight: 500;
+    display: block;
+    padding: 2px 10px 2px 15px;
+    font-family: "Motiva Sans", Sans-serif;
+}
+
+.container__list-menu:hover .tag__game {
+    display: block;
+}
+
+/*Logout*/
+.logout {
+    margin: 5px;
+    color: #b8b6b4;
+    font-weight: 150;
+    font-size: 11px;
+    font-family: "Motiva Sans", Sans-serif;
+    padding-left: 5px;
+    cursor: pointer;
+}

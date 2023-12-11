@@ -61,7 +61,9 @@
                            style="text-decoration: none">${sessionScope.userDto.email}</a>
                     </c:if>
                 </c:if>
-                <a href="/game-servlet?action=logout" style="text-decoration: none">Log out</a>
+                <div >
+                    <a class="logout" href="/game-servlet?action=logout">Logout</a>
+                </div>
             </c:if>
             <c:if test="${sessionScope.userDto == null}">
                 <a class="container__header-login-a" href="/game-servlet?action=login">login</a>

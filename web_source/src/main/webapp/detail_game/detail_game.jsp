@@ -14,7 +14,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Document</title>
-    <link rel="stylesheet" href="../css/web.css">
+<%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/web.css" type="text/css">--%>
+<%--    <link rel="stylesheet" href="../css/web.css">--%>
+    <link rel="stylesheet" href="/css/web.css">
     <link rel="stylesheet" href="./fonts/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
@@ -25,7 +27,6 @@
             integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-
 <body>
 <!-- Header -->
 <jsp:include page="../include/header.jsp"/>
@@ -37,7 +38,17 @@
                 <ul class="container__list">
                     <li class="container__list-menu"><a href="">Your Store</a></li>
                     <li class="container__list-menu"><a href="">New & Noteworthy</a></li>
-                    <li class="container__list-menu"><a href="">Categories</a></li>
+                    <li class="container__list-menu">
+                        <a href="">Categories</a>
+                        <ul class="tag__game">
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=Action&index=1">Action</a></li>
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=Role-Playing&index=1">Role-Playing</a></li>
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=JRPG&index=1">JRPG</a></li>
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=Hack & Slash&index=1">Hack & Slash</a></li>
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=Arcade & Rhythm&index=1">Arcade & Rhythm</a></li>
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=Casual&index=1">Casual</a></li>
+                        </ul>
+                    </li>
                     <li class="container__list-menu"><a href="">Points Shop</a></li>
                     <li class="container__list-menu"><a href="">News</a></li>
                     <li class="container__list-menu"><a href="">Labs</a></li>

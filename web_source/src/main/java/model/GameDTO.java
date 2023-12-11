@@ -10,7 +10,14 @@ public class GameDTO {
     private String percentDiscount;
     private String rating;
 
-    public GameDTO(String name, double price, String url,String videoUrl , String percentDiscount, String rating) {
+    public GameDTO(String title, double price, String url, String tagGame) {
+        this.title = title;
+        this.price = price;
+        this.url = url;
+        this.tagGame = tagGame;
+    }
+
+    public GameDTO(String name, double price, String url, String videoUrl , String percentDiscount, String rating) {
         this.name = name;
         this.videoUrl = videoUrl;
         this.price = price;
@@ -117,7 +124,8 @@ public class GameDTO {
         return "GameDTO{" +
                 "title='" + title + '\'' +
                 ", price=" + price +
-                ", imageCoverUrl='" + imageCoverUrl + '\'' +
+                ", url='" + url + '\'' +
+                ", tagGame='" + tagGame + '\'' +
                 '}';
     }
 }

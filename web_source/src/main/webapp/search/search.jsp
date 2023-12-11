@@ -14,7 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Document</title>
-    <link rel="stylesheet" href="cart/cart.css">
+<%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">--%>
+    <link rel="stylesheet" href="../search/cart.css">
     <link rel="stylesheet" href="./fonts/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
@@ -25,9 +26,7 @@
             integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css"/>
-
 </head>
-
 <body>
 <!-- Header -->
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -41,7 +40,17 @@
                 <ul class="container__list">
                     <li class="container__list-menu"><a href="">Your Store</a></li>
                     <li class="container__list-menu"><a href="">New & Noteworthy</a></li>
-                    <li class="container__list-menu"><a href="">Categories</a></li>
+                    <li class="container__list-menu">
+                        <a href="">Categories</a>
+                        <ul class="tag__game">
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=Action&index=1">Action</a></li>
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=Role-Playing&index=1">Role-Playing</a></li>
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=JRPG&index=1">JRPG</a></li>
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=Hack&index=1">Hack & Slash</a></li>
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy='Arcade'&index=1">Arcade & Rhythm</a></li>
+                            <li class="tag__game-list"><a href="/game-servlet?action=searchCatelogy&catelogy=Casual&index=1">Casual</a></li>
+                        </ul>
+                    </li>
                     <li class="container__list-menu"><a href="">Points Shop</a></li>
                     <li class="container__list-menu"><a href="">News</a></li>
                     <li class="container__list-menu"><a href="">Labs</a></li>
@@ -75,7 +84,7 @@
             <div style="margin-bottom: 40px !important;" class="menu__cart-list">
                 <div class="container__cart">
                     <div class="container__cart-img">
-                        <img style="width: 200px;height:150px !important; " src="${game.url}" alt="">
+                        <img style="width: 200px;height:150px !important; "src="${game.url}" alt="">
                     </div>
                     <div class="container__cart-name">
                         <span class="name-detail">
@@ -85,20 +94,44 @@
                     </div>
                     <div class="cart-price">
                         <div style="color: #c7d5e0; font-size: 20px !important;" class="cart__price-final">
-                                ${game.price}
+                                ${game.price}$
                         </div>
-                        <a href="">Remove </a>
                     </div>
                 </div>
             </div>
         </c:forEach>
-    <div style="margin-top: 50px"><span style="color: #c7d5e0; font-size: 30px ; font-weight: bold">${Error}</span></div>
+        <c:forEach items="${listCatelogy}" var="catelogy">
+            <div style="margin-bottom: 40px !important;" class="menu__cart-list">
+                <div class="container__cart">
+                    <div class="container__cart-img">
+                        <img style="width: 200px;height:150px !important; "src="${catelogy.url}" alt="">
+                    </div>
+                    <div class="container__cart-name">
+                        <span class="name-detail">
+                                ${catelogy.title}
+                        </span>
+                        <span class="icon__window"></span>
+                    </div>
+                    <div class="cart-price">
+                        <div style="color: #c7d5e0; font-size: 20px !important;" class="cart__price-final">
+                                ${catelogy.price}$
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+        <c:if test="${count == 0}">
+            <div style="margin-top: 50px"><span style="color: #c7d5e0; font-size: 30px ; font-weight: bold">${Error}</span></div>
+        </c:if>
+        <c:if test="${countCatelogy == 0}">
+            <div style="margin-top: 50px"><span style="color: #c7d5e0; font-size: 30px ; font-weight: bold">${Error}</span></div>
+        </c:if>
     </div>
     <!-- Pay -->
     <div class="menu__cart">
         <div style="display: block !important;" class="btn__pay">
             <c:forEach begin="1" end="${endPage}" var="i">
-                <a href="#">${i}</a>
+                <a href="/game-servlet?action=search&index=${i}&txtSearch=${text}">${i}</a>
             </c:forEach>
         </div>
     </div>
