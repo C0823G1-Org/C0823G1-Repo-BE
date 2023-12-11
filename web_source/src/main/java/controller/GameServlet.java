@@ -46,19 +46,27 @@ public class GameServlet extends HttpServlet {
                 logIn(req, resp);
                 break;
             case "game":
+                break;
             case "user":
                 handleDecentralization(resp, session);
+                showListGame(req,resp);
                 break;
             default:
                 showList(req, resp);
         }
+    }
+    private void showListGame(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("game_manager/game_manager.jsp");
+        List<GameDTO> list = gameService.getAll();
+        req.setAttribute("list", list);
+        requestDispatcher.forward(req, resp);
     }
 
     private static void handleDecentralization(HttpServletResponse resp, HttpSession session) throws IOException {
         if (session.getAttribute("userDto") != null) {
             UserDto userDto = (UserDto) session.getAttribute("userDto");
             if (userDto.getRoleId() == 1) {
-                resp.sendRedirect("register/register.jsp");
+                resp.sendRedirect("game_manager/game_manager.jsp");
             } else {
                 resp.sendRedirect("home/home.jsp");
             }
