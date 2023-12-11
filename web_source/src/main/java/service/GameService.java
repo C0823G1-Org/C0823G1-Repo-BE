@@ -9,6 +9,7 @@ import repository.IGameRepository;
 import java.util.List;
 
 public class GameService implements IGameService {
+
     private final IGameRepository gameRepository = new GameRepository();
 
     @Override
@@ -21,9 +22,18 @@ public class GameService implements IGameService {
         return gameRepository.count(txtSearch);
     }
 
+    public int countCatelogy(String txtSearch) {
+        return gameRepository.countCatelogy(txtSearch);
+    }
+
     @Override
     public List<GameDTO> search(String txtSearch, int index, int size) {
         return gameRepository.search(txtSearch,index,size);
+    }
+
+    @Override
+    public List<GameDTO> searchCatelogy(String txtSearch, int index) {
+        return gameRepository.searchCatelogy(txtSearch,index);
     }
 
     @Override

@@ -58,6 +58,32 @@ public class GameServlet extends HttpServlet {
             case "show_cart":
                 showCart(req, resp);
                 break;
+            case "searchCatelogy":
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("search/search.jsp");
+                String txtCatelogy = req.getParameter("catelogy");
+                String indexString = req.getParameter("index");
+                int index = Integer.parseInt(indexString);
+                int count = gameService.countCatelogy(txtCatelogy);
+                int pageSize = 3;
+                int endPage = (count / pageSize);
+                List<GameDTO> list = gameService.searchCatelogy(txtCatelogy, index);
+//                try {
+                    if (count % pageSize != 0) {
+                        endPage++;
+                    }
+//                    else {
+//                        endPage = 0;
+//                        throw new ArithmeticException();
+//                    }
+//                } catch (ArithmeticException e) {
+//                    e.printStackTrace();
+//                    req.setAttribute("Error", "Nothing games !!!!");
+//                }
+                req.setAttribute("listCatelogy", list);
+                req.setAttribute("endPage", endPage);
+                req.setAttribute("countCatelogy", count);
+                requestDispatcher.forward(req, resp);
+                break;
             default:
                 showList(req, resp);
         }
@@ -216,18 +242,25 @@ public class GameServlet extends HttpServlet {
                 RequestDispatcher requestDispatcher = req.getRequestDispatcher("search/search.jsp");
                 int count = gameService.count(txtSearch);
                 int pageSize = 3;
-                int endPage = 0;
-                endPage = count / pageSize;
-                if (count % endPage != 0) {
-                    endPage++;
+                int endPage = (count / pageSize);
+                List<GameDTO> listSearch = null;
+                List<GameDTO> newList = null;
+                try {
+                    if (count % pageSize != 0) {
+                        endPage++;
+                        listSearch = gameService.search(txtSearch, index, pageSize);
+                    } else {
+                        endPage = 0;
+                        throw new ArithmeticException();
+                    }
+                } catch (ArithmeticException e) {
+                    e.printStackTrace();
+                    req.setAttribute("Error", "Nothing games !!!!");
                 }
-                List<GameDTO> listSearch = gameService.search(txtSearch, index, pageSize);
-                List<GameDTO> games = gameService.search("s", 1, 3);
-                for (GameDTO a : games) {
-                    System.out.println(a);
-                }
-                req.setAttribute("endPage", endPage);
                 req.setAttribute("list", listSearch);
+                req.setAttribute("endPage", endPage);
+                req.setAttribute("text", txtSearch);
+                req.setAttribute("count", count);
                 requestDispatcher.forward(req, resp);
                 break;
             case "sign_in":
