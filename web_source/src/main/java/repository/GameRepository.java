@@ -242,7 +242,6 @@ public class GameRepository implements IGameRepository {
             CallableStatement callableStatement = connection.prepareCall(GET_CART);
             callableStatement.setInt(1, userId);
             ResultSet resultSet = callableStatement.executeQuery();
-
             while (resultSet.next()) {
                 String title = resultSet.getString("game_title");
                 double price = resultSet.getDouble("price");
@@ -285,5 +284,10 @@ public class GameRepository implements IGameRepository {
     @Override
     public GameDTO getGameForCart(int gameId) {
         return null;
+    }
+
+    @Override
+    public boolean findDuplicate(String email) {
+        return false;
     }
 }

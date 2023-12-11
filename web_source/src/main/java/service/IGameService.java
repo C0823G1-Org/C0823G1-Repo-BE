@@ -22,4 +22,6 @@ public interface IGameService {
     boolean createUser(String email);
 
     GameDTO getGameForCart(int gameId);
+
+    boolean findDuplicate(String email);
 }

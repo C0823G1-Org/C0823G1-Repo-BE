@@ -24,4 +24,6 @@ public interface IGameRepository {
     boolean createUser(String email);
 
     GameDTO getGameForCart(int gameId);
+
+    boolean findDuplicate(String email);
 }
