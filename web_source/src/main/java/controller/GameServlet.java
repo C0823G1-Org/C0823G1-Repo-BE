@@ -302,7 +302,13 @@ public class GameServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         if (!RegistrationValidator.isValidEmail(email)) {
-            req.setAttribute("message", "Invalid email format");
+            req.setAttribute("message", "Invalid email format.Ex: abc@gmail.com");
+            req.setAttribute("userAccount", new UserAccount(email, password));
+            req.getRequestDispatcher("register/register.jsp").forward(req, resp);
+            return;
+        }
+        if (!RegistrationValidator.isValidPassword(password)) {
+            req.setAttribute("message", " Password is minimum eight characters, at least one letter and one number");
             req.setAttribute("userAccount", new UserAccount(email, password));
             req.getRequestDispatcher("register/register.jsp").forward(req, resp);
             return;
