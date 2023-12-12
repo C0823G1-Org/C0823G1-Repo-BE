@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "GameServlet", value = "/game-servlet")
@@ -298,6 +299,8 @@ public class GameServlet extends HttpServlet {
     }
 
     private void signUp(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        String date = req.getParameter("date");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         if (!RegistrationValidator.isValidEmail(email)) {
@@ -321,10 +324,10 @@ public class GameServlet extends HttpServlet {
             boolean isSuccess = gameService.createAccount(account);
             if (isSuccess) {
                 UserDto userDto = this.gameService.getUserInfo(account);
-                gameService.createUser(email);
+                gameService.createUser(email, date, name);
                 HttpSession httpSession = req.getSession();
                 httpSession.setAttribute("userDto", userDto);
-                req.setAttribute("Sucssesful",true);
+                req.setAttribute("Successful",true);
                 List<GameDTO> list = gameService.getAll();
                 req.setAttribute("newList", list);
                 req.getRequestDispatcher("home/home.jsp").forward(req, resp);

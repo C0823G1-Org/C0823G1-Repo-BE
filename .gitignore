@@ -18,3 +18,9 @@ web_source/build/classes/java/main/service/GameService.class
 web_source/build/classes/java/main/service/IGameService.class
 web_source/build/libs/case_study-1.0-SNAPSHOT.war
 web_source/build/tmp/compileJava/previous-compilation-data.bin
+
+.idea
+**/web_source/.gradle
+**/web_source/build
+**/web_source/.idea
+

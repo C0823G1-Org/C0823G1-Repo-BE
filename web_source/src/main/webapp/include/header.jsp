@@ -1,19 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <section class="navbar">
     <c:if test="${sessionScope.userDto != null}">
-        <c:if test="${sessionScope.userDto.username == null}">
-            <div style=" background-color: red;
-            color: black;
-    align-items: center;
-    text-align: center;
-    padding: 5px;
-    line-height: 15px;
-    font-size: 19px;
-    margin-bottom: 3px;">
-                <a href="#" class="container__header-login-a">Please update information</a>
-            </div>
-            <c:if test="${message != null}">
-                <div style="padding: 20px;
+        <c:if test="${message != null}">
+            <div style="padding: 20px;
     background-color: greenyellow;
     color: black;">
                     <span style="   margin-left: 15px;
@@ -25,9 +14,8 @@
     cursor: pointer;
     transition: 0.3s;"
                           onclick="this.parentElement.style.display='none';">&times;</span>
-                    <span>${message}</span>
-                </div>
-            </c:if>
+                <span>${message}</span>
+            </div>
         </c:if>
     </c:if>
     <div class="container__header inner">
@@ -55,8 +43,8 @@
                         <a class="container__header-login-a">${sessionScope.userDto.username}</a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-item"><a href="#">Action</a></li>
-                            <li class="dropdown-item"><a  href="/game-servlet?action=game">Game management</a></li>
-                            <li class="dropdown-item"><a  href="/game-servlet?action=user">User management</a></li>
+                            <li class="dropdown-item"><a href="/game-servlet?action=game">Game management</a></li>
+                            <li class="dropdown-item"><a href="/game-servlet?action=user">User management</a></li>
                         </ul>
                     </div>
                 </c:if>

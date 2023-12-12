@@ -63,8 +63,8 @@ public class GameService implements IGameService {
     }
 
     @Override
-    public boolean createUser(String email) {
-        return gameRepository.createUser(email);
+    public boolean createUser(String email, String date, String name) {
+        return gameRepository.createUser(email, date, name);
     }
 
     @Override
@@ -75,5 +75,10 @@ public class GameService implements IGameService {
     @Override
     public boolean findDuplicate(String email) {
         return gameRepositoryVi.findDuplicate(email);
+    }
+
+    @Override
+    public List<UserDto> showAllUsers() {
+        return gameRepositoryVi.showAllUsers();
     }
 }

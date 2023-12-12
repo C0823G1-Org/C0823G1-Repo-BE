@@ -19,9 +19,10 @@ public interface IGameService {
     List<GameDTO> getCartGames(int userId);
 
     void removeCartItem(int userId, int gameId);
-    boolean createUser(String email);
+    boolean createUser(String email, String date, String name);
 
     GameDTO getGameForCart(int gameId);
 
     boolean findDuplicate(String email);
+    List<UserDto> showAllUsers();
 }
