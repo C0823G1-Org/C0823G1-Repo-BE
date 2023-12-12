@@ -25,7 +25,6 @@
 
         GameDTO getGameForCart(int gameId);
 
-    GameDTO getGameForCart(int gameId);
 
     boolean findDuplicate(String email);
 }

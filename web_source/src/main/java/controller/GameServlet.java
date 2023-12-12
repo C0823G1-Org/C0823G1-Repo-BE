@@ -47,11 +47,7 @@ public class GameServlet extends HttpServlet {
             case "login":
                 logIn(req, resp);
                 break;
-            case "game":
-                break;
             case "user":
-                handleDecentralization(resp, session);
-                showListGame(req, resp);
                 break;
             case "check_if_game_in_cart":
                 checkIfGameInCart(req, resp);
@@ -85,6 +81,9 @@ public class GameServlet extends HttpServlet {
                 req.setAttribute("countCatelogy", count);
                 requestDispatcher.forward(req, resp);
                 break;
+            case "game":
+                handleDecentralization(req, resp, session);
+                break;
             default:
                 showList(req, resp);
         }
@@ -96,6 +95,7 @@ public class GameServlet extends HttpServlet {
         req.setAttribute("list", list);
         requestDispatcher.forward(req, resp);
     }
+
 
     private void showCart(HttpServletRequest req, HttpServletResponse resp) {
         UserDto user = (UserDto) req.getSession().getAttribute("userDto");
@@ -111,13 +111,12 @@ public class GameServlet extends HttpServlet {
         getUserCart(req, resp);
     }
 
-    private static void handleDecentralization(HttpServletResponse resp, HttpSession session) throws IOException {
+
+    private void handleDecentralization(HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws IOException, ServletException {
         if (session.getAttribute("userDto") != null) {
             UserDto userDto = (UserDto) session.getAttribute("userDto");
             if (userDto.getRoleId() == 1) {
-                resp.sendRedirect("game_manager/game_manager.jsp");
-            } else {
-                resp.sendRedirect("home/home.jsp");
+                showListGame(req, resp);
             }
         }
     }

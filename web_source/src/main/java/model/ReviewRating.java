@@ -19,6 +19,11 @@ public class ReviewRating {
         this.idTypeRating = idTypeRating;
     }
 
+    public ReviewRating(int id, int idTypeRating) {
+        this.id = id;
+        this.idTypeRating = idTypeRating;
+    }
+
     public int getId() {
         return id;
     }
