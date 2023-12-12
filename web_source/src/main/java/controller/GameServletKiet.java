@@ -71,9 +71,9 @@ public class GameServletKiet extends HttpServlet {
         int reviewRatingId = Integer.parseInt(req.getParameter("reviewRatingId"));
         String miniumSystemRequirement = req.getParameter("miniumSystemRequirement");
         String recommendSystemRequirement = req.getParameter("recommendSystemRequirement");
-
         GameAddDTO gameAddDTO = new GameAddDTO(id, title, price, description, ageRequirement, developerId, releaseDate, dlcId, reviewRatingId, miniumSystemRequirement, recommendSystemRequirement);
 //        gameAddDTO.set
+
         gameServiceKiet.insertGameAdminDTO(gameAddDTO);
     }
 }
