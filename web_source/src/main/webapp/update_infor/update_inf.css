@@ -2,6 +2,7 @@
     --text-color: #fff;
     --main-color: #171D25;
     --new-text: #b8b6b4;
+
 }
 
 h1 {
@@ -72,7 +73,6 @@ p {
     width: 250px;
 }
 
-
 .container__header-select-link {
     color: var(--text-color);
 }
@@ -115,8 +115,8 @@ p {
 
 .page_background_holder {
     display: flex;
-    width: 100%;
-    height: 35vh;
+    width: 100vw;
+    height: 100vh;
 }
 
 .page_background_holder::before {
@@ -156,11 +156,10 @@ p {
 }
 
 .container__list-menu {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: bold;
     padding: 0 5px 0 5px;
     display: inline-block;
-    position: relative;
 }
 
 .container__list .container__list-menu a {
@@ -202,114 +201,158 @@ p {
     color: #fff;
 }
 
-/* CArt */
-.menu__products-cart {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-
+.menu__products {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1% 2%;
+    width: auto;
 }
 
-.container__products-cart {
+.item_products {
+    width: 375px;
     position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.list_products {
+    display: flex;
+    width: 100%;
+}
+
+.item_products img {
     display: block;
-    justify-content: center;
-    width: 943px;
-    margin-bottom: 60px;
+    width: 377px;
+    height: 450px;
 }
 
-.menu__cart {
-    width: 100%;
+.price__products-container {
+    position: relative;
+    background-color: #344654;
+    padding: 0 5px;
+    z-index: 99;
+}
+
+.price__products {
+    height: 32px;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    position: absolute;
+    top: 84%;
+    transform: translateX(105%);
+    border: 2px solid black;
+    border-radius: 2px;
+    left: -20px;
+    text-align: right;
 }
 
-.menu__cart-list {
-    width: 850px;
-    margin-bottom: 10px;
 
+/* Login */
+.login__inner {
+    width: 444px;
+    height: 370px;
+    background: #181A21;
 }
 
-.header-cart {
-    background: transparent;
+.background__login {
     width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.header-cart h1 {
-    color: #ffffff;
-    font-size: 30px;
-    font-family: "Motiva Sans", Sans-serif;
-    font-weight: 300;
-    text-shadow: #ccc 1px 0 10px;
-}
-
-.container__cart {
-    display: flex;
-    background-color: #171D25;
-    padding: 10px;
-}
-
-.products__cart-list {
-    width: 100%;
-}
-
-.icon__window {
-    background-image: url(https://store.akamai.steamstatic.com/public/images/v6/icon_platform_win.png?v=3);
-    display: inline-block;
-    width: 20px;
-    height: 20px;
+    position: relative;
+    background: url(https://store.akamai.steamstatic.com/public/shared/images/joinsteam/new_login_bg_strong_mask.jpg);
     background-repeat: no-repeat;
-}
-
-.container__cart-img img {
-    width: 250px;
-    height: 100px;
-}
-
-.name-detail {
-    color: #c7d5e0;
-    line-height: 16px;
-    font-size: 18px;
-    font-weight: no;
-}
-
-.container__cart-name {
     display: flex;
-    margin-top: 16px;
-    margin-left: 20px;
-    width: 450px;
+    justify-content: center;
+    height: 800px;
+}
+
+.login__inner-container {
+    display: flex;
+    padding: 35px;
     justify-content: space-between;
 }
 
-.cart-price {
-    padding: 20px;
-    margin-left: 26px;
+.container__login {
+    margin-top: 100px;
+    width: 700px;
+    position: absolute;
+    left: 450px;
+}
+
+.tag__login h1 {
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 800;
+    font-family: "Motiva Sans", Sans-serif;
+}
+
+.contain__right {
+    width: 100%;
+    padding: 0 10px 10px 10px;
+
+}
+
+.left__login {
+    width: 350px;
+    display: block;
+}
+
+.right__login {
+    width: 250px;
+}
+
+.right__login-qr {
+    width: 100%;
+    text-align: center;
+}
+
+.right__login-qr img {
+    width: 200px;
+    height: 200px;
+
+}
+
+.login__input-account {
+    border-radius: 2px;
+    color: #fff;
+    padding: 10px;
+    background-color: #32353c;
+    outline: none;
+    font-size: 15px;
+    grid-area: input;
+    border: 1px solid #32353c;
+    min-width: 100%;
+}
+
+.left__login-sign {
     margin-top: 20px;
-}
-
-.cart__price-final {
-    color: #c7d5e0;
-    font-size: 13px;
-}
-
-.cart-price a {
-    color: #56707f;
-    text-decoration: underline;
-    font-size: 11px;
+    font-size: 12px;
+    color: #afafaf;
+    font-family: "Motiva Sans", Sans-serif;
+    margin-bottom: 4px;
 
 }
-.btn__pay {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
+
+.left__login-sign-header {
+    color: #1999ff;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: "Motiva Sans", Sans-serif;
+    margin-bottom: 8px;
 }
-.btn__pay button {
+
+.right__login-code {
+    color: #1999ff;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: "Motiva Sans", Sans-serif;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.btn__sign button {
     position: relative;
-    background: linear-gradient(90deg, #06ff7a 0%, #2dff65 100%);
+    background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
     border-radius: 2px;
     border: none;
     outline: none;
@@ -323,15 +366,48 @@ p {
     width: 270px;
 }
 
-.btn__pay  :hover {
-    background-color: #8faa53;
+.btn__sign {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
 }
-.incon__cart {
-    width: 30px;
-    height: 30px;
-    color: #fff;
+.btn__sign-create {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
 }
 
+.btn__sign-create button {
+    position: relative;
+    background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    padding: 8px 12px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: inherit;
+    text-align: center;
+    cursor: pointer;
+    width: 270px;
+}
+.link__help {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    color: #AFAFAF;
+
+}
+.link__help a {
+    text-decoration: underline;
+    font-size: 12px;
+    color: #AFAFAF;
+    padding-left: 4px;
+}
 
 /* End */
 .end__container {
@@ -386,92 +462,9 @@ p {
     padding: 0 10px;
     font-size: 12px;
 }
-
-.help__link {
+.help__link{
     text-align: center;
     font-size: 12px;
     color: #afafaf;
     margin: 4px 22px 0 22px;
-}
-/*Catelogy*/
-.tag__game {
-    position: absolute;
-    background-color: #555B65;
-    animation: fadeIn ease-in 1s;
-    z-index: 1;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-    width: 160px;
-    border-radius: 2px;
-    display: none;
-    left: 0;
-    padding: 0;
-}
-
-.tag__game-list:hover {
-    background-color: #6995c2;
-}
-
-.tag__game .tag__game-list a {
-    font-size: 13px;
-    line-height: 34px;
-    color: #e5e5e5;
-    font-weight: 500;
-    display: block;
-    padding: 2px 10px 2px 15px;
-    font-family: "Motiva Sans", Sans-serif;
-}
-
-.container__list-menu:hover .tag__game {
-    display: block;
-}
-/*Dropdown*/
-.dropdown {
-    position: relative;
-}
-.dropdown-menu {
-    position: absolute;
-    background-color: #555B65;
-    animation: fadeIn ease-in 1s;
-    z-index: 1;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
-    width: 160px;
-    border-radius: 2px;
-    display: none;
-    left: 0;
-    padding: 0;
-    margin: 5px;
-}
-.dropdown:hover{
-    color: red;
-}
-.dropdown-item:hover {
-    background-color: #6995c2;
-}
-.dropdown .dropdown-item a {
-    font-size: 13px;
-    line-height: 34px;
-    color: #e5e5e5;
-    font-weight: 500;
-    display: block;
-    padding: 2px 10px 2px 15px;
-    font-family: "Motiva Sans", Sans-serif;
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-.icon__game {
-    transform: translate(-5px, -9px);
-    font-size: 25px;
-}
-/*Logout*/
-.logout {
-    margin: 5px;
-    color: #b8b6b4;
-    font-weight: 150;
-    font-size: 11px;
-    font-family: "Motiva Sans", Sans-serif;
-    padding-left: 5px;
-    cursor: pointer;
 }

@@ -73,18 +73,6 @@ p {
     width: 250px;
 }
 
-.container__header-login::before {
-    height: 10px;
-    position: absolute;
-    display: block;
-    content: "";
-    width: 1px;
-    border: solid 1px #b8b6b4;
-    transform: translateX(150px);
-    top: 5px;
-    background-color: #fff;
-}
-
 .container__header-select-link {
     color: var(--text-color);
 }
