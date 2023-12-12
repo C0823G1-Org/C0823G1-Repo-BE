@@ -48,14 +48,6 @@
                             </div>
                             <input type="text" class="login__input-account" name="email">
                             <div class="left__login-sign">
-                                Name
-                            </div>
-                            <input type="text" class="login__input-account" name="name">
-                            <div class="left__login-sign">
-                                Date
-                            </div>
-                            <input type="date" class="login__input-account" name="date">
-                            <div class="left__login-sign">
                                 Password
                             </div>
                             <input type="password" class="login__input-account" name="password">

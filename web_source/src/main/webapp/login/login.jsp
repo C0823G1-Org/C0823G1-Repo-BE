@@ -15,8 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
-    <link rel="stylesheet" href="./fonts/fontawesome-free-6.4.0-web/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
           integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
@@ -28,35 +27,8 @@
 
 <body>
 <!-- Header -->
-<section class="navbar">
-    <div class="container__header inner">
-        <div class="container__header-home">
-            <a href=""> <img class="img__steam"
-                             src="https://store.cloudflare.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016"
-                             alt=""></a>
-        </div>
-        <div class="container__header-select">
-            <a href="" class="container__header-select-link">STORE</a>
-            <a href="" class="container__header-select-link">COMMUNITY</a>
-            <a href="" class="container__header-select-link">ABOUT</a>
-            <a href="" class="container__header-select-link">SUPPORT</a>
-        </div>
-        <div class="container__header-login">
-            <div class="container__header-login-install">
-                <button class="btn_installe">
-                    <i class="fa-solid fa-download"></i>
-                    <span>Install Steam</span>
-                </button>
-            </div>
-            <a class="container__header-login-a" href="">login</a>
-            <span class="container__header-login-p">language
-                    <i class="fa-solid fa-chevron-down"></i>
-                </span>
-        </div>
-    </div>
-</section>
-<section class="fixHeight">
-</section>
+<jsp:include page="../include/header.jsp"/>
+<%--Body--%>
 <section class="container__body-main" style="height: 700px;">
     <div class="background__login">
         <div class="container__login">
@@ -117,9 +89,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </section>
 <div class="end__container">
     <div class="container__content">

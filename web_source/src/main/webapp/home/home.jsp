@@ -14,8 +14,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/home/home.css">--%>
-    <link rel="stylesheet" href="../css/steam.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
+<%--    <link rel="stylesheet" href="../home/home.css">--%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
           integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
@@ -24,13 +25,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
             integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
-<%--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"--%>
-<%--          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">--%>
 </head>
 <body>
 <jsp:include page="../include/header.jsp"/>
 <!-- Body -->
+<c:if test="${Sucssesful == true}">
+<div class="boxes animate__backInDown animate__animated">
+    <div class="toast__icon">
+        <i class="fa-solid fa-check"></i>
+    </div>
+    <div class="toast__body">
+        <h3 class="toast__tittle">Thành Công</h3>
+        <p class="toast__msg">Chúc bạn đăng kí thành công</p>
+    </div>
+</div>
+</c:if>
 <section class="content">
     <div class="container_body">
         <div class="page_background_holder">
@@ -71,6 +80,55 @@
     <div class="menu__products">
         <div class="list_products">
             <!-- Product 1 -->
+            <c:if test="${Sucssesful == true}">
+                <c:forEach items="${newList}" var="game">
+                    <div class="item_products">
+                        <img src="${game.url}"
+                             alt="">
+                        <div class="data__product-hover">
+                            <div class="data__product-video">
+                                <video loop="loop" muted autoplay>
+                                    <source
+                                            src="${game.videoUrl}"
+                                            type="video/webm">
+                                </video>
+                            </div>
+                            <div class="data__product-description">
+                                <div class="description-products">
+                                    <h3>${game.name}</h3>
+                                    <p>Overwhelmingly ${game.rating}</p>
+                                    <ul class="data__product-review">
+                                        <li><a href="">Action</a></li>
+                                        <li><a href="">Horror</a></li>
+                                        <li><a href="">Survival Horror</a></li>
+                                        <li><a href="">Third-Person Shooter</a></li>
+                                        <li><a href="">Zombies</a></li>
+                                    </ul>
+                                    <button><span><a class="new-a" href="/detail_game/detail_game.jsp">Add to Cart</a></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="price__products">
+                            <div class="discount">${game.percentDiscount}</div>
+                            <div class="price__products-container">
+                                <div class="discount__price">${game.price}$</div>
+                                <c:choose>
+                                    <c:when test="${game.percentDiscount == '50%'}">
+                                        <div class="discount__price-final"><fmt:formatNumber type="number" maxFractionDigits="2" value="${game.price * 0.5}" />$</div>
+                                    </c:when>
+                                    <c:when test="${game.percentDiscount == '30%'}">
+                                        <div class="discount__price-final"><fmt:formatNumber type="number" maxFractionDigits="2" value="${game.price * 0.3}" />$</div>
+                                    </c:when>
+                                    <c:when test="${game.percentDiscount == '40%'}">
+                                        <div class="discount__price-final"><fmt:formatNumber type="number" maxFractionDigits="2" value="${game.price * 0.4}" />$</div>
+                                    </c:when>
+                                </c:choose>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </c:if>
             <c:forEach items="${list}" var="game">
                 <div class="item_products">
                     <img src="${game.url}"
@@ -99,7 +157,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="price__products">
                         <div class="discount">${game.percentDiscount}</div>
                         <div class="price__products-container">

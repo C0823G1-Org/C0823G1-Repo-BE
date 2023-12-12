@@ -72,18 +72,6 @@ p {
     width: 250px;
 }
 
-.container__header-login::before {
-    height: 10px;
-    position: absolute;
-    display: block;
-    content: "";
-    width: 1px;
-    border: solid 1px #b8b6b4;
-    transform: translateX(150px);
-    top: 5px;
-    background-color: #fff;
-}
-
 .container__header-select-link {
     color: var(--text-color);
 }
@@ -245,7 +233,6 @@ p {
 .header-cart {
     background: transparent;
     width: 100%;
-    box-shadow: 0 2px 100px rgb(169, 169, 226);
     display: flex;
     justify-content: center;
 }
@@ -255,8 +242,7 @@ p {
     font-size: 30px;
     font-family: "Motiva Sans", Sans-serif;
     font-weight: 300;
-    text-shadow: 0px 1px 100px rgba(225, 62, 62, 0.4);
-    box-shadow: 0 2px 100px rgb(169, 169, 226);
+    text-shadow: #ccc 1px 0 10px;
 }
 
 .container__cart {
@@ -436,4 +422,55 @@ p {
 
 .container__list-menu:hover .tag__game {
     display: block;
+}
+/*Dropdown*/
+.dropdown {
+    position: relative;
+}
+.dropdown-menu {
+    position: absolute;
+    background-color: #555B65;
+    animation: fadeIn ease-in 1s;
+    z-index: 1;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    width: 160px;
+    border-radius: 2px;
+    display: none;
+    left: 0;
+    padding: 0;
+    margin: 5px;
+}
+.dropdown:hover{
+    color: red;
+}
+.dropdown-item:hover {
+    background-color: #6995c2;
+}
+.dropdown .dropdown-item a {
+    font-size: 13px;
+    line-height: 34px;
+    color: #e5e5e5;
+    font-weight: 500;
+    display: block;
+    padding: 2px 10px 2px 15px;
+    font-family: "Motiva Sans", Sans-serif;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.icon__game {
+    transform: translate(-5px, -9px);
+    font-size: 25px;
+}
+/*Logout*/
+.logout {
+    margin: 5px;
+    color: #b8b6b4;
+    font-weight: 150;
+    font-size: 11px;
+    font-family: "Motiva Sans", Sans-serif;
+    padding-left: 5px;
+    cursor: pointer;
 }

@@ -293,7 +293,6 @@ public class GameServlet extends HttpServlet {
         } else {
             HttpSession httpSession = req.getSession();
             httpSession.setAttribute("userDto", userDto);
-            httpSession.setAttribute("message", "Logged in successfully");
             resp.sendRedirect("/game-servlet");
         }
     }
@@ -325,6 +324,9 @@ public class GameServlet extends HttpServlet {
                 gameService.createUser(email);
                 HttpSession httpSession = req.getSession();
                 httpSession.setAttribute("userDto", userDto);
+                req.setAttribute("Sucssesful",true);
+                List<GameDTO> list = gameService.getAll();
+                req.setAttribute("newList", list);
                 req.getRequestDispatcher("home/home.jsp").forward(req, resp);
             }
         }

@@ -12,11 +12,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Document</title>
 <%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cart.css">--%>
     <link rel="stylesheet" href="../search/cart.css">
-    <link rel="stylesheet" href="./fonts/fontawesome-free-6.4.0-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
           integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
@@ -71,7 +70,10 @@
     <div class="menu__products-cart">
         <div class="container__products-cart">
             <div class="header-cart">
-                <h1>Search Game</h1>
+                <h1>
+                    Search Game
+                <span><i class="fa-solid fa-gamepad icon__game"></i></span>
+                </h1>
             </div>
             <div class="products__cart-list">
 
@@ -87,8 +89,8 @@
                         <img style="width: 200px;height:150px !important; "src="${game.url}" alt="">
                     </div>
                     <div class="container__cart-name">
-                        <span class="name-detail">
-                                ${game.name}
+                        <span>
+                             <a  class="name-detail" href=""> ${game.title}</a>
                         </span>
                         <span class="icon__window"></span>
                     </div>
@@ -107,8 +109,8 @@
                         <img style="width: 200px;height:150px !important; "src="${catelogy.url}" alt="">
                     </div>
                     <div class="container__cart-name">
-                        <span class="name-detail">
-                                ${catelogy.title}
+                        <span class="icon__game">
+                            <a  class="name-detail" href=""> ${catelogy.title}</a>
                         </span>
                         <span class="icon__window"></span>
                     </div>
@@ -131,7 +133,12 @@
     <div class="menu__cart">
         <div style="display: block !important;" class="btn__pay">
             <c:forEach begin="1" end="${endPage}" var="i">
-                <a href="/game-servlet?action=search&index=${i}&txtSearch=${text}">${i}</a>
+                <form style="margin-right: 5px" action="/game-servlet" method="post">
+                    <input type="hidden" name="action" value="search">
+                    <input type="hidden" name="index" value="${i}">
+                    <input type="hidden" name="txtSearch" value="${text}">
+                    <button type="submit">${i}</button>
+                </form>
             </c:forEach>
         </div>
     </div>
