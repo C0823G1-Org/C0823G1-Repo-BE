@@ -80,9 +80,6 @@
             <c:if test="${sessionScope.userDto == null}">
                 <a class="container__header-login-a" href="/game-servlet?action=login">login</a>
             </c:if>
-            <span class="container__header-login-p">language
-                <i class="fa-solid fa-chevron-down"></i>
-            </span>
         </div>
     </div>
 </section>

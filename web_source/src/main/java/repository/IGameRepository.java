@@ -1,29 +1,33 @@
-    package repository;
+package repository;
 
-    import model.UserDto;
-    import model.GameDTO;
-    import model.UserAccount;
+import model.UserDto;
+import model.GameDTO;
+import model.UserAccount;
 
-    import java.util.List;
+import java.util.List;
 
-    public interface IGameRepository {
-        List<GameDTO> getAll();
-        public int count (String txtSearch);
-        public  int countCatelogy(String txtSearch);
-        List<GameDTO> search(String txtSearch, int index, int size);
-        List<GameDTO> searchCatelogy (String txtSearch, int index);
-        boolean createAccount(UserAccount userAccount);
-        UserDto getUserInfo(UserAccount userAccount);
+public interface IGameRepository {
+    List<GameDTO> getAll();
 
-        void addToCart(int userId, int gameId);
+    public int count(String txtSearch);
 
-        List<GameDTO> getCartGames(int userId);
+    public int countCatelogy(String txtSearch);
 
-        void removeCartItem(int userId, int gameId);
+    List<GameDTO> search(String txtSearch, int index, int size);
 
-        boolean createUser(String email);
+    List<GameDTO> searchCatelogy(String txtSearch, int index);
 
-        GameDTO getGameForCart(int gameId);
+    boolean createAccount(UserAccount userAccount);
+
+    UserDto getUserInfo(UserAccount userAccount);
+
+    void addToCart(int userId, int gameId);
+
+    List<GameDTO> getCartGames(int userId);
+
+    void removeCartItem(int userId, int gameId);
+
+    boolean createUser(String email);
 
     GameDTO getGameForCart(int gameId);
 
