@@ -22,6 +22,12 @@ public class UserDto {
         this.userId = userId;
     }
 
+    public UserDto(String email, String birthday, String username) {
+        this.email = email;
+        this.birthday = birthday;
+        this.username = username;
+    }
+
     public UserDto(String email, String roleName, Integer roleId, String birthday, String username) {
         this.email = email;
         this.roleName = roleName;

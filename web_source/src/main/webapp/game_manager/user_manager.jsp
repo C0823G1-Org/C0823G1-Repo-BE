@@ -50,44 +50,27 @@
                     </button>
                 </div>
                 <a class="container__header-login-a" href="">login</a>
-                <span class="container__header-login-p">language
-                    <i class="fa-solid fa-chevron-down"></i>
-                </span>
             </div>
         </div>
     </section>
     <section class="fixHeight">
     </section>
     <section class="container__body-main" style="height: 1400px;">
-    <!-- Thao tác trong này -->
-        <h2>
-            <a href="/users?action=create">Add New Game</a>
-        </h2>
 
         <div align="center">
             <table border="1" cellpadding="5">
-                <caption><h2>List of Game</h2></caption>
+                <caption><h2>Users </h2></caption>
                 <tr>
                     <th>Name</th>
-                    <th>Price</th>
-                    <th>Url</th>
-<%--                    <th>UrlVideo</th>--%>
-                    <th>PercentDiscount</th>
-                    <th>Rating</th>
-                    <th>Action</th>
+                    <th>Birthday</th>
+                    <th>Email</th>
                 </tr>
-                <c:forEach var="game" items="${list}">
+                <c:forEach var="u" items="${user}" varStatus="loop">
                     <tr>
-                        <td><c:out value="${game.name}"/></td>
-                        <td><c:out value="${game.price}"/></td>
-                        <td><c:out value="${game.url}"/></td>
-<%--                        <td><c:out value="${game.urlVideo}"/></td>--%>
-                        <td><c:out value="${game.percentDiscount}"/></td>
-                        <td><c:out value="${game.rating}"/></td>
-<%--                        <td>--%>
-<%--                            <a href="/users?action=edit&id=${game.name}">Edit</a>--%>
-<%--                            <a href="/users?action=delete&id=${game.name}">Delete</a>--%>
-<%--                        </td>--%>
+                        <td><c:out value="${loop.count}"/></td>
+                        <td><c:out value="${u.name}"/></td>
+                        <td><c:out value="${u.birthday}"/></td>
+                        <td><c:out value="${u.email}"/></td>
                     </tr>
                 </c:forEach>
             </table>
