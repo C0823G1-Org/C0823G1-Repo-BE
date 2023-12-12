@@ -16,6 +16,7 @@ body {
 
 a {
     text-decoration: none;
+
 }
 
 p {
@@ -165,7 +166,6 @@ p {
     font-weight: bold;
     padding: 0 5px 0 5px;
     display: inline-block;
-    position: relative;
 }
 
 .container__list .container__list-menu a {
@@ -457,7 +457,6 @@ p {
 .container__header-part {
     margin-top: 50px;
 }
-
 .container__header-part h2 {
     margin: 0 15px;
     color: var(--text-color);
@@ -478,7 +477,6 @@ p {
     margin-left: 15px;
     cursor: pointer;
 }
-
 .list__products-sales-large {
     margin-top: 100px;
     position: relative;
@@ -497,7 +495,6 @@ p {
     transition: top 0.6s, opacity 0.5s;
     background: linear-gradient(315deg, #213c55 5%, #016968 95%);
 }
-
 .list__products-hover-large {
     position: absolute;
     top: 0;
@@ -542,7 +539,6 @@ p {
 .list__products-sales:hover .list__products-hover-min {
     opacity: 1;
 }
-
 .list__products-sales-large:hover .list__products-hover-large {
     opacity: 1;
 }
@@ -551,7 +547,7 @@ p {
 .tag__game {
     position: absolute;
     background-color: #555B65;
-    animation: fadeIn ease-in 1s;
+    animation: fadeIn ease-in 0.2s;
     z-index: 1;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
     width: 160px;
@@ -589,3 +585,5 @@ p {
     padding-left: 5px;
     cursor: pointer;
 }
+
+
