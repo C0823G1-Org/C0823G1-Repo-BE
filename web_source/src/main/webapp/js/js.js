@@ -1,11 +1,10 @@
 
-function fixHeigt(){
+(function fixHeigt(){
     divElement = document.querySelector(".navbar");
         elemHeight = divElement.offsetHeight;
-        document.querySelector(".fixHeight").style.height
-            = elemHeight + "px";
-}
-fixHeigt()
+        document.querySelector(".fixHeight1").style.height
+            = 0 + "px";
+})()
 
 $('.list_products').slick({
     dots: true,

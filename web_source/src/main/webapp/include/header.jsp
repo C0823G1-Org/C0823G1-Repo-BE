@@ -86,5 +86,4 @@
         </div>
     </div>
 </section>
-<section class="fixHeight">
-</section>
+<div class="fixHeight"></div>
