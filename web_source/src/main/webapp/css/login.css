@@ -250,7 +250,7 @@ p {
 /* Login */
 .login__inner {
     width: 700px;
-    height: 336px;
+    /*height: 336px;*/
     background: #181A21;
 }
 

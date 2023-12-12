@@ -37,7 +37,7 @@ public class GameRepository implements IGameRepository {
             "        left join role r on r.role_id = ua.role_role_id " +
             "         where ua.email = ? and ua.password = ?; ";
 
-    private static final String INSERT_USER = " insert into `user` set email = ?; ";
+    private static final String INSERT_USER = " insert into `user` (email, birthday, user_name) values (?, ?, ?); ";
     private static final String REMOVE_CART_ITEM = "call remove_cart_item(?,?);";
 
     @Override
@@ -268,12 +268,14 @@ public class GameRepository implements IGameRepository {
     }
 
     @Override
-    public boolean createUser(String email) {
+    public boolean createUser(String email, String date, String name) {
         boolean isSuccess = false;
         Connection connection = BaseGameRepository.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USER);
             preparedStatement.setString(1, email);
+            preparedStatement.setString(2, date);
+            preparedStatement.setString(3, name);
             isSuccess = preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -289,5 +291,10 @@ public class GameRepository implements IGameRepository {
     @Override
     public boolean findDuplicate(String email) {
         return false;
+    }
+
+    @Override
+    public List<UserDto> showAllUsers() {
+        return null;
     }
 }
