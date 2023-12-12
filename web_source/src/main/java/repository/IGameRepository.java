@@ -30,7 +30,6 @@ public interface IGameRepository {
     boolean createUser(String email, String date, String name);
 
     GameDTO getGameForCart(int gameId);
-
     boolean findDuplicate(String email);
     List<UserDto> showAllUsers();
 }

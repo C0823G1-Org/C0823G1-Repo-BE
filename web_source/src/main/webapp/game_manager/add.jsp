@@ -47,20 +47,20 @@
             <a href="" class="container__header-select-link">SUPPORT</a>
         </div>
 
-            <c:if test="${sessionScope.userDto.roleId == 1}">
-                <a class="container__header-login-a">${sessionScope.userDto.username}</a>
-                <div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                            ${sessionScope.userDto.roleName}
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="/game-servlet?action=game">Game management</a></li>
-                        <li><a class="dropdown-item" href="/game-servlet?action=user">User management</a></li>
-                    </ul>
-                </div>
-            </c:if>
+        <c:if test="${sessionScope.userDto.roleId == 1}">
+            <a class="container__header-login-a">${sessionScope.userDto.username}</a>
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                        ${sessionScope.userDto.roleName}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="/game-servlet?action=game">Game management</a></li>
+                    <li><a class="dropdown-item" href="/game-servlet?action=user">User management</a></li>
+                </ul>
+            </div>
+        </c:if>
 
     </div>
 </section>
@@ -68,45 +68,58 @@
 </section>
 <section class="container__body-main" style="height: 1400px;">
     <!-- Thao tác trong này -->
-    <h1 style="margin-left: 800px ; color: red " >
-        List Game
-    </h1>
-    <h2>
-        <button type="button" class="btn btn-primary "><a href="/game-manager?action=add_game" class="text-danger">Add New Game</a></button>
-    </h2>
-
-    <div align="center">
-        <table class="table">
-            <thead class="thead-dark text-primary">
+    <form action="/game-manager?action=add_game" method="post" class="btn btn-primary">
+        <table>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Price</th>
-<%--                <th scope="col">Url</th>--%>
-<%--                <th scope="col">UrlVideo</th>--%>
-                <th scope="col">PercentDiscount</th>
-                <th scope="col">Rating</th>
-                <th scope="col">Info</th>
+                <td>ID</td>
+                <td><input type="text" name="id"></td>
             </tr>
-            </thead>
-
-            <c:forEach var="game" items="${list}" varStatus="loop">
-            <tr class="text-primary">
-                <td><c:out value="${loop.count}"/></td>
-                <td><c:out value="${game.name}"/></td>
-                <td><c:out value="${game.price}"/></td>
-                <td><c:out value="${game.percentDiscount}"/></td>
-                <td><c:out value="${game.rating}"/></td>
-                <td>
-                    <a href="/users?action=edit&id=${game.name}">Edit</a>
-                    <a href="/users?action=delete&id=${game.name}">Delete</a>
-                </td>
+            <tr>
+                <td>title</td>
+                <td><input type="text" name="title"></td>
             </tr>
-            </c:forEach>
+            <tr>
+                <td>Price</td>
+                <td><input type="text" name="price"></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input type="text" name="description"></td>
+            </tr>
+            <tr>
+                <td>ageRequirement</td>
+                <td><input type="text" name="ageRequirement"></td>
+            </tr>
+            <tr>
+                <td>developerId</td>
+                <td><input type="text" name="developerId"></td>
+            </tr>
+            <tr>
+                <td>releaseDate</td>
+                <td><input type="text" name="releaseDate"></td>
+            </tr>
+            <tr>
+                <td>dlcId</td>
+                <td><input type="text" name="dlcId"></td>
+            </tr>
+            <tr>
+                <td>reviewRatingId</td>
+                <td><input type="text" name="reviewRatingId"></td>
+            </tr>
+            <tr>
+                <td>miniumSystemRequirement</td>
+                <td><input type="text" name="miniumSystemRequirement"></td>
+            </tr>
+            <tr>
+                <td>recommendSystemRequirement</td>
+                <td><input type="text" name="recommendSystemRequirement"></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Add</button></td>
+                <td></td>
+            </tr>
         </table>
-    </div>
-
-
+    </form>
 </section>
 <div class="end__container">
     <div class="container__content">
