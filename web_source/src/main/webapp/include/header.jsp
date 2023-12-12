@@ -51,16 +51,12 @@
             </div>
             <c:if test="${sessionScope.userDto != null}">
                 <c:if test="${sessionScope.userDto.roleId == 1}">
-                    <a class="container__header-login-a">${sessionScope.userDto.username}</a>
                     <div class="dropdown">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                                ${sessionScope.userDto.roleName}
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="/game-servlet?action=game">Game management</a></li>
-                            <li><a class="dropdown-item" href="/game-servlet?action=user">User management</a></li>
+                        <a class="container__header-login-a">${sessionScope.userDto.username}</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><a href="#">Action</a></li>
+                            <li class="dropdown-item"><a  href="/game-servlet?action=game">Game management</a></li>
+                            <li class="dropdown-item"><a  href="/game-servlet?action=user">User management</a></li>
                         </ul>
                     </div>
                 </c:if>
@@ -80,9 +76,6 @@
             <c:if test="${sessionScope.userDto == null}">
                 <a class="container__header-login-a" href="/game-servlet?action=login">login</a>
             </c:if>
-            <span class="container__header-login-p">language
-                <i class="fa-solid fa-chevron-down"></i>
-            </span>
         </div>
     </div>
 </section>
