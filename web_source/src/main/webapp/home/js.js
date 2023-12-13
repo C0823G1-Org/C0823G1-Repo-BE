@@ -1,4 +1,3 @@
-
 function fixHeigt(){
     divElement = document.querySelector(".navbar");
     elemHeight = divElement.offsetHeight;

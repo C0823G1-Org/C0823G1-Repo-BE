@@ -88,7 +88,7 @@
         <hr>
         <div class="container__content-main">
             <div class="container__content-img">
-                <img src="./img/399932046_361457652925746_2513704301500335433_n.jpg" alt="">
+                <img src="https://theme.hstatic.net/1000288298/1001020793/14/logo.png?v=280" alt="">
             </div>
             <div class="container__content-word">
                     <span>
@@ -102,7 +102,7 @@
                     </span>
             </div>
             <div class="container__content-steam">
-                <img src="https://store.akamai.steamstatic.com/public/images/v6/logo_steam_footer.png" alt="">
+                <img src="https://theme.hstatic.net/1000288298/1001020793/14/logo.png?v=280" alt="">
             </div>
         </div>
         <hr>

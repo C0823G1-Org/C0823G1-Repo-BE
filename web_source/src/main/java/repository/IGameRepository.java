@@ -4,7 +4,9 @@ import model.UserDto;
 import model.GameDTO;
 import model.UserAccount;
 
-import java.util.List;
+    import java.util.ArrayList;
+    import java.util.List;
+    import java.util.Map;
 
 public interface IGameRepository {
     List<GameDTO> getAll();
@@ -28,6 +30,10 @@ public interface IGameRepository {
     void removeCartItem(int userId, int gameId);
 
     boolean createUser(String name, String date, String email);
+
+        List<GameDTO> tagGame(int idGame);
+
+        GameDTO detailGame(String title);
 
     GameDTO getGameForCart(int gameId);
     boolean findDuplicate(String email);

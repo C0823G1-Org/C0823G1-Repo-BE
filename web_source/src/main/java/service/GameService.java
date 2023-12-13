@@ -29,8 +29,8 @@ public class GameService implements IGameService {
     }
 
     @Override
-    public List<GameDTO> search(String txtSearch, int index, int size) {
-        return gameRepository.search(txtSearch,index,size);
+    public List<GameDTO> search(String txtSearch, int index) {
+        return gameRepository.search(txtSearch,index);
     }
 
     @Override
@@ -75,6 +75,17 @@ public class GameService implements IGameService {
     @Override
     public boolean findDuplicate(String email) {
         return gameRepositoryVi.findDuplicate(email);
+    }
+
+    @Override
+    public List<GameDTO> tagGame(int idGame) {
+        return gameRepository.tagGame(idGame);
+    }
+
+
+    @Override
+    public GameDTO detailGame(String title) {
+        return gameRepository.detailGame(title);
     }
 
     @Override

@@ -39,6 +39,10 @@ public class GameRepository implements IGameRepository {
 
     private static final String INSERT_USER = " insert into `user` (user_name, birthday, email) values (?, ?, ?); ";
     private static final String REMOVE_CART_ITEM = "call remove_cart_item(?,?);";
+    private static final String TAG_GAME = "call  tag_game (?);";
+
+    private static final String DETAIL_GAME = "call  detail_game(?);";
+    private int gameId;
 
     @Override
     public List<GameDTO> getAll() {
@@ -49,13 +53,14 @@ public class GameRepository implements IGameRepository {
             callableStatement = connection.prepareCall(SELECT);
             ResultSet resultSet = callableStatement.executeQuery();
             while (resultSet.next()) {
+                int gameId = resultSet.getInt("game_id");
                 String name = resultSet.getString("game_title");
                 double price = resultSet.getDouble("price");
                 String urlVideo = resultSet.getString("video");
                 String url = resultSet.getString("img");
                 String percentDiscount = resultSet.getString("percent_discount");
                 String rating = resultSet.getString("rating_type_name");
-                list.add(new GameDTO(name, price, url, urlVideo, percentDiscount, rating));
+                list.add(new GameDTO(gameId,name, price, url, urlVideo, percentDiscount, rating));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -85,7 +90,7 @@ public class GameRepository implements IGameRepository {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }finally {
+        } finally {
             try {
                 connection.close();
             } catch (SQLException e) {
@@ -100,14 +105,14 @@ public class GameRepository implements IGameRepository {
         Connection connection = BaseGameRepository.getConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(COUNTCATELOGY);
-            preparedStatement.setString(1, txtSearch );
+            preparedStatement.setString(1, txtSearch);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 return resultSet.getInt(1);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }finally {
+        } finally {
             try {
                 connection.close();
             } catch (SQLException e) {
@@ -118,12 +123,12 @@ public class GameRepository implements IGameRepository {
     }
 
     @Override
-    public List<GameDTO> searchCatelogy (String txtSearch, int index) {
+    public List<GameDTO> searchCatelogy(String txtSearch, int index) {
         Connection connection = BaseGameRepository.getConnection();
         List<GameDTO> list;
-        if (txtSearch.equals("Hack")){
+        if (txtSearch.equals("Hack")) {
             txtSearch = "Hack & Slash";
-        }else if (txtSearch.equals("Arcade")){
+        } else if (txtSearch.equals("Arcade")) {
             txtSearch = "Arcade & Rhythm";
         }
         try {
@@ -138,7 +143,7 @@ public class GameRepository implements IGameRepository {
                 double price = resultSet.getDouble("price");
                 String url = resultSet.getString("img");
                 String tagGame = resultSet.getString("tag_name");
-                list.add(new GameDTO(name, price, url,tagGame));
+                list.add(new GameDTO(name, price, url, tagGame));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -148,7 +153,7 @@ public class GameRepository implements IGameRepository {
 
 
     @Override
-    public List<GameDTO> search(String txtSearch, int index, int size) {
+    public List<GameDTO> search(String txtSearch, int index) {
         Connection connection = BaseGameRepository.getConnection();
         List<GameDTO> list;
         try {
@@ -283,9 +288,59 @@ public class GameRepository implements IGameRepository {
         return isSuccess;
     }
 
+
     @Override
     public GameDTO getGameForCart(int gameId) {
         return null;
+    }
+
+    @Override
+    public List<GameDTO> tagGame(int idGame) {
+        List<GameDTO> list = new ArrayList<>();
+        Connection connection = BaseGameRepository.getConnection();
+        try {
+            CallableStatement callableStatement = connection.prepareCall(TAG_GAME);
+            callableStatement.setInt(1, idGame);
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()) {
+                int gameId = resultSet.getInt("game_id");
+               String tag = resultSet.getString("tag_name");
+              String title = resultSet.getString("game_title");
+              list.add(new GameDTO(title,tag,gameId));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
+
+    @Override
+    public GameDTO detailGame(String title) {
+       GameDTO gameDTO= null;
+        Connection connection = BaseGameRepository.getConnection();
+        try {
+            CallableStatement callableStatement = connection.prepareCall(DETAIL_GAME);
+            callableStatement.setString(1,title);
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()){
+                String name = resultSet.getString("game_title");
+                String desciption = resultSet.getString("description");
+                String minimum = resultSet.getString("minimun");
+                String recommend = resultSet.getString("recommend");
+                double price = resultSet.getDouble("price");
+                String img = resultSet.getString("img");
+                String video = resultSet.getString("video");
+                String discount = resultSet.getString("discount");
+                String rating = resultSet.getString("rating");
+                String nameDeveloper = resultSet.getString("name_developer");
+                String developerDesciption = resultSet.getString("about_description");
+                String developerUrl = resultSet.getString("developer_url");
+                gameDTO = new GameDTO(name,price,img,video,discount,rating,desciption,minimum,recommend,nameDeveloper,developerDesciption,developerUrl);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return gameDTO;
     }
 
     @Override
