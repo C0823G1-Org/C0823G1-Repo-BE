@@ -35,7 +35,11 @@ public interface IGameService {
 
     boolean findDuplicate(String email);
 
-        List<GameDTO> tagGame(int idGame);
+    List<GameDTO> tagGame(int idGame);
 
     GameDTO detailGame(String title);
+    List<UserDto> showAllUsers();
+    UserDto findUserId(int userId);
+    boolean removeUser(int userId);
+    boolean editUser(UserDto user);
 }

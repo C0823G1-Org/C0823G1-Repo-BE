@@ -15,7 +15,7 @@ public interface IGameRepository {
 
     public int countCatelogy(String txtSearch);
 
-    List<GameDTO> search(String txtSearch, int index, int size);
+    List<GameDTO> search(String txtSearch, int index);
 
     List<GameDTO> searchCatelogy(String txtSearch, int index);
 

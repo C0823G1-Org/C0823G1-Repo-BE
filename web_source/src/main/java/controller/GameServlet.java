@@ -112,7 +112,7 @@ public class GameServlet extends HttpServlet {
 
     private void formEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("id"));
-        UserDto userDto = gameService.findIdUser(id);
+        UserDto userDto = gameService.findUserId(id);
         req.setAttribute("userDto", userDto);
         req.getRequestDispatcher("game_manager/edit_user.jsp").forward(req, resp);
     }
