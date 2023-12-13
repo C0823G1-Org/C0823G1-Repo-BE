@@ -94,7 +94,7 @@ public class GameService implements IGameService {
     }
 
     @Override
-    public UserDto findIdUser(int userId) {
+    public UserDto findUserId(int userId) {
         return gameRepositoryVi.findUserId(userId);
     }
 
