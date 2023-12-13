@@ -1,6 +1,9 @@
 package controller;
 
+import model.BundleHasGame;
 import model.GameAddDTO;
+import model.Image;
+import model.Video;
 import repository.IGameRepositoryKiet;
 import service.GameService;
 import service.GameServiceKiet;
@@ -31,7 +34,18 @@ public class GameServletKiet extends HttpServlet {
             case "add_game":
                 showNewForm(req, resp);
                 break;
+            case "edit_game":
+                showEditForm(req, resp);
+
         }
+    }
+
+    private void showEditForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        GameAddDTO gameAddDTO = gameServiceKiet.selectUser(name);
+        req.setAttribute("gameAddDTO", gameAddDTO);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("game_manager/edit.jsp");
+        requestDispatcher.forward(req, resp);
     }
 
     private void showNewForm(HttpServletRequest req, HttpServletResponse resp) {
@@ -56,24 +70,43 @@ public class GameServletKiet extends HttpServlet {
             case "add_game":
                 addGame(req, resp);
                 break;
+                case "edit_game":
+                    editGame(req,resp);
         }
     }
 
-    private void addGame(HttpServletRequest req, HttpServletResponse resp) {
+    private void editGame(HttpServletRequest req, HttpServletResponse resp) {
+
+    }
+
+    private void addGame(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int id = Integer.parseInt(req.getParameter("id"));
         String title = req.getParameter("title");
         double price = Double.parseDouble(req.getParameter("price"));
-        String description = req.getParameter("description");
-        int ageRequirement = Integer.parseInt(req.getParameter("ageRequirement"));
-        int developerId = Integer.parseInt(req.getParameter("developerId"));
-        String releaseDate = req.getParameter("releaseDate");
-        int dlcId = Integer.parseInt(req.getParameter("dlcId"));
+        String description = "game hay";
+        int ageRequirement = 1;
+        int developerId = 1;
+        String releaseDate = "2003-09-09";
+        int dlcId = 1;
         int reviewRatingId = Integer.parseInt(req.getParameter("reviewRatingId"));
-        String miniumSystemRequirement = req.getParameter("miniumSystemRequirement");
-        String recommendSystemRequirement = req.getParameter("recommendSystemRequirement");
-        GameAddDTO gameAddDTO = new GameAddDTO(id, title, price, description, ageRequirement, developerId, releaseDate, dlcId, reviewRatingId, miniumSystemRequirement, recommendSystemRequirement);
-//        gameAddDTO.set
-
+        String miniumSystemRequirement = "may yeu";
+        String recommendSystemRequirement = "may khoe";
+        GameAddDTO gameAddDTO = new GameAddDTO(id, title, price, description, ageRequirement, developerId, releaseDate,
+                dlcId, reviewRatingId, miniumSystemRequirement, recommendSystemRequirement);
         gameServiceKiet.insertGameAdminDTO(gameAddDTO);
+//        bundle
+        int idBundle = 1;
+        BundleHasGame bundleHasGame = new BundleHasGame(id, idBundle);
+        gameServiceKiet.insertBundle(bundleHasGame);
+//        video
+        String urlVideo = req.getParameter("urlVideo");
+        Video video = new Video(urlVideo, id);
+        gameServiceKiet.insertVideo(video);
+//        image
+        String urlImage = req.getParameter("urlImage");
+        int imageType = 1;
+        Image image = new Image(urlImage, id, imageType);
+        gameServiceKiet.insertImage(image);
+        resp.sendRedirect("game-servlet?action=game");
     }
 }

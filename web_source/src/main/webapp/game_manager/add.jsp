@@ -83,36 +83,20 @@
                 <td><input type="text" name="price"></td>
             </tr>
             <tr>
-                <td>Description</td>
-                <td><input type="text" name="description"></td>
-            </tr>
-            <tr>
-                <td>ageRequirement</td>
-                <td><input type="text" name="ageRequirement"></td>
-            </tr>
-            <tr>
                 <td>developerId</td>
                 <td><input type="text" name="developerId"></td>
-            </tr>
-            <tr>
-                <td>releaseDate</td>
-                <td><input type="text" name="releaseDate"></td>
-            </tr>
-            <tr>
-                <td>dlcId</td>
-                <td><input type="text" name="dlcId"></td>
             </tr>
             <tr>
                 <td>reviewRatingId</td>
                 <td><input type="text" name="reviewRatingId"></td>
             </tr>
             <tr>
-                <td>miniumSystemRequirement</td>
-                <td><input type="text" name="miniumSystemRequirement"></td>
+                <td>url video</td>
+                <td><input type="text" name="urlVideo"></td>
             </tr>
             <tr>
-                <td>recommendSystemRequirement</td>
-                <td><input type="text" name="recommendSystemRequirement"></td>
+                <td>url image</td>
+                <td><input type="text" name="urlImage"></td>
             </tr>
             <tr>
                 <td><button type="submit">Add</button></td>

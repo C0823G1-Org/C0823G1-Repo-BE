@@ -9,9 +9,8 @@ public class Video {
     public Video() {
     }
 
-    public Video(String url, boolean isDelete, int idGame) {
+    public Video(String url, int idGame) {
         this.url = url;
-        this.isDelete = isDelete;
         this.idGame = idGame;
     }
 

@@ -25,6 +25,16 @@ from game_in_cart c
 join user as u on c.user_id = c.user_id
 where c.game_id=2 and u.user_id=1;
 
+<<<<<<< HEAD
+
+delimiter //
+CREATE PROCEDURE update_all(game_id int ,game_title text,price double,description text,age_requirement int ,developer_id int ,release_date date,dlc_id int,review_rating_id int,`minium_system_requirement` text,`recommend_system_requirement`text)
+BEGIN
+update game set game_title = game_title , price = price , reviewRatingId = reviewRatingId where game_title = game_title;
+ END 
+ // delimiter  ;
+
+=======
 delimiter //
 create procedure create_user_account()
 begin 
@@ -36,3 +46,4 @@ end //
 delimiter ;
 
 call create_user_account
+>>>>>>> bb598434ecb5542e0763fa78e772d61d3a6f33e2
