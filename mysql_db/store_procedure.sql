@@ -23,4 +23,16 @@ end
 select *
 from game_in_cart c
 join user as u on c.user_id = c.user_id
-where c.game_id=2 and u.user_id=1
+where c.game_id=2 and u.user_id=1;
+
+delimiter //
+create procedure create_user_account()
+begin 
+select u.user_id,u.user_name, u.birthday, u.email
+from `user` u
+join user_account ua on u.email = ua.email
+where ua.role_role_id = 2 and u.is_deleted = 0;
+end //
+delimiter ;
+
+call create_user_account

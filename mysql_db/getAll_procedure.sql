@@ -14,7 +14,6 @@ left join rating_type rt on rr.rating_type_rating_type_id = rt.rating_type_id;
 end
 // delimiter ;
 
-drop procedure getAll;
 call  getAll();
 
 with x as (select row_number() over (order by game_id desc) as r,game.game_title,game.price,image.url 
@@ -40,7 +39,6 @@ join bundle_has_game bhg on bhg.game_id = g.game_id;
 end
 // delimiter ;
 
-drop procedure categories;
 call  categories();
 
 select g.game_title,g.price,img.url as img,t.tag_name
