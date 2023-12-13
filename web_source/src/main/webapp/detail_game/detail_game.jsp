@@ -7,16 +7,16 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Document</title>
 <%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/web.css" type="text/css">--%>
-<%--    <link rel="stylesheet" href="../css/web.css">--%>
-    <link rel="stylesheet" href="/css/web.css">
+    <link rel="stylesheet" href="../css/web.css">
+<%--    <link rel="stylesheet" href="/css/web.css">--%>
     <link rel="stylesheet" href="./fonts/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
@@ -26,6 +26,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
             integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        .price__products button span{
+            display: block;
+            padding: 6px 14px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <!-- Header -->
@@ -54,9 +62,11 @@
                     <li class="container__list-menu"><a href="">Labs</a></li>
                 </ul>
                 <div class="container__search">
-                    <form class="search__form" action="">
-                        <input placeholder="  search" class="search-input" type="text">
-                        <button class="btn__btn-sumit">
+                    <form class="search__form" action="/game-servlet" method="get">
+                        <input placeholder="  search" class="search-input" type="text" name="txtSearch">
+                        <input type="hidden" name="index" value="1">
+                        <input type="hidden" name="action" value="search">
+                        <button type="submit" class="btn__btn-sumit" name="action" value="search">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                     </form>
@@ -70,7 +80,7 @@
         <div class="container__body-products">
             <div class="container__wed-product">
                 <div class="name__product">
-                    <span>Resident Evil 4</span>
+                    <span>${listDetail.title}</span>
                     <div class="comminity__product">
                         <a href="">Community Hub</a>
                     </div>
@@ -78,16 +88,13 @@
                 <div class="body__wed-product">
                     <div class="products__video">
                         <video autoplay loop="loop" muted
-                               src="https://cdn.cloudflare.steamstatic.com/steam/apps/256938324/movie480_vp9.webm?t=1684904131"></video>
+                               src="${listDetail.videoUrl}"></video>
                     </div>
                     <div class="products_description">
-                        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header_alt_assets_0.jpg?t=1696242724"
+                        <img src="${listDetail.url}"
                              alt="">
                         <span>
-                                Survival is just the beginning. Six years have passed since the biological disaster in
-                                Raccoon City.
-                                Leon S. Kennedy, one of the survivors, tracks the president's kidnapped daughter to a
-                                secluded European village, where there is something terribly wrong with the locals.
+                                ${listDetail.description}
                             </span>
                         <div class="wed__category">
                             <span>Popular user-defined tags for this product:</span>
@@ -116,7 +123,7 @@
                                 <div class="products__buy-games">
                                     <img src="https://store.akamai.steamstatic.com/public/images/v6/icon_platform_win.png?v=3"
                                          alt="">
-                                    <h1>Buy Resident Evil 4</h1>
+                                    <h1>Buy ${listDetail.title}</h1>
                                     <p>SPECIAL PROMOTION! Offer ends in </p>
                                 </div>
                                 <%-- When user is a guess --%>
@@ -140,10 +147,21 @@
                                     </c:if>
                                     <c:if test="${!requestScope.isInGuessCart}">
                                         <div class="price__products">
-                                            <span class="discount">-34%</span>
+                                            <span class="discount">${listDetail.percentDiscount}</span>
                                             <div class="price__products-container">
-                                                <div class="discount__price">1.322.000đ</div>
-                                                <div class="discount__price-final">872.500đ</div>
+                                                <div class="discount__price">${listDetail.price}$</div>
+                                                <c:choose>
+                                                    <c:when test="${listDetail.percentDiscount == '50%'}">
+                                                        <div class="discount__price-final"><fmt:formatNumber type="number" maxFractionDigits="2" value="${listDetail.price * 0.5}"/>$</div>
+                                                    </c:when>
+                                                    <c:when test="${listDetail.percentDiscount == '30%'}">
+                                                        <div class="discount__price-final"><fmt:formatNumber type="number" maxFractionDigits="2" value="${listDetail.price * 0.3}"/>$</div>
+                                                    </c:when>
+                                                    <c:when test="${listDetail.percentDiscount == '40%'}">
+                                                        <div class="discount__price-final"><fmt:formatNumber type="number" maxFractionDigits="2" value="${listDetail.price * 0.4}"/>$</div>
+                                                    </c:when>
+                                                </c:choose>
+<%--                                                <div class="discount__price-final">872.500đ</div>--%>
                                             </div>
                                             <form action="/game-servlet">
                                                 <input type="hidden" name="game_id" value="1">
@@ -173,10 +191,20 @@
                                     </c:if>
                                     <c:if test="${!requestScope.isInUserCart}">
                                         <div class="price__products">
-                                            <span class="discount">-34%</span>
+                                            <span class="discount">${listDetail.percentDiscount}</span>
                                             <div class="price__products-container">
-                                                <div class="discount__price">1.322.000đ</div>
-                                                <div class="discount__price-final">872.500đ</div>
+                                                <div class="discount__price">${listDetail.price}$</div>
+                                                <c:choose>
+                                                    <c:when test="${listDetail.percentDiscount == '50%'}">
+                                                        <div class="discount__price-final"><fmt:formatNumber type="number" maxFractionDigits="2" value="${listDetail.price * 0.5}"/>$</div>
+                                                    </c:when>
+                                                    <c:when test="${listDetail.percentDiscount == '30%'}">
+                                                        <div class="discount__price-final"><fmt:formatNumber type="number" maxFractionDigits="2" value="${listDetail.price * 0.3}"/>$</div>
+                                                    </c:when>
+                                                    <c:when test="${listDetail.percentDiscount == '40%'}">
+                                                        <div class="discount__price-final"><fmt:formatNumber type="number" maxFractionDigits="2" value="${listDetail.price * 0.4}"/>$</div>
+                                                    </c:when>
+                                                </c:choose>
                                             </div>
                                             <form action="/game-servlet">
                                                 <input type="hidden" name="game_id" value="1">
@@ -225,14 +253,12 @@
                                 <br>
                                 <br>
                                 <div class="left__about-game">
-                                    MATURE CONTENT DESCRIPTION
+                                    SYSTEM REQUIREMENTS
                                 </div>
                                 <hr>
-                                <p>The developers describe the content like this:</p>
+                                <p>${listDetail.minimum}</p>
                                 <p>
-                                    This Game may contain content not appropriate for all ages, or may not be
-                                    appropriate for viewing at work: Frequent Violence or Gore, General Mature
-                                    Content
+                                 ${listDetail.recommend}
                                 </p>
                                 <br>
                             </div>
@@ -242,17 +268,17 @@
                     <div class="right__column">
                         <div class="righlt__column-description1">
                             <div class="description__header">
-                                Is this game relevant to you?
+                                Information producer
                             </div>
                             <div class="description__select">
                                 <i style="color: green; padding-right: 10px;" class="fa-solid fa-check"></i>
-                                <span class="reason">Players like you love this game.</span>
+                                <span class="reason">${listDetail.nameDeveloper}</span>
                                 <hr>
                                 <i style="color: green;  padding-right: 10px;" class="fa-solid fa-check"></i>
-                                <span>User reviews: Overwhelmingly Positive</span>
+                                <span>${listDetail.developerDesciption}</span>
                                 <hr>
                                 <i style="color: green;  padding-right: 10px;" class="fa-solid fa-check"></i>
-                                <span>Currently popular</span>
+                               <span><a href="${listDetail.developerUrl}">${listDetail.developerUrl}</a></span>
                             </div>
                         </div>
                         <div class="righlt__column-description2">

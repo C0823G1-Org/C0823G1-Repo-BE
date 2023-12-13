@@ -27,13 +27,6 @@
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -41,8 +34,8 @@
 <section class="navbar">
     <div class="container__header inner">
         <div class="container__header-home">
-            <a href="/game-servlet"> <img class="img__steam"
-                             src="https://theme.hstatic.net/1000288298/1001020793/14/logo.png?v=280"
+            <a href=""> <img class="img__steam"
+                             src="https://store.cloudflare.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016"
                              alt=""></a>
         </div>
         <div class="container__header-select">
@@ -62,7 +55,7 @@
                 <c:if test="${sessionScope.userDto.roleId == 1}">
                     <div class="dropdown">
                         <a class="container__header-login-a">${sessionScope.userDto.username}</a>
-                        <ul class="dropdown-menu .bg-body-tertiary ">
+                        <ul class="dropdown-menu">
                             <li class="dropdown-item"><a href="#">Action</a></li>
                             <li class="dropdown-item"><a href="/game-servlet?action=game">Game management</a></li>
                             <li class="dropdown-item"><a href="/game-servlet?action=user">User management</a></li>
@@ -88,58 +81,26 @@
 </section>
 <section class="container__body-main" style="height: 540px;">
     <div align="center">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Birthday</th>
-                <th>Email</th>
-                <th>Activities</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${userDtos}" var="user">
-                <tr class="table-secondary">
-                    <td>${user.userId}</td>
-                    <td><c:out value="${user.email}"/></td>
-                    <td><c:out value="${user.birthday}"/></td>
-                    <td><c:out value="${user.username}"/></td>
-                    <td>
-                        <a href="/game-servlet?action=edit&id=${user.userId}">Edit</a>
-                        -
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop"
-                                onclick="sendInformation('${user.userId}','${user.username}')">
-                            Delete
-                        </button>
-
-                    </td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </div>
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Information user</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="/game-servlet?action=delete" method="post">
-                    <div class="modal-footer">
-                        <div class="modal-body">
-                            <input type="hidden" name="userId" id="userId">
-                            Are you sure to delete user <span id="username"></span>
-                        </div>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Delete</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+        <form method="post">
+            <fieldset>
+                <legend>Form edit user</legend>
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td><input type="text" name="name" value="${userDto.getUsername()}"></td>
+                    </tr>
+                    <tr>
+                        <td>Birthday:</td>
+                        <td><input type="text" name="birthday" value="${userDto.getBirthday()}"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit"  value="Confirm"></td>
+                        <td><input type="hidden" name="action" value="edit"></td>
+                        <td><a href="user_manager.jsp"> Back </a></td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
     </div>
 </section>
 <div class="end__container">
@@ -148,7 +109,7 @@
 
         <div class="container__content-main">
             <div class="container__content-img">
-                <img src="https://theme.hstatic.net/1000288298/1001020793/14/logo.png?v=280" alt="">
+                <img src="./img/399932046_361457652925746_2513704301500335433_n.jpg" alt="">
             </div>
             <div class="container__content-word">
                     <span>
@@ -162,7 +123,7 @@
                     </span>
             </div>
             <div class="container__content-steam">
-                <img src="https://theme.hstatic.net/1000288298/1001020793/14/logo.png?v=280" alt="">
+                <img src="https://store.akamai.steamstatic.com/public/images/v6/logo_steam_footer.png" alt="">
             </div>
         </div>
         <hr>
@@ -184,10 +145,4 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    function sendInformation(userId, username) {
-        document.getElementById("userId").value = userId;
-        document.getElementById("username").innerHTML = username;
-    }
-</script>
 </html>

@@ -303,24 +303,22 @@ p {
 }
 .btn__pay {
     display: flex;
-    flex-direction: column;
     align-items: center;
     margin-top: 30px;
+    margin-right: 5px;
 }
 .btn__pay button {
     position: relative;
-    background: linear-gradient(90deg, #06ff7a 0%, #2dff65 100%);
+    background: linear-gradient(90deg, #557968 0%, #1c2d20 100%);
     border-radius: 2px;
     border: none;
     outline: none;
-    padding: 12px;
     color: #fff;
     font-size: 16px;
     font-weight: 400;
     font-family: inherit;
     text-align: center;
     cursor: pointer;
-    width: 270px;
 }
 
 .btn__pay  :hover {

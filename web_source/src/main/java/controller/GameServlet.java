@@ -1,6 +1,8 @@
 package controller;
 
 import model.GameDTO;
+import model.GameTag;
+import model.User;
 import model.UserAccount;
 import model.UserDto;
 import service.GameService;
@@ -17,8 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "GameServlet", value = "/game-servlet")
 public class GameServlet extends HttpServlet {
@@ -27,6 +31,7 @@ public class GameServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession();
         String action = req.getParameter("action");
         if (action == null) {
@@ -49,6 +54,7 @@ public class GameServlet extends HttpServlet {
                 logIn(req, resp);
                 break;
             case "user":
+                userManager(req, resp, session);
                 break;
             case "check_if_game_in_cart":
                 checkIfGameInCart(req, resp);
@@ -57,37 +63,58 @@ public class GameServlet extends HttpServlet {
                 showCart(req, resp);
                 break;
             case "searchCatelogy":
-                RequestDispatcher requestDispatcher = req.getRequestDispatcher("search/search.jsp");
-                String txtCatelogy = req.getParameter("catelogy");
-                String indexString = req.getParameter("index");
-                int index = Integer.parseInt(indexString);
-                int count = gameService.countCatelogy(txtCatelogy);
-                int pageSize = 3;
-                int endPage = (count / pageSize);
-                List<GameDTO> list = gameService.searchCatelogy(txtCatelogy, index);
-//                try {
-                if (count % pageSize != 0) {
-                    endPage++;
-                }
-//                    else {
-//                        endPage = 0;
-//                        throw new ArithmeticException();
-//                    }
-//                } catch (ArithmeticException e) {
-//                    e.printStackTrace();
-//                    req.setAttribute("Error", "Nothing games !!!!");
-//                }
-                req.setAttribute("listCatelogy", list);
-                req.setAttribute("endPage", endPage);
-                req.setAttribute("countCatelogy", count);
-                requestDispatcher.forward(req, resp);
+                searchCatelogy(req, resp);
+                break;
+            case "detail":
+                detailGame(req, resp);
+                break;
+            case "search":
+                search(req,resp);
                 break;
             case "game":
                 handleDecentralization(req, resp, session);
                 break;
+            case "edit":
+                formEdit(req, resp);
+                break;
             default:
                 showList(req, resp);
         }
+    }
+    private void searchCatelogy(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("search/search.jsp");
+        String txtCatelogy = req.getParameter("catelogy");
+        String indexString = req.getParameter("index");
+        int index = Integer.parseInt(indexString);
+        int count = gameService.countCatelogy(txtCatelogy);
+        int pageSize = 3;
+        int endPage = (count / pageSize);
+        List<GameDTO> list = gameService.searchCatelogy(txtCatelogy, index);
+        if (count % pageSize != 0) {
+            endPage++;
+        }
+        req.setAttribute("check",true);
+        req.setAttribute("listCatelogy", list);
+        req.setAttribute("endPage", endPage);
+        req.setAttribute("text", txtCatelogy);
+        req.setAttribute("countCatelogy", count);
+        req.setAttribute("index",index);
+        requestDispatcher.forward(req, resp);
+    }
+
+    private void detailGame(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher1 = req.getRequestDispatcher("detail_game/detail_game.jsp");
+        String title = req.getParameter("title");
+        GameDTO gameDTO = gameService.detailGame(title);
+        req.setAttribute("listDetail",gameDTO);
+        requestDispatcher1.forward(req, resp);
+    }
+
+    private void formEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        UserDto userDto = gameService.findUserId(id);
+        req.setAttribute("userDto", userDto);
+        req.getRequestDispatcher("game_manager/edit_user.jsp").forward(req, resp);
     }
 
     private void showListGame(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -188,6 +215,13 @@ public class GameServlet extends HttpServlet {
             req.setAttribute("message", message);
         }
         List<GameDTO> list = gameService.getAll();
+        Map<Integer,ArrayList<GameDTO>> tagGame = new  HashMap<>();
+        for (GameDTO gameDTO : list){
+            int idGame = gameDTO.getGameId();
+            List<GameDTO> list1 = gameService.tagGame(idGame);
+            tagGame.put(idGame, (ArrayList<GameDTO>) list1);
+        }
+        req.setAttribute("tagGame",tagGame);
         req.setAttribute("list", list);
         requestDispatcher.forward(req, resp);
     }
@@ -236,39 +270,12 @@ public class GameServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
         if (action == null) {
             action = "";
         }
         switch (action) {
-            case "search":
-                String txtSearch = req.getParameter("txtSearch");
-                String indexString = req.getParameter("index");
-                int index = Integer.parseInt(indexString);
-                RequestDispatcher requestDispatcher = req.getRequestDispatcher("search/search.jsp");
-                int count = gameService.count(txtSearch);
-                int pageSize = 3;
-                int endPage = (count / pageSize);
-                List<GameDTO> listSearch = null;
-                List<GameDTO> newList = null;
-                try {
-                    if (count % pageSize != 0) {
-                        endPage++;
-                        listSearch = gameService.search(txtSearch, index, pageSize);
-                    } else {
-                        endPage = 0;
-                        throw new ArithmeticException();
-                    }
-                } catch (ArithmeticException e) {
-                    e.printStackTrace();
-                    req.setAttribute("Error", "Nothing games !!!!");
-                }
-                req.setAttribute("list", listSearch);
-                req.setAttribute("endPage", endPage);
-                req.setAttribute("text", txtSearch);
-                req.setAttribute("count", count);
-                requestDispatcher.forward(req, resp);
-                break;
             case "sign_in":
                 signIn(req, resp);
                 break;
@@ -278,7 +285,71 @@ public class GameServlet extends HttpServlet {
             case "remove_cart_item":
                 removeCartItem(req, resp);
                 break;
+            case "edit":
+                editUser(req, resp);
+                break;
+            case "delete":
+                removeUser(req, resp);
+                break;
         }
+    }
+
+    private void removeUser(HttpServletRequest req, HttpServletResponse resp) {
+        int id = Integer.parseInt(req.getParameter("userId"));
+        gameService.removeUser(id);
+        List<UserDto> userDtos = gameService.showAllUsers();
+        req.setAttribute("userDtos", userDtos);
+        try {
+            req.getRequestDispatcher("game_manager/user_manager.jsp").forward(req, resp);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void editUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        String name = req.getParameter("name");
+        String birthday = req.getParameter("birthday");
+        UserDto user = new UserDto(id, name, birthday);
+        gameService.editUser(user);
+        List<UserDto> userDtos = gameService.showAllUsers();
+        req.setAttribute("userDtos", userDtos);
+        try {
+            req.getRequestDispatcher("game_manager/user_manager.jsp").forward(req, resp);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void search(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String txtSearch = req.getParameter("txtSearch");
+        String indexString = req.getParameter("index");
+        int index = Integer.parseInt(indexString);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("search/search.jsp");
+        int count = gameService.count(txtSearch);
+        int pageSize = 3;
+        int endPage = (count / pageSize);
+        List<GameDTO> listSearch = gameService.search(txtSearch, index);
+        try {
+            if (count % pageSize != 0) {
+                endPage++;
+            } else {
+                endPage = 0;
+                throw new ArithmeticException();
+            }
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
+            req.setAttribute("Error", "Nothing games !!!!");
+        }
+        req.setAttribute("checkS",true);
+        req.setAttribute("list", listSearch);
+        req.setAttribute("endPage", endPage);
+        req.setAttribute("save", txtSearch);
+        req.setAttribute("count", count);
+        req.setAttribute("index",index);
+        requestDispatcher.forward(req, resp);
     }
 
     private void signIn(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -323,10 +394,10 @@ public class GameServlet extends HttpServlet {
             boolean isSuccess = gameService.createAccount(account);
             if (isSuccess) {
                 UserDto userDto = this.gameService.getUserInfo(account);
-                gameService.createUser(email, date, name);
+                gameService.createUser(name, date, email);
                 HttpSession httpSession = req.getSession();
                 httpSession.setAttribute("userDto", userDto);
-                req.setAttribute("Successful",true);
+                req.setAttribute("Successful", true);
                 List<GameDTO> list = gameService.getAll();
                 req.setAttribute("newList", list);
                 req.getRequestDispatcher("home/home.jsp").forward(req, resp);
@@ -358,4 +429,21 @@ public class GameServlet extends HttpServlet {
         gameService.removeCartItem(user.getUserId(), gameId);
         getUserCart(req, resp);
     }
+
+    private void showListUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<UserDto> userDtos = gameService.showAllUsers();
+        req.setAttribute("userDtos", userDtos);
+        req.getRequestDispatcher("game_manager/user_manager.jsp").forward(req, resp);
+    }
+
+    private void userManager(HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws IOException, ServletException {
+        if (session.getAttribute("userDto") != null) {
+            UserDto userDto = (UserDto) session.getAttribute("userDto");
+            if (userDto.getRoleId() == 1) {
+                showListUser(req, resp);
+            }
+        }
+    }
+
+
 }
