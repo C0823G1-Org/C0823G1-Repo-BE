@@ -91,20 +91,10 @@ public class GameServlet extends HttpServlet {
             case "edit":
                 formEdit(req, resp);
                 break;
-//            case "delete":
-//                formDelete(req, resp);
-//                break;
             default:
                 showList(req, resp);
         }
     }
-
-//    private void formDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        int id = Integer.parseInt(req.getParameter("id"));
-//        UserDto userDto = gameService.findIdUser(id);
-//        req.setAttribute("userDto", userDto);
-//        req.getRequestDispatcher("game_manager/delete_user.jsp").forward(req, resp);
-//    }
 
     private void formEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter("id"));
