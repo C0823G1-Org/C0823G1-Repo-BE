@@ -1,39 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <section class="navbar">
-    <c:if test="${sessionScope.userDto != null}">
-        <c:if test="${sessionScope.userDto.username == null}">
-            <div style=" background-color: red;
-            color: black;
-    align-items: center;
-    text-align: center;
-    padding: 5px;
-    line-height: 15px;
-    font-size: 19px;
-    margin-bottom: 3px;">
-                <a href="#" class="container__header-login-a">Please update information</a>
-            </div>
-            <c:if test="${message != null}">
-                <div style="padding: 20px;
-    background-color: greenyellow;
-    color: black;">
-                    <span style="   margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;"
-                          onclick="this.parentElement.style.display='none';">&times;</span>
-                    <span>${message}</span>
-                </div>
-            </c:if>
-        </c:if>
-    </c:if>
     <div class="container__header inner">
         <div class="container__header-home">
             <a href="/game-servlet"> <img class="img__steam"
-                                          src="https://store.cloudflare.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016"
+                                          src="https://theme.hstatic.net/1000288298/1001020793/14/logo.png?v=280"
                                           alt=""></a>
         </div>
         <div class="container__header-select">

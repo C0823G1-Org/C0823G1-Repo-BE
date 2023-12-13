@@ -9,7 +9,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +24,6 @@
             integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-
 <body>
 <!-- Header -->
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -134,7 +132,7 @@
         <hr>
         <div class="container__content-main">
             <div class="container__content-img">
-                <img src="./img/399932046_361457652925746_2513704301500335433_n.jpg" alt="">
+                <img src="https://theme.hstatic.net/1000288298/1001020793/14/logo.png?v=280" alt="">
             </div>
             <div class="container__content-word">
                     <span>
@@ -148,7 +146,7 @@
                     </span>
             </div>
             <div class="container__content-steam">
-                <img src="https://store.akamai.steamstatic.com/public/images/v6/logo_steam_footer.png" alt="">
+                <img src="https://theme.hstatic.net/1000288298/1001020793/14/logo.png?v=280" alt="">
             </div>
         </div>
         <hr>

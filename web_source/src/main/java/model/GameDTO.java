@@ -9,6 +9,41 @@ public class GameDTO {
     private String tagGame;
     private String percentDiscount;
     private String rating;
+    private String description;
+    private String minimum;
+    private String recommend;
+    private String nameDeveloper;
+    private String developerDesciption;
+    private String developerUrl;
+
+    public GameDTO(String title, double price, String url, String videoUrl, String percentDiscount, String rating, String description, String minimum, String recommend, String nameDeveloper, String developerDesciption, String developerUrl) {
+        this.title = title;
+        this.price = price;
+        this.url = url;
+        this.videoUrl = videoUrl;
+        this.percentDiscount = percentDiscount;
+        this.rating = rating;
+        this.description = description;
+        this.minimum = minimum;
+        this.recommend = recommend;
+        this.nameDeveloper = nameDeveloper;
+        this.developerDesciption = developerDesciption;
+        this.developerUrl = developerUrl;
+    }
+
+    public GameDTO() {
+    }
+
+    public GameDTO(String title, String tagGame, int gameId) {
+        this.title = title;
+        this.tagGame = tagGame;
+        this.gameId = gameId;
+    }
+
+    public GameDTO(String title, String tagGame) {
+        this.title = title;
+        this.tagGame = tagGame;
+    }
 
     public GameDTO(String title, double price, String url, String tagGame) {
         this.title = title;
@@ -16,8 +51,18 @@ public class GameDTO {
         this.url = url;
         this.tagGame = tagGame;
     }
-
     public GameDTO(String name, double price, String url, String videoUrl , String percentDiscount, String rating) {
+        this.gameId = gameId;
+        this.name = name;
+        this.videoUrl = videoUrl;
+        this.price = price;
+        this.url = url;
+        this.percentDiscount = percentDiscount;
+        this.rating = rating;
+    }
+
+    public GameDTO(int gameId,String name, double price, String url, String videoUrl , String percentDiscount, String rating) {
+        this.gameId = gameId;
         this.name = name;
         this.videoUrl = videoUrl;
         this.price = price;
@@ -117,6 +162,54 @@ public class GameDTO {
 
     public void setImageCoverUrl(String imageCoverUrl) {
         this.imageCoverUrl = imageCoverUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getMinimum() {
+        return minimum;
+    }
+
+    public void setMinimum(String minimum) {
+        this.minimum = minimum;
+    }
+
+    public String getRecommend() {
+        return recommend;
+    }
+
+    public void setRecommend(String recommend) {
+        this.recommend = recommend;
+    }
+
+    public String getNameDeveloper() {
+        return nameDeveloper;
+    }
+
+    public void setNameDeveloper(String nameDeveloper) {
+        this.nameDeveloper = nameDeveloper;
+    }
+
+    public String getDeveloperDesciption() {
+        return developerDesciption;
+    }
+
+    public void setDeveloperDesciption(String developerDesciption) {
+        this.developerDesciption = developerDesciption;
+    }
+
+    public String getDeveloperUrl() {
+        return developerUrl;
+    }
+
+    public void setDeveloperUrl(String developerUrl) {
+        this.developerUrl = developerUrl;
     }
 
     @Override
