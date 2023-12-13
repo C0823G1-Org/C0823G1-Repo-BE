@@ -86,7 +86,7 @@
 <%--                <th scope="col">UrlVideo</th>--%>
                 <th scope="col">PercentDiscount</th>
                 <th scope="col">Rating</th>
-                <th scope="col">Info</th>
+                <th scope="col">Action</th>
             </tr>
             </thead>
 
@@ -98,7 +98,7 @@
                 <td><c:out value="${game.percentDiscount}"/></td>
                 <td><c:out value="${game.rating}"/></td>
                 <td>
-                    <a href="/users?action=edit&id=${game.name}">Edit</a>
+                    <a href="http://localhost:8080/game-manager?action=edit_game=${game.name}">Edit</a>
                     <a href="/users?action=delete&id=${game.name}">Delete</a>
                 </td>
             </tr>

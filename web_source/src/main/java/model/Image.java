@@ -10,9 +10,8 @@ public class Image {
     public Image() {
     }
 
-    public Image(String url, boolean isDelete, int idGame, int idTypeImg) {
+    public Image(String url, int idGame, int idTypeImg) {
         this.url = url;
-        this.isDelete = isDelete;
         this.idGame = idGame;
         this.idTypeImg = idTypeImg;
     }
