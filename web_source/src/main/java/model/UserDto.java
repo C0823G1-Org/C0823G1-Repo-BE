@@ -22,10 +22,23 @@ public class UserDto {
         this.userId = userId;
     }
 
-    public UserDto(String email, String birthday, String username) {
-        this.email = email;
-        this.birthday = birthday;
+    public UserDto(String username, String birthday, String email) {
         this.username = username;
+        this.birthday = birthday;
+        this.email = email;
+    }
+
+    public UserDto(int userId, String username, String birthday, String email) {
+        this.userId = userId;
+        this.username = username;
+        this.birthday = birthday;
+        this.email = email;
+    }
+
+    public UserDto(Integer userId, String username, String birthday) {
+        this.userId = userId;
+        this.username = username;
+        this.birthday = birthday;
     }
 
     public UserDto(String email, String roleName, Integer roleId, String birthday, String username) {

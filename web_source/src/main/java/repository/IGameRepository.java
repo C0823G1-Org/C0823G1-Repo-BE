@@ -27,10 +27,13 @@ public interface IGameRepository {
 
     void removeCartItem(int userId, int gameId);
 
-    boolean createUser(String email, String date, String name);
+    boolean createUser(String name, String date, String email);
 
     GameDTO getGameForCart(int gameId);
     boolean findDuplicate(String email);
     List<UserDto> showAllUsers();
+    UserDto findUserId(int userId);
+    boolean removeUser(int userId);
+    boolean editUser(UserDto user);
 }
 
