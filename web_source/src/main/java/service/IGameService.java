@@ -29,14 +29,13 @@ public interface IGameService {
 
     void removeCartItem(int userId, int gameId);
 
-    boolean createUser(String email);
+    boolean createUser(String name, String date, String email);
 
     GameDTO getGameForCart(int gameId);
 
     boolean findDuplicate(String email);
 
         List<GameDTO> tagGame(int idGame);
-//    Map<Integer, ArrayList<GameDTO>> hashGame;
 
     GameDTO detailGame(String title);
 }

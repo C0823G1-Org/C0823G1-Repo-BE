@@ -2,6 +2,7 @@ package controller;
 
 import model.GameDTO;
 import model.GameTag;
+import model.User;
 import model.UserAccount;
 import model.UserDto;
 import service.GameService;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +31,7 @@ public class GameServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession();
         String action = req.getParameter("action");
         if (action == null) {
@@ -50,11 +53,8 @@ public class GameServlet extends HttpServlet {
             case "login":
                 logIn(req, resp);
                 break;
-            case "game":
-                break;
             case "user":
-                handleDecentralization(resp, session);
-                showListGame(req, resp);
+                userManager(req, resp, session);
                 break;
             case "check_if_game_in_cart":
                 checkIfGameInCart(req, resp);
@@ -70,6 +70,12 @@ public class GameServlet extends HttpServlet {
                 break;
             case "search":
                 search(req,resp);
+                break;
+            case "game":
+                handleDecentralization(req, resp, session);
+                break;
+            case "edit":
+                formEdit(req, resp);
                 break;
             default:
                 showList(req, resp);
@@ -104,12 +110,20 @@ public class GameServlet extends HttpServlet {
         requestDispatcher1.forward(req, resp);
     }
 
+    private void formEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        UserDto userDto = gameService.findIdUser(id);
+        req.setAttribute("userDto", userDto);
+        req.getRequestDispatcher("game_manager/edit_user.jsp").forward(req, resp);
+    }
+
     private void showListGame(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("game_manager/game_manager.jsp");
         List<GameDTO> list = gameService.getAll();
         req.setAttribute("list", list);
         requestDispatcher.forward(req, resp);
     }
+
 
     private void showCart(HttpServletRequest req, HttpServletResponse resp) {
         UserDto user = (UserDto) req.getSession().getAttribute("userDto");
@@ -125,13 +139,12 @@ public class GameServlet extends HttpServlet {
         getUserCart(req, resp);
     }
 
-    private static void handleDecentralization(HttpServletResponse resp, HttpSession session) throws IOException {
+
+    private void handleDecentralization(HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws IOException, ServletException {
         if (session.getAttribute("userDto") != null) {
             UserDto userDto = (UserDto) session.getAttribute("userDto");
             if (userDto.getRoleId() == 1) {
-                resp.sendRedirect("game_manager/game_manager.jsp");
-            } else {
-                resp.sendRedirect("home/home.jsp");
+                showListGame(req, resp);
             }
         }
     }
@@ -257,6 +270,7 @@ public class GameServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String action = req.getParameter("action");
         if (action == null) {
             action = "";
@@ -271,6 +285,41 @@ public class GameServlet extends HttpServlet {
             case "remove_cart_item":
                 removeCartItem(req, resp);
                 break;
+            case "edit":
+                editUser(req, resp);
+                break;
+            case "delete":
+                removeUser(req, resp);
+                break;
+        }
+    }
+
+    private void removeUser(HttpServletRequest req, HttpServletResponse resp) {
+        int id = Integer.parseInt(req.getParameter("userId"));
+        gameService.removeUser(id);
+        List<UserDto> userDtos = gameService.showAllUsers();
+        req.setAttribute("userDtos", userDtos);
+        try {
+            req.getRequestDispatcher("game_manager/user_manager.jsp").forward(req, resp);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void editUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        String name = req.getParameter("name");
+        String birthday = req.getParameter("birthday");
+        UserDto user = new UserDto(id, name, birthday);
+        gameService.editUser(user);
+        List<UserDto> userDtos = gameService.showAllUsers();
+        req.setAttribute("userDtos", userDtos);
+        try {
+            req.getRequestDispatcher("game_manager/user_manager.jsp").forward(req, resp);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -320,6 +369,8 @@ public class GameServlet extends HttpServlet {
     }
 
     private void signUp(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        String date = req.getParameter("date");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         if (!RegistrationValidator.isValidEmail(email)) {
@@ -343,10 +394,10 @@ public class GameServlet extends HttpServlet {
             boolean isSuccess = gameService.createAccount(account);
             if (isSuccess) {
                 UserDto userDto = this.gameService.getUserInfo(account);
-                gameService.createUser(email);
+                gameService.createUser(name, date, email);
                 HttpSession httpSession = req.getSession();
                 httpSession.setAttribute("userDto", userDto);
-                req.setAttribute("Sucssesful",true);
+                req.setAttribute("Successful", true);
                 List<GameDTO> list = gameService.getAll();
                 req.setAttribute("newList", list);
                 req.getRequestDispatcher("home/home.jsp").forward(req, resp);
@@ -378,4 +429,21 @@ public class GameServlet extends HttpServlet {
         gameService.removeCartItem(user.getUserId(), gameId);
         getUserCart(req, resp);
     }
+
+    private void showListUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<UserDto> userDtos = gameService.showAllUsers();
+        req.setAttribute("userDtos", userDtos);
+        req.getRequestDispatcher("game_manager/user_manager.jsp").forward(req, resp);
+    }
+
+    private void userManager(HttpServletRequest req, HttpServletResponse resp, HttpSession session) throws IOException, ServletException {
+        if (session.getAttribute("userDto") != null) {
+            UserDto userDto = (UserDto) session.getAttribute("userDto");
+            if (userDto.getRoleId() == 1) {
+                showListUser(req, resp);
+            }
+        }
+    }
+
+
 }

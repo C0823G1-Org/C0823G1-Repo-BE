@@ -25,8 +25,8 @@
                         <a class="container__header-login-a">${sessionScope.userDto.username}</a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-item"><a href="#">Action</a></li>
-                            <li class="dropdown-item"><a  href="/game-servlet?action=game">Game management</a></li>
-                            <li class="dropdown-item"><a  href="/game-servlet?action=user">User management</a></li>
+                            <li class="dropdown-item"><a href="/game-servlet?action=game">Game management</a></li>
+                            <li class="dropdown-item"><a href="/game-servlet?action=user">User management</a></li>
                         </ul>
                     </div>
                 </c:if>

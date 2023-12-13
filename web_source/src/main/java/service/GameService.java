@@ -63,8 +63,8 @@ public class GameService implements IGameService {
     }
 
     @Override
-    public boolean createUser(String email) {
-        return gameRepository.createUser(email);
+    public boolean createUser(String name, String date, String email) {
+        return gameRepository.createUser(name, date, email);
     }
 
     @Override
@@ -83,13 +83,28 @@ public class GameService implements IGameService {
     }
 
 
-//    @Override
-//    public List<GameDTO> tagGame(String tagGame) {
-//        return gameRepository.tagGame(tagGame);
-//    }
-
     @Override
     public GameDTO detailGame(String title) {
         return gameRepository.detailGame(title);
+    }
+
+    @Override
+    public List<UserDto> showAllUsers() {
+        return gameRepositoryVi.showAllUsers();
+    }
+
+    @Override
+    public UserDto findIdUser(int userId) {
+        return gameRepositoryVi.findUserId(userId);
+    }
+
+    @Override
+    public boolean removeUser(int userId) {
+        return gameRepositoryVi.removeUser(userId);
+    }
+
+    @Override
+    public boolean editUser(UserDto user) {
+        return gameRepositoryVi.editUser(user);
     }
 }

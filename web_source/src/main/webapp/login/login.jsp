@@ -60,7 +60,7 @@
                                 </button>
                             </div>
                             <div class="btn__sign-create">
-                                <button><a style="color: #fff" href="/game-servlet?action=register">Create an
+                                <button type="button"><a style="color: #fff" href="/game-servlet?action=register">Create an
                                     account</a></button>
                             </div>
                             <div class="link__help">

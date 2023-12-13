@@ -13,11 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
+
     <title>Document</title>
     <link rel="stylesheet" href="../css/game_manager.css">
     <link rel="stylesheet" href="./fonts/fontawesome-free-6.4.0-web/css/all.min.css">
@@ -29,6 +25,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"
             integrity="sha512-WNZwVebQjhSxEzwbettGuQgWxbpYdoLf7mH+25A7sfQbbxKeS5SQ9QBf97zOY4nOlwtksgDA/czSTmfj4DUEiQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
 </head>
 
 <body>
@@ -46,71 +44,69 @@
             <a href="" class="container__header-select-link">ABOUT</a>
             <a href="" class="container__header-select-link">SUPPORT</a>
         </div>
-
-            <c:if test="${sessionScope.userDto.roleId == 1}">
-                <a class="container__header-login-a">${sessionScope.userDto.username}</a>
-                <div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                            ${sessionScope.userDto.roleName}
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="/game-servlet?action=game">Game management</a></li>
-                        <li><a class="dropdown-item" href="/game-servlet?action=user">User management</a></li>
-                    </ul>
+        <div class="container__header-login">
+            <div class="container__header-login-install">
+                <button class="btn_installe">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Install Steam</span>
+                </button>
+            </div>
+            <c:if test="${sessionScope.userDto != null}">
+                <c:if test="${sessionScope.userDto.roleId == 1}">
+                    <div class="dropdown">
+                        <a class="container__header-login-a">${sessionScope.userDto.username}</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><a href="#">Action</a></li>
+                            <li class="dropdown-item"><a href="/game-servlet?action=game">Game management</a></li>
+                            <li class="dropdown-item"><a href="/game-servlet?action=user">User management</a></li>
+                        </ul>
+                    </div>
+                </c:if>
+                <c:if test="${sessionScope.userDto.roleId != 1}">
+                    <c:if test="${sessionScope.userDto.username != null}">
+                        <a class="container__header-login-a">${sessionScope.userDto.username}</a>
+                    </c:if>
+                    <c:if test="${sessionScope.userDto.username == null}">
+                        <a class="container__header-login-a"
+                           style="text-decoration: none">${sessionScope.userDto.email}</a>
+                    </c:if>
+                </c:if>
+                <div>
+                    <a class="logout" href="/game-servlet?action=logout">Logout</a>
                 </div>
-            </c:if>
-
+            </c:if></div>
     </div>
 </section>
 <section class="fixHeight">
 </section>
-<section class="container__body-main" style="height: 1400px;">
-    <!-- Thao tác trong này -->
-    <h1 style="margin-left: 800px ; color: red " >
-        List Game
-    </h1>
-    <h2>
-        <button type="button" class="btn btn-primary "><a href="/game-manager?action=add_game" class="text-danger">Add New Game</a></button>
-    </h2>
-
+<section class="container__body-main" style="height: 540px;">
     <div align="center">
-        <table class="table">
-            <thead class="thead-dark text-primary">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Price</th>
-<%--                <th scope="col">Url</th>--%>
-<%--                <th scope="col">UrlVideo</th>--%>
-                <th scope="col">PercentDiscount</th>
-                <th scope="col">Rating</th>
-                <th scope="col">Info</th>
-            </tr>
-            </thead>
-
-            <c:forEach var="game" items="${list}" varStatus="loop">
-            <tr class="text-primary">
-                <td><c:out value="${loop.count}"/></td>
-                <td><c:out value="${game.name}"/></td>
-                <td><c:out value="${game.price}"/></td>
-                <td><c:out value="${game.percentDiscount}"/></td>
-                <td><c:out value="${game.rating}"/></td>
-                <td>
-                    <a href="/users?action=edit&id=${game.name}">Edit</a>
-                    <a href="/users?action=delete&id=${game.name}">Delete</a>
-                </td>
-            </tr>
-            </c:forEach>
-        </table>
+        <form method="post">
+            <fieldset>
+                <legend>Form edit user</legend>
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td><input type="text" name="name" value="${userDto.getUsername()}"></td>
+                    </tr>
+                    <tr>
+                        <td>Birthday:</td>
+                        <td><input type="text" name="birthday" value="${userDto.getBirthday()}"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit"  value="Confirm"></td>
+                        <td><input type="hidden" name="action" value="edit"></td>
+                        <td><a href="user_manager.jsp"> Back </a></td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
     </div>
-
-
 </section>
 <div class="end__container">
     <div class="container__content">
         <hr>
+
         <div class="container__content-main">
             <div class="container__content-img">
                 <img src="./img/399932046_361457652925746_2513704301500335433_n.jpg" alt="">
@@ -146,5 +142,7 @@
     </div>
 </div>
 </body>
-
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </html>
